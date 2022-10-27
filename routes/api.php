@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\history\HistoryController;
 use App\Http\Controllers\Api\kategori\KategoriController;
 use App\Http\Controllers\Api\keranjang\KeranjangController;
 use App\Http\Controllers\Api\Produk\ProdukController;
+use App\Http\Controllers\Api\reviewProduk\ReviewProdukController;
 use App\Http\Controllers\Api\SubKategori\SubKategoriController;
 use App\Http\Controllers\Api\topUp\TopUpController;
 use App\Http\Controllers\Api\transaksi\TransaksiController;
@@ -87,3 +88,10 @@ Route::get('history', [HistoryController::class, 'index']);
 Route::get('history/{id}', [HistoryController::class, 'show']);
 Route::delete('history/{id}', [HistoryController::class, 'destroy']);
 // endhistory
+
+// reviewproduk
+Route::get('review_produk', [ReviewProdukController::class, 'index']);
+Route::post('review_produk/create', [ReviewProdukController::class, 'store']);
+Route::get('review_produk/{id}', [ReviewProdukController::class, 'show']);
+// Route::delete('review_produk/{id}', [ReviewProdukController::class, 'destroy']);
+// endreviewproduk
