@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Keranjang;
+use App\Models\TopUp;
+use App\Models\Voucher_user;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,13 +24,25 @@ class User extends Authenticatable
         'name',
         'no_telepon',
         'email',
-        'alamat',
+        'label_alamat',
+        'kota/kecamatan',
+        'alamat_lengkap',
         'password',
     ];
 
     public function keranjang()
     {
         return $this->hasOne(Keranjang::class);
+    }
+
+    public function topup()
+    {
+        return $this->hasMany(TopUp::class);
+    }
+
+    public function voucher_user()
+    {
+        return $this->hasMany(Voucher_user::class);
     }
 
     /**

@@ -1,10 +1,10 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-    <div class="container-fluid">
-        {{-- <form action="{{ route('produk.update', $produks->id) }}" method="post" enctype="multipart/form-data"> --}}
+<div class="container-fluid">
+    {{-- <form action="{{ route('produk.update', $produks->id) }}" method="post" enctype="multipart/form-data"> --}}
         {{-- @csrf
-            @method('put') --}}
+        @method('put') --}}
         <div class="col-lg-8">
             <div class="card mb-4 shadow-lg rounded card" style="margin: 2%; padding:1% ">
                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -25,7 +25,8 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Harga Produk</label>
-                        <input type="number" name="harga" class="form-control mb-2  @error('harga') is-invalid @enderror"
+                        <input type="number" name="harga"
+                            class="form-control mb-2  @error('harga') is-invalid @enderror"
                             value="{{ $produks->harga }}" disabled readonly>
                     </div>
                     <div class="mb-3">
@@ -34,17 +35,24 @@
                             value="{{ $produks->stok }}" disabled readonly>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">diskon Produk</label>
+                        <input type="number" name="diskon"
+                            class="form-control mb-2  @error('diskon') is-invalid @enderror"
+                            value="{{ $produks->diskon }}" disabled readonly>
+                    </div>
+                    <div class="mb-3">
                         <label class="required form-label">Deskripsi Produk</label>
                         <textarea name="deskripsi" cols="30" rows="7"
-                            class="form-control mb-2  @error('deskripsi') is-invalid @enderror" disabled readonly>{{ $produks->deskripsi }}</textarea>
+                            class="form-control mb-2  @error('deskripsi') is-invalid @enderror" disabled
+                            readonly>{{ $produks->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">gambar produk</label>
                         <p>
                             @if (isset($produks) && $produks->gambar_produk1)
-                                <img src="{{ asset('images/gambar_produk1/' . $produks->gambar_produk1) }}"
-                                    class="img-rounded img-responsive"
-                                    style="width:150px; height:150px; border-radius:10px border-radius:10px" alt="">
+                            <img src="{{ asset('images/gambar_produk1/' . $produks->gambar_produk1) }}"
+                                class="img-rounded img-responsive"
+                                style="width:150px; height:150px; border-radius:10px border-radius:10px" alt="">
                             @endif
                         </p>
                     </div>
@@ -52,9 +60,9 @@
                         <label class="form-label">gambar produk</label>
                         <p>
                             @if (isset($produks) && $produks->gambar_produk2)
-                                <img src="{{ asset('images/gambar_produk2/' . $produks->gambar_produk2) }}"
-                                    class="img-rounded img-responsive" style="width:150px; height:150px; border-radius:10px"
-                                    alt="">
+                            <img src="{{ asset('images/gambar_produk2/' . $produks->gambar_produk2) }}"
+                                class="img-rounded img-responsive" style="width:150px; height:150px; border-radius:10px"
+                                alt="">
                             @endif
                         </p>
                     </div>
@@ -77,6 +85,7 @@
                     </svg> Kembali</a>
             </div>
         </div>
-        {{-- </form> --}}
-    </div>
+        {{--
+    </form> --}}
+</div>
 @endsection

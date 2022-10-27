@@ -31,7 +31,7 @@ class KeranjangController extends Controller
     public function create()
     {
         $produks = Produk::all();
-        $users = User::all();
+        $users = User::where('role', 'costumer')->get();
         return view('admin.keranjang.create', compact('produks', 'users'));
 
     }
@@ -49,6 +49,7 @@ class KeranjangController extends Controller
             'user_id' => 'required',
             'produk_id' => 'required',
             'ukuran' => 'required',
+            'warna' => 'required',
             'jumlah' => 'required',
         ]);
 
@@ -56,6 +57,7 @@ class KeranjangController extends Controller
         $keranjangs->user_id = $request->user_id;
         $keranjangs->produk_id = $request->produk_id;
         $keranjangs->ukuran = $request->ukuran;
+        $keranjangs->warna = $request->warna;
         $keranjangs->jumlah = $request->jumlah;
         $diskon = (($keranjangs->produk->diskon / 100) * $keranjangs->produk->harga);
         $keranjangs->total_harga = ($keranjangs->produk->harga * $request->jumlah) - $diskon;

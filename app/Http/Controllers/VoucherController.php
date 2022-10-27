@@ -41,9 +41,7 @@ class VoucherController extends Controller
         $validated = $request->validate([
             'kode_voucher' => 'required|unique:vouchers',
             'harga' => 'required',
-            'title' => 'required',
             'diskon' => 'required',
-            'deskripsi' => 'required',
             'waktu_mulai' => 'required',
             'waktu_berakhir' => 'required',
         ]);
@@ -51,9 +49,12 @@ class VoucherController extends Controller
         $vouchers = new Voucher();
         $vouchers->kode_voucher = $request->kode_voucher;
         $vouchers->harga = $request->harga;
-        $vouchers->title = $request->title;
+        if ($vouchers->harga > 0) {
+            $vouchers->label = 'berbayar';
+        } else {
+            $vouchers->label = 'gratis';
+        }
         $vouchers->diskon = $request->diskon;
-        $vouchers->deskripsi = $request->deskripsi;
         $vouchers->waktu_mulai = $request->waktu_mulai;
         $vouchers->waktu_berakhir = $request->waktu_berakhir;
 
@@ -106,9 +107,8 @@ class VoucherController extends Controller
         $validated = $request->validate([
             'kode_voucher' => 'required',
             'harga' => 'required',
-            'title' => 'required',
+            // 'label' => 'required',
             'diskon' => 'required',
-            'deskripsi' => 'required',
             'waktu_mulai' => 'required',
             'waktu_berakhir' => 'required',
         ]);
@@ -116,9 +116,8 @@ class VoucherController extends Controller
         $vouchers = Voucher::findOrFail($id);
         $vouchers->kode_voucher = $request->kode_voucher;
         $vouchers->harga = $request->harga;
-        $vouchers->title = $request->title;
+        $vouchers->label = $request->label;
         $vouchers->diskon = $request->diskon;
-        $vouchers->deskripsi = $request->deskripsi;
         $vouchers->waktu_mulai = $request->waktu_mulai;
         $vouchers->waktu_berakhir = $request->waktu_berakhir;
         $vouchers->status = $request->status;

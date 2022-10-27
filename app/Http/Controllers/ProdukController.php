@@ -110,7 +110,6 @@ class ProdukController extends Controller
         $produks = Produk::findOrFail($id);
         $sub_kategoris = Sub_kategori::all();
         return view('admin.produk.edit', compact('produks', 'sub_kategoris'));
-
     }
 
     /**

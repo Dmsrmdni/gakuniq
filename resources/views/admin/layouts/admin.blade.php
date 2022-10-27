@@ -92,6 +92,7 @@
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
+        @include('sweetalert::alert')
 
         @include('admin.layouts.components.sidebar')
         

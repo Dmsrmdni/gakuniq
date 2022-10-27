@@ -290,10 +290,32 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="alamat" class="form-label">alamat</label>
-                <textarea id="alamat" cols="10" rows="4" class="form-control @error('alamat') is-invalid @enderror"
-                    name="alamat" required autocomplete="alamat" placeholder="Enter your Alamat" autofocus>{{ old('alamat') }}</textarea>
-                    @error('alamat')
+                <label for="label_alamat" class="form-label">label alamat</label>
+                <select name="label_alamat" class="form-control @error('label_alamat') is-invalid @enderror">
+                    <option value="rumah">rumah</option>
+                    <option value="kantor">kantor</option>
+                </select>
+                @error('label_alamat')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="kota/kecamatan" class="form-label">Kota/Kecamatan</label>
+                <input type="text" class="form-control @error('kota/kecamatan') is-invalid @enderror" id="kota/kecamatan"
+                    name="kota/kecamatan" placeholder="Enter your kota/kecamatan" value="{{ old('kota/kecamatan') }}" />
+                @error('kota/kecamatan')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="alamat_lengkap" class="form-label">alamat lengkap</label>
+                <textarea id="alamat_lengkap" cols="10" rows="4" class="form-control @error('alamat_lengkap') is-invalid @enderror"
+                    name="alamat_lengkap" required autocomplete="alamat_lengkap" placeholder="Enter your Alamat_lengkap" autofocus>{{ old('alamat_lengkap') }}</textarea>
+                    @error('alamat_lengkap')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -309,7 +331,6 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                {{-- <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span> --}}
                 </div>
             </div>
             <div class="mb-3 form-password-toggle">

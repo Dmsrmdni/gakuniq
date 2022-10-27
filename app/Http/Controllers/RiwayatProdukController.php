@@ -56,6 +56,20 @@ class RiwayatProdukController extends Controller
         $riwayat_produks->qty = $request->qty;
         $riwayat_produks->note = $request->note;
         $riwayat_produks->waktu_riwayat = $request->waktu_riwayat;
+        $produks = Produk::findOrFail($riwayat_produks->produk_id);
+        if ($riwayat_produks->type == 'masuk') {
+            $produks->stok += $riwayat_produks->qty;
+        } elseif ($riwayat_produks->type == 'keluar') {
+            if ($produks->stok < $riwayat_produks->qty) {
+                return redirect()
+                    ->route('produk.index')->with('toast_error', 'Stok Kurang');
+            } else {
+                $produks->stok -= $riwayat_produks->qty;
+
+            }
+        }
+
+        $produks->save();
         $riwayat_produks->save();
         return redirect()
             ->route('produk.index')->with('toast_success', 'Data has been added');

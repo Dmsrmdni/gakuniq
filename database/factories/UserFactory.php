@@ -23,7 +23,8 @@ class UserFactory extends Factory
             'no_telepon' => fake()->randomNumber(5, false),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'alamat' => fake()->paragraph(),
+            'kota/kecamatan' => fake()->word(),
+            'alamat_lengkap' => fake()->paragraph(),
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
         ];

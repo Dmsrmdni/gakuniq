@@ -64,7 +64,7 @@
             </a>
         </li>
         <li
-            class="menu-item {{ Request::is('admin/kategori*', 'admin/produk*', 'admin/voucher*' , 'admin/sub_kategori*' , 'admin/riwayat_produk*') ? 'active' : '' }}">
+            class="menu-item {{ Request::is('admin/kategori*', 'admin/produk*', 'admin/voucher' , 'admin/sub_kategori*' , 'admin/riwayat_produk*' , 'admin/review_produk*') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bi bi-grid-fill"></i>
                 <div data-i18n="Misc">Data Produk</div>
@@ -88,6 +88,12 @@
                         <div data-i18n="Analytics">Data Produk</div>
                     </a>
                 </li>
+                <li class="menu-item {{ Request::is('admin/review_produk*') ? 'active' : '' }}">
+                    <a href="/admin/review_produk" class="menu-link">
+                        <i class="menu-icon tf-icons bi bi-chat-square-heart-fill"></i>
+                        <div data-i18n="Analytics">Review Produk</div>
+                    </a>
+                </li>
                 <li class="menu-item {{ Request::is('admin/riwayat_produk*') ? 'active' : '' }}">
                     <a href="/admin/riwayat_produk" class="menu-link">
                         <i class="menu-icon tf-icons bi bi-calendar2-week-fill"></i>
@@ -103,12 +109,24 @@
             </ul>
         </li>
         <li
-            class="menu-item {{ Request::is('admin/keranjang*', 'admin/wishlist*', 'admin/transaksi*', 'admin/history*') ? 'active' : '' }}">
+            class="menu-item {{ Request::is('admin/keranjang*', 'admin/wishlist*', 'admin/transaksi*', 'admin/history*', 'admin/top_up*' , 'admin/voucher_user*' ) ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bi bi-people-fill"></i>
                 <div data-i18n="Misc">Data user</div>
             </a>
             <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('admin/top_up*') ? 'active' : '' }}">
+                    <a href="/admin/top_up" class="menu-link">
+                        <i class="menu-icon tf-icons bi bi-file-person-fill"></i>
+                        <div data-i18n="Analytics">Data Top Up</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('admin/voucher_user*') ? 'active' : '' }}">
+                    <a href="/admin/voucher_user" class="menu-link">
+                        <i class="menu-icon tf-icons bi bi-person-video2"></i>
+                        <div data-i18n="Analytics">Voucher user</div>
+                    </a>
+                </li>
                 <li class="menu-item {{ Request::is('admin/keranjang*') ? 'active' : '' }}">
                     <a href="/admin/keranjang" class="menu-link">
                         <i class="menu-icon tf-icons bi bi-cart-fill"></i>

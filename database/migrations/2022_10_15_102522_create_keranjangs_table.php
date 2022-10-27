@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('produk_id');
             $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
             $table->string('ukuran');
+            $table->string('warna');
             $table->integer('jumlah');
             $table->integer('total_harga');
             $table->timestamps();

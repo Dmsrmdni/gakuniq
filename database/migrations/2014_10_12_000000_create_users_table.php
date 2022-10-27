@@ -19,9 +19,13 @@ return new class extends Migration
             $table->string('no_telepon')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->text('alamat')->nullable();
+            $table->enum('label_alamat', ['rumah', 'kantor'])->default('rumah')->nullable();
+            $table->string('kota/kecamatan')->nullable();
+            $table->text('alamat_lengkap')->nullable();
             $table->string('password');
             $table->enum('role', ['costumer', 'admin'])->default('costumer');
+            $table->integer('saldo')->default('0');
+            $table->integer('score')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

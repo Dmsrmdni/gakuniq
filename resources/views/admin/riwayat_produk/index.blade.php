@@ -50,11 +50,11 @@
                         </td>
                         <td>
                             @if ($riwayat_produk->type == 'masuk')
-                            <div class="d-flex btn-sm btn-success col-7">
+                            <div class="d-flex btn-sm btn-success col-8">
                                 {{ $riwayat_produk->type }}
                             </div>
                             @elseif ($riwayat_produk->type == 'keluar')
-                            <div class="d-flex btn-sm btn-danger col-7">
+                            <div class="d-flex btn-sm btn-danger col-8">
                                 {{ $riwayat_produk->type }}
                             </div>
                             @endif

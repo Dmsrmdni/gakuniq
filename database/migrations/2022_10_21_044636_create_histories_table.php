@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('transaksi_id');
-            $table->foreign('transaksi_id')->references('id')->on('transaksis')->onDelete('cascade');
-            $table->string('status');
+            $table->string('kode_transaksi');
+            $table->string('nama_pembeli');
+            $table->string('nama_produk');
+            $table->date('waktu_pemesanan');
+            // $table->unsignedBigInteger('transaksi_id');
+            // $table->foreign('transaksi_id')->references('id')->on('transaksis')->onDelete('cascade');
+            $table->enum('status', ['prosess', 'success', 'gagal'])->default('prosess');
             $table->timestamps();
         });
     }

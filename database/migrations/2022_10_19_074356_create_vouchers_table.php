@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('kode_voucher');
             $table->integer('harga');
-            $table->string('title');
+            $table->enum('label', ['gratis', 'berbayar'])->default('gratis');
             $table->integer('diskon')->default('0');
-            $table->text('deskripsi');
             $table->date('waktu_mulai');
             $table->date('waktu_berakhir');
             $table->enum('status', ['aktif', 'expired'])->default('aktif');

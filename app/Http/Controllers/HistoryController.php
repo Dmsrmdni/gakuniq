@@ -40,22 +40,22 @@ class HistoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //validasi
-        $validated = $request->validate([
-            'transaksi_id' => 'required',
-            'status' => 'required',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     //validasi
+    //     $validated = $request->validate([
+    //         'transaksi_id' => 'required',
+    //         'status' => 'required',
+    //     ]);
 
-        $histories = new History();
-        $histories->transaksi_id = $request->transaksi_id;
-        $histories->status = $request->status;
-        $histories->save();
-        return redirect()
-            ->route('history.index')->with('toast_success', 'Data has been added');
+    //     $histories = new History();
+    //     $histories->transaksi_id = $request->transaksi_id;
+    //     $histories->status = $request->status;
+    //     $histories->save();
+    //     return redirect()
+    //         ->route('history.index')->with('toast_success', 'Data has been added');
 
-    }
+    // }
 
     /**
      * Display the specified resource.
@@ -77,8 +77,7 @@ class HistoryController extends Controller
     public function edit($id)
     {
         $histories = History::findOrFail($id);
-        $transaksis = Transaksi::all();
-        return view('admin.history.edit', compact('transaksis', 'histories'));
+        return view('admin.history.edit', compact('histories'));
 
     }
 
@@ -93,12 +92,18 @@ class HistoryController extends Controller
     {
         //validasi
         $validated = $request->validate([
-            'transaksi_id' => 'required',
+            // 'kode_transaksi' => 'required',
+            'nama_pembeli' => 'required',
+            'nama_produk' => 'required',
+            'waktu_pemesanan' => 'required',
             'status' => 'required',
         ]);
 
         $histories = History::findOrFail($id);
-        $histories->transaksi_id = $request->transaksi_id;
+        $histories->kode_transaksi = $request->kode_transaksi;
+        $histories->nama_pembeli = $request->nama_pembeli;
+        $histories->nama_produk = $request->nama_produk;
+        $histories->waktu_pemesanan = $request->waktu_pemesanan;
         $histories->status = $request->status;
         $histories->save();
         return redirect()
