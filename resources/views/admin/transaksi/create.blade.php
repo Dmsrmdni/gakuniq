@@ -1,7 +1,6 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-@include('sweetalert::alert')
 <div class="container-fluid">
     <form action="{{ route('transaksi.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -13,7 +12,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label class="form-label">Name Produk</label>
-                        <select name="keranjang_id" class="form-control @error('keranjang_id') is-invalid @enderror">
+                        <select name="keranjang_id" class="form-select @error('keranjang_id') is-invalid @enderror">
                             @foreach ($keranjangs as $keranjang)
                             <option value="{{ $keranjang->id }}">{{ $keranjang->produk->nama_produk }}
                             </option>
@@ -29,7 +28,7 @@
                         <label class="form-label">alamat</label>
                         <input type="text" name="alamat"
                             class="form-control mb-2  @error('alamat') is-invalid @enderror"
-                            value="{{ $keranjang->user->alamat_lengkap }}">
+                            value="{{ Auth::user()->email }}">
                         @error('alamat')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -38,7 +37,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Voucher</label>
-                        <select name="voucher_id" class="form-control @error('voucher_id') is-invalid @enderror">
+                        <select name="voucher_id" class="form-select @error('voucher_id') is-invalid @enderror">
                             <option value="" selected>Pilih Voucher</option>
                             @foreach ($vouchers as $voucher)
                             <option value="{{ $voucher->id }}">{{ $voucher->kode_voucher }}
@@ -60,7 +59,7 @@
                     <div class="mb-3">
                         <label class="form-label">Metode Pembayaran</label>
                         <select name="metode_pembayaran"
-                            class="form-control @error('metode_pembayaran') is-invalid @enderror">
+                            class="form-select @error('metode_pembayaran') is-invalid @enderror">
                             <option value="m-banking">m-banking</option>
                             <option value="dana">dana</option>
                             <option value="gopay">gopay</option>

@@ -16,8 +16,7 @@ class RiwayatProdukController extends Controller
     public function index()
     {
         $riwayat_produks = Riwayat_produk::with('produk')->latest()->get();
-        $total_riwayat_produks = Riwayat_produk::count();
-        return view('admin.riwayat_produk.index', compact('riwayat_produks', 'total_riwayat_produks'));
+        return view('admin.riwayat_produk.index', compact('riwayat_produks'));
 
     }
 

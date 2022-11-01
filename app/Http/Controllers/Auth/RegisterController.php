@@ -50,13 +50,18 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'nama_depan' => ['required', 'string', 'max:255'],
+            'nama_belakang' => ['required', 'string', 'max:255'],
             'no_telepon' => ['required', 'string', 'min:12', 'max:14'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'label_alamat' => ['required'],
-            'kota/kecamatan' => ['required'],
-            'alamat_lengkap' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'tanggal_lahir' => ['required'],
+            'jenis_kelamin' => ['required'],
+            'referensi' => ['required'],
+            'label_alamat' => ['required'],
+            'kota_kecamatan' => ['required'],
+            'alamat_lengkap' => ['required'],
         ]);
     }
 
@@ -69,13 +74,18 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'nama_depan' => $data['nama_depan'],
+            'nama_belakang' => $data['nama_belakang'],
             'no_telepon' => $data['no_telepon'],
+            'username' => $data['username'],
             'email' => $data['email'],
-            'label_alamat' => $data['label_alamat'],
-            'kota/kecamatan' => $data['kota/kecamatan'],
-            'alamat_lengkap' => $data['alamat_lengkap'],
             'password' => Hash::make($data['password']),
+            'tanggal_lahir' => $data['tanggal_lahir'],
+            'jenis_kelamin' => $data['jenis_kelamin'],
+            'referensi' => $data['referensi'],
+            'label_alamat' => $data['label_alamat'],
+            'kota_kecamatan' => $data['kota_kecamatan'],
+            'alamat_lengkap' => $data['alamat_lengkap'],
         ]);
     }
 }

@@ -18,8 +18,7 @@ class VoucherUserController extends Controller
     public function index()
     {
         $voucher_users = Voucher_user::with('user', 'voucher')->latest()->get();
-        $total_voucher_users = Voucher_user::count();
-        return view('admin.voucher_user.index', compact('voucher_users', 'total_voucher_users'));
+        return view('admin.voucher_user.index', compact('voucher_users'));
 
     }
 

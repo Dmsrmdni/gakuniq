@@ -122,6 +122,13 @@ class WishlistController extends Controller
         $wishlists->delete();
         return redirect()
             ->route('wishlist.index')->with('toast_error', 'Data has been deleted');
-
     }
+
+    // public function destroyAll()
+    // {
+    //     $wishlists = Wishlist::all();
+    //     $wishlists->deleteAll();
+    //     return redirect()
+    //         ->route('wishlist.index')->with('toast_error', 'Data has been deleted');
+    // }
 }

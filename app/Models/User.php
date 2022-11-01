@@ -5,13 +5,15 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Keranjang;
 use App\Models\TopUp;
+use App\Models\Transaksi;
 use App\Models\Voucher_user;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -21,18 +23,28 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nama_depan',
+        'nama_belakang',
         'no_telepon',
+        'username',
         'email',
-        'label_alamat',
-        'kota/kecamatan',
-        'alamat_lengkap',
         'password',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'referensi',
+        'label_alamat',
+        'kota_kecamatan',
+        'alamat_lengkap',
     ];
 
     public function keranjang()
     {
-        return $this->hasOne(Keranjang::class);
+        return $this->hasMany(Keranjang::class);
+    }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
     }
 
     public function topup()
@@ -63,4 +75,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+    * Get the identifier that will be stored in the subject claim of the JWT.
+    *
+    * @return mixed
+    */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+    * Return a key value array, containing any custom claims to be added to the JWT.
+    *
+    * @return array
+    */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

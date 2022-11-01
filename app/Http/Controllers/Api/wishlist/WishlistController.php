@@ -11,8 +11,8 @@ class WishlistController extends Controller
     // Menampilkan Semua Data
     public function index(Request $request)
     {
-        $wishlists = Wishlist::select("user_id", "produk_id")->with('user', 'produk')->get();
-        $jumlah_wishlists = Wishlist::count();
+        $wishlists = Wishlist::where('user_id', auth()->user()->id)->select("id", "user_id", "produk_id")->with('user', 'produk')->get();
+        $jumlah_wishlists = Wishlist::where('user_id', auth()->user()->id)->count();
         return response()->json([
             "data" => $wishlists,
             "jumlah_wishlist" => $jumlah_wishlists,
@@ -25,12 +25,12 @@ class WishlistController extends Controller
     {
         //validasi
         $validated = $request->validate([
-            'user_id' => 'required',
+            // 'user_id' => 'required',
             'produk_id' => 'required',
         ]);
 
         $wishlists = new Wishlist();
-        $wishlists->user_id = $request->user_id;
+        $wishlists->user_id = auth()->guard('api')->user()->id;
         $wishlists->produk_id = $request->produk_id;
         $wishlists->save();
 

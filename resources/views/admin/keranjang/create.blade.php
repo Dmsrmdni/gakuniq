@@ -12,9 +12,9 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label class="form-label">Name Pembeli</label>
-                        <select name="user_id" class="form-control @error('user_id') is-invalid @enderror">
+                        <select name="user_id" class="form-select @error('user_id') is-invalid @enderror">
                             @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}
+                            <option value="{{ $user->id }}">{{ $user->username }}
                             </option>
                             @endforeach
                         </select>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Name Produk</label>
-                        <select name="produk_id" class="form-control @error('produk_id') is-invalid @enderror">
+                        <select name="produk_id" class="form-select @error('produk_id') is-invalid @enderror">
                             @foreach ($produks as $produk)
                             <option value="{{ $produk->id }}">{{ $produk->nama_produk }}
                             </option>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Ukuran Produk</label>
-                        <select name="ukuran" class="form-control @error('ukuran') is-invalid @enderror">
+                        <select name="ukuran" class="form-select @error('ukuran') is-invalid @enderror">
                             <option value="S">S</option>
                             <option value="L">L</option>
                             <option value="X">X</option>

@@ -26,18 +26,22 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::create([
-            'name' => 'Admin',
+            'username' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345678'),
             'role' => 'admin',
         ]);
 
         Kategori::create([
-            'name' => 'laki-laki',
+            'name' => 'pria',
+            'link' => '/kategori/pria',
+            'hover' => '<HoverCategoryPria />'
         ]);
 
         Kategori::create([
-            'name' => 'perempuan',
+            'name' => 'wanita',
+            'link' => '/kategori/wanita',
+            'hover' => '<HoverCategoryWanita />'
         ]);
 
         Sub_kategori::create([
@@ -56,5 +60,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Produk::factory(5)->create();
+
     }
 }

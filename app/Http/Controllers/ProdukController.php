@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\Kategori;
 use App\Models\Produk;
 use App\Models\Sub_kategori;
 use Illuminate\Http\Request;
@@ -16,8 +18,7 @@ class ProdukController extends Controller
     public function index()
     {
         $produks = Produk::with('sub_kategori')->latest()->get();
-        $total_produks = Produk::count();
-        return view('admin.produk.index', compact('produks', 'total_produks'));
+        return view('admin.produk.index', compact('produks'));
     }
 
     /**
@@ -28,7 +29,8 @@ class ProdukController extends Controller
     public function create()
     {
         $sub_kategoris = Sub_kategori::all();
-        return view('admin.produk.create', compact('sub_kategoris'));
+        $kategoris = kategori::all();
+        return view('admin.produk.create', compact('sub_kategoris', 'kategoris'));
     }
 
     /**
@@ -108,8 +110,9 @@ class ProdukController extends Controller
     public function edit($id)
     {
         $produks = Produk::findOrFail($id);
+        $kategoris = kategori::all();
         $sub_kategoris = Sub_kategori::all();
-        return view('admin.produk.edit', compact('produks', 'sub_kategoris'));
+        return view('admin.produk.edit', compact('produks', 'kategoris', 'sub_kategoris'));
     }
 
     /**

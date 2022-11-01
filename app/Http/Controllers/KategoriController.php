@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,7 @@ class KategoriController extends Controller
     public function index()
     {
         $kategoris = Kategori::latest()->get();
-        $total_kategoris = Kategori::count();
-        return view('admin.kategori.index', compact('kategoris', 'total_kategoris'));
+        return view('admin.kategori.index', compact('kategoris'));
     }
 
     /**

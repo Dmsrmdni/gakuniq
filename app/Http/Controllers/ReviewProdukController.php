@@ -16,8 +16,7 @@ class ReviewProdukController extends Controller
     public function index()
     {
         $review_produks = Review_produk::with('transaksi')->latest()->get();
-        $total_review_produks = Review_produk::count();
-        return view('admin.review_produk.index', compact('review_produks', 'total_review_produks'));
+        return view('admin.review_produk.index', compact('review_produks'));
 
     }
 

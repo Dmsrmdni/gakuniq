@@ -11,7 +11,7 @@ class SubKategoriController extends Controller
     // Menampilkan Semua Data
     public function index(Request $request)
     {
-        $sub_kategoris = Sub_kategori::select("kategori_id", "sub_kategori")->get();
+        $sub_kategoris = Sub_kategori::select("id", "kategori_id", "sub_kategori")->with('kategori')->get();
         return response()->json([
             "data" => $sub_kategoris,
             "status" => 200,

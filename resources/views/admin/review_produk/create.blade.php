@@ -12,11 +12,15 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label class="form-label">kode transaksi</label>
-                        <select name="transaksi_id" class="form-control @error('transaksi_id') is-invalid @enderror">
+                        <select name="transaksi_id" class="form-select @error('transaksi_id') is-invalid @enderror">
+                            @if(count($transaksis))
                             @foreach ($transaksis as $transaksi)
                             <option value="{{ $transaksi->id }}">{{ $transaksi->kode_transaksi }}
                             </option>
                             @endforeach
+                            @else
+                            <option hidden>Tidak ada data</option>
+                            @endif
                         </select>
                         @error('transaksi_id')
                         <span class="invalid-feedback" role="alert">
@@ -26,7 +30,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Status Produk</label>
-                        <select name="status" class="form-control @error('status') is-invalid @enderror">
+                        <select name="status" class="form-select @error('status') is-invalid @enderror">
                             <option value="recommended">recommended</option>
                             <option value="not recommended">not recommended</option>
                         </select>

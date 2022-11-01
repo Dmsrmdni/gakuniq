@@ -15,7 +15,7 @@ class TransaksiController extends Controller
     // Menampilkan Semua Data
     public function index()
     {
-        $transaksis = Transaksi::select("kode_transaksi", "keranjang_id", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga")->with('keranjang', 'voucher')->get();
+        $transaksis = Transaksi::select("id", "kode_transaksi", "keranjang_id", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga")->with('keranjang', 'voucher')->where('keranjang.user_id', auth()->user()->id)->get();
         return response()->json([
             "data" => $transaksis,
             "status" => 200,

@@ -12,9 +12,9 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label class="form-label">Name pembeli</label>
-                        <select name="user_id" class="form-control @error('user_id') is-invalid @enderror">
+                        <select name="user_id" class="form-select @error('user_id') is-invalid @enderror">
                             @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}
+                            <option value="{{ $user->id }}">{{ $user->username }}
                             </option>
                             @endforeach
                         </select>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Name Voucher</label>
-                        <select name="voucher_id" class="form-control @error('voucher_id') is-invalid @enderror">
+                        <select name="voucher_id" class="form-select @error('voucher_id') is-invalid @enderror">
                             @foreach ($vouchers as $voucher)
                             <option value="{{ $voucher->id }}">{{ $voucher->kode_voucher }}
                             </option>
@@ -41,7 +41,7 @@
                     <div class="mb-3">
                         <label class="form-label">Metode Pembayaran</label>
                         <select name="metode_pembayaran"
-                            class="form-control @error('metode_pembayaran') is-invalid @enderror">
+                            class="form-select @error('metode_pembayaran') is-invalid @enderror">
                             <option value="m-banking">m-banking</option>
                             <option value="dana">dana</option>
                             <option value="gopay">gopay</option>

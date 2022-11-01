@@ -16,8 +16,7 @@ class TopUpController extends Controller
     public function index()
     {
         $top_ups = TopUp::with('user')->latest()->get();
-        $total_top_ups = TopUp::count();
-        return view('admin.top_up.index', compact('top_ups', 'total_top_ups'));
+        return view('admin.top_up.index', compact('top_ups'));
 
     }
 

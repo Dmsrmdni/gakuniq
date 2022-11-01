@@ -11,7 +11,7 @@ class ProdukController extends Controller
     // Menampilkan Semua Data
     public function index(Request $request)
     {
-        $produks = Produk::select("sub_kategori_id", "nama_produk", "harga", "stok", "diskon", "deskripsi", "gambar_produk1", "gambar_produk2", "gambar_produk3")->get();
+        $produks = Produk::select("id", "sub_kategori_id", "nama_produk", "harga", "stok", "diskon", "deskripsi", "gambar_produk1", "gambar_produk2", "gambar_produk3")->with('sub_kategori')->get();
         return response()->json([
             "data" => $produks,
             "status" => 200,

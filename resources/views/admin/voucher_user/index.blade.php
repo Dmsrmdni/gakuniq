@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-4 mb-4">
         <div class="card h-100">
             <div class="card-body">
@@ -14,11 +14,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="card shadow-lg rounded card">
     <div class="card-header" id="#atas">
-        @include('sweetalert::alert')
         <a href="{{ route('voucher_user.create') }}" class="btn btn-sm btn-primary"><svg
                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
                 viewBox="0 0 16 16">
@@ -52,7 +51,7 @@
                         </td>
                         <td>
                             <div class="d-flex">
-                                {{ $voucher_user->user->name }}
+                                {{ $voucher_user->user->username }}
                             </div>
                         </td>
                         <td>
@@ -71,15 +70,15 @@
                             </div>
                         </td>
                         <td>
-                            @if ($voucher_user->voucher->status == 'aktif')
-                            <div class="d-flex btn-sm btn-success">
-                                {{ $voucher_user->voucher->status }}
+                            <div class="d-flex">
+                                @if ($voucher_user->voucher->status == 'aktif')
+                                <div class="badge rounded-pill bg-success w-100">{{$voucher_user->voucher->status }}
+                                </div>
+                                @elseif ($voucher_user->voucher->status == 'expired')
+                                <div class="badge rounded-pill bg-danger w-100">{{ $voucher_user->voucher->status }}
+                                </div>
+                                @endif
                             </div>
-                            @elseif ($voucher_user->voucher->status == 'expired')
-                            <div class="d-flex btn-sm btn-danger">
-                                {{ $voucher_user->voucher->status }}
-                            </div>
-                            @endif
                         </td>
                         <td>
                             <div class="d-flex">
@@ -95,7 +94,7 @@
                                         height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                         <path
                                             d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                                    </svg> Hapus
+                                    </svg>
                                 </button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">

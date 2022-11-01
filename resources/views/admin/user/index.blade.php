@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-4 mb-4">
         <div class="card h-100">
             <div class="card-body">
@@ -14,11 +14,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="card shadow-lg rounded card">
     <div class="card-header" id="#atas">
-        @include('sweetalert::alert')
     </div>
     <div class="table-responsive text-nowrap">
         <div class="container">
@@ -26,11 +25,12 @@
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>User</th>
+                        <th>Username</th>
                         <th>Email</th>
+                        <th>No Telepon</th>
+                        <th>Jenis Kelamin</th>
                         <th>Saldo</th>
                         <th>Score</th>
-                        <th>Role</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -45,7 +45,7 @@
                         </td>
                         <td>
                             <div class="d-flex">
-                                {{ $user->name }}
+                                {{ $user->username }}
                             </div>
                         </td>
                         <td>
@@ -55,17 +55,22 @@
                         </td>
                         <td>
                             <div class="d-flex">
-                                RP. {{ number_format($user->saldo, 0, ',', '.') }}
+                                {{ $user->no_telepon }}
                             </div>
                         </td>
                         <td>
                             <div class="d-flex">
-                                {{ $user->score }} Poin
+                                {{ $user->jenis_kelamin }}
                             </div>
                         </td>
                         <td>
                             <div class="d-flex">
-                                {{ $user->role }}
+                                Rp. {{ number_format($user->saldo, 0, ',', '.') }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                {{ number_format($user->score, 0, ',', '.') }} Poin
                             </div>
                         </td>
                         <td>
@@ -77,7 +82,7 @@
                                         height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                         <path
                                             d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                                    </svg> Hapus
+                                    </svg>
                                 </button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">

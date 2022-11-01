@@ -15,14 +15,21 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nama_depan')->nullable();
+            $table->string('nama_belakang')->nullable();
             $table->string('no_telepon')->nullable();
+            $table->string('username')->unique()->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('label_alamat', ['rumah', 'kantor'])->default('rumah')->nullable();
-            $table->string('kota/kecamatan')->nullable();
-            $table->text('alamat_lengkap')->nullable();
             $table->string('password');
+
+            $table->date('tanggal_lahir')->nullable();
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
+            $table->string('referensi')->nullable();
+
+            $table->enum('label_alamat', ['rumah', 'kantor'])->default('rumah')->nullable();
+            $table->string('kota_kecamatan')->nullable();
+            $table->text('alamat_lengkap')->nullable();
             $table->enum('role', ['costumer', 'admin'])->default('costumer');
             $table->integer('saldo')->default('0');
             $table->integer('score')->default('0');

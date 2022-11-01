@@ -15,8 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('role', auth()->user()->role = 'costumer')->get();
-        $total_users = User::where('role', auth()->user()->role = 'costumer')->count();
-        return view('admin.user.index', compact('users', 'total_users'));
+        return view('admin.user.index', compact('users'));
     }
 
     /**

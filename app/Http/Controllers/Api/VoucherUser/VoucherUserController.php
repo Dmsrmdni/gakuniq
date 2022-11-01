@@ -12,8 +12,8 @@ class VoucherUserController extends Controller
     // Menampilkan Semua Data
     public function index()
     {
-        $voucher_users = Voucher_user::select("user_id", "voucher_id", "metode_pembayaran")->with('user', 'voucher')->get();
-        $jumlah_voucher_users = Voucher_user::count();
+        $voucher_users = Voucher_user::where('user_id', auth()->user()->id)->select("id", "user_id", "voucher_id", "metode_pembayaran")->with('user', 'voucher')->get();
+        $jumlah_voucher_users = Voucher_user::where('user_id', auth()->user()->id)->count();
         return response()->json([
             "data" => $voucher_users,
             "jumlah_voucher_user" => $jumlah_voucher_users,
@@ -25,13 +25,13 @@ class VoucherUserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'user_id' => 'required',
+            // 'user_id' => 'required',
             'voucher_id' => 'required',
             'metode_pembayaran' => 'required',
         ]);
 
         $voucher_users = new Voucher_user();
-        $voucher_users->user_id = $request->user_id;
+        $voucher_users->user_id = auth()->user()->id;
         $voucher_users->voucher_id = $request->voucher_id;
         $voucher_users->metode_pembayaran = $request->metode_pembayaran;
 

@@ -23,9 +23,9 @@ class TransaksiController extends Controller
     {
         $transaksis = Transaksi::with('keranjang', 'voucher', 'voucher_user')->latest()->get();
         // $keranjangs = Keranjang::with('produk', 'user')->where('user_id', auth()->user()->id)->latest()->get();
-        $total_transaksis = Transaksi::count();
+
         // $total_keranjangs = Keranjang::where('user_id', auth()->user()->id)->count();
-        return view('admin.transaksi.index', compact('transaksis', 'total_transaksis'));
+        return view('admin.transaksi.index', compact('transaksis'));
 
     }
 
@@ -118,7 +118,7 @@ class TransaksiController extends Controller
         // History
         $histories = new History();
         $histories->kode_transaksi = $transaksis->kode_transaksi;
-        $histories->nama_pembeli = $transaksis->keranjang->user->name;
+        $histories->nama_pembeli = $transaksis->keranjang->user->username;
         $histories->nama_produk = $transaksis->keranjang->produk->nama_produk;
         $histories->waktu_pemesanan = $transaksis->waktu_pemesanan;
         $histories->save();

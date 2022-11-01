@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 class KeranjangController extends Controller
 {
     // Menampilkan Semua Data
-    public function index()
+    public function index(Request $request)
     {
-        $keranjangs = Keranjang::select("user_id", "produk_id", "ukuran", "warna", "jumlah", "total_harga")->with('user', 'produk')->get();
-        $jumlah_keranjangs = Keranjang::count();
+        $keranjangs = Keranjang::where('user_id', auth()->user()->id)->select("id", "user_id", "produk_id", "ukuran", "warna", "jumlah", "total_harga")->with('user', 'produk')->get();
+        $jumlah_keranjangs = Keranjang::where('user_id', auth()->user()->id)->count();
         return response()->json([
             "data" => $keranjangs,
             "jumlah_keranjang" => $jumlah_keranjangs,
@@ -25,7 +25,7 @@ class KeranjangController extends Controller
     {
         //validasi
         $validated = $request->validate([
-            'user_id' => 'required',
+            // 'user_id' => 'required',
             'produk_id' => 'required',
             'ukuran' => 'required',
             'warna' => 'required',
@@ -33,7 +33,7 @@ class KeranjangController extends Controller
         ]);
 
         $keranjangs = new Keranjang();
-        $keranjangs->user_id = $request->user_id;
+        $keranjangs->user_id = auth()->user()->id;
         $keranjangs->produk_id = $request->produk_id;
         $keranjangs->ukuran = $request->ukuran;
         $keranjangs->warna = $request->warna;
@@ -53,14 +53,14 @@ class KeranjangController extends Controller
     {
         //validasi
         $validated = $request->validate([
-            'user_id' => 'required',
+            // 'user_id' => 'required',
             'produk_id' => 'required',
             'ukuran' => 'required',
             'jumlah' => 'required',
         ]);
 
         $keranjangs = Keranjang::findOrFail($id);
-        $keranjangs->user_id = $request->user_id;
+        $keranjangs->user_id = auth()->user()->id;
         $keranjangs->produk_id = $request->produk_id;
         $keranjangs->ukuran = $request->ukuran;
         $keranjangs->jumlah = $request->jumlah;

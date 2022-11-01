@@ -12,6 +12,12 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
+                        <label class="form-label">Kategori</label>
+                        <input type="text" name="kategori_id"
+                            class="form-control mb-2  @error('kategori_id') is-invalid @enderror"
+                            value="{{ $produks->sub_kategori->kategori->name }}" disabled readonly>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Sub Kategori</label>
                         <input type="text" name="sub_kategori_id"
                             class="form-control mb-2  @error('sub_kategori_id') is-invalid @enderror"

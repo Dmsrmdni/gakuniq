@@ -17,8 +17,7 @@ class SubKategoriController extends Controller
     public function index()
     {
         $sub_kategoris = Sub_kategori::with('kategori')->latest()->get();
-        $total_sub_kategoris = Sub_kategori::count();
-        return view('admin.sub_kategori.index', compact('sub_kategoris', 'total_sub_kategoris'));
+        return view('admin.sub_kategori.index', compact('sub_kategoris'));
 
     }
 
@@ -54,6 +53,11 @@ class SubKategoriController extends Controller
         return redirect()
             ->route('sub_kategori.index')->with('toast_success', 'Data has been added');
 
+    }
+
+    public function getDropdownlist()
+    {
+        echo json_encode(Sub_kategori::where('kategori_id', $id)->orderBy('name', 'asc')->get());
     }
 
     /**

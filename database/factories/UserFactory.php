@@ -19,13 +19,20 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
+            'nama_depan' => fake()->name(),
+            'nama_belakang' => fake()->name(),
             'no_telepon' => fake()->randomNumber(5, false),
+            'username' => fake()->unique()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'kota/kecamatan' => fake()->word(),
-            'alamat_lengkap' => fake()->paragraph(),
             'password' => Hash::make('12345678'), // password
+
+            'tanggal_lahir' => fake()->date(),
+            // 'jenis_kelamin' => fake()->name(),
+            'referensi' => fake()->word(),
+
+            'kota_kecamatan' => fake()->word(),
+            'alamat_lengkap' => fake()->paragraph(),
             'remember_token' => Str::random(10),
         ];
     }

@@ -13,16 +13,24 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label class="form-label">Name Kategori</label>
-                        <select name="sub_kategori_id"
-                            class="form-control @error('sub_kategori_id') is-invalid @enderror">
-                            @foreach ($sub_kategoris as $sub_kategori)
-                            @if (old('sub_kategori_id', $sub_kategori->id) == $sub_kategori->id)
-                            <option value="{{ $sub_kategori->id }}" selected>{{ $sub_kategori->sub_kategori }}
-                            </option>
-                            @else
-                            <option value="{{ $sub_kategori->id }}">{{ $sub_kategori->sub_kategori }}</option>
-                            @endif
+                        <select name="kategori_id" id="kategori"
+                            class="form-select @error('kategori_id') is-invalid @enderror">
+                            @foreach ($kategoris as $kategori)
+                            <option hidden>Pilih Kategori</option>
+                            <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
                             @endforeach
+                        </select>
+                        @error('kategori_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Sub Kategori</label>
+                        <select name="sub_kategori_id" id="sub_kategori"
+                            class="form-select @error('sub_kategori_id') is-invalid @enderror">
+                            <option hidden>Pilih Kategori Terlebih dulu</option>
                         </select>
                         @error('sub_kategori_id')
                         <span class="invalid-feedback" role="alert">
@@ -95,16 +103,13 @@
                                 style="width:150px; height:150px; border-radius:10px border-radius:10px" alt="">
                             @endif
                         </p>
-                        <input type="file" class="form-control  @error('gambar_produk1') is-invalid @enderror"
+                        <input type="file" class="form-control mb-2  @error('gambar_produk1') is-invalid @enderror"
                             name="gambar_produk1">
                         @error('gambar_produk1')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">gambar produk</label>
                         <p>
                             @if (isset($produks) && $produks->gambar_produk2)
                             <img src="{{ asset('images/gambar_produk2/' . $produks->gambar_produk2) }}"
@@ -112,16 +117,13 @@
                                 alt="">
                             @endif
                         </p>
-                        <input type="file" class="form-control  @error('gambar_produk2') is-invalid @enderror"
+                        <input type="file" class="form-control mb-2  @error('gambar_produk2') is-invalid @enderror"
                             name="gambar_produk2" value="{{ old('gambar_produk2') }}">
                         @error('gambar_produk2')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">gambar produk</label>
                         <p>
                             @if (isset($produks) && $produks->gambar_produk3)
                             <img src="{{ asset('images/gambar_produk3/' . $produks->gambar_produk3) }}"
@@ -129,7 +131,7 @@
                                 alt="">
                             @endif
                         </p>
-                        <input type="file" class="form-control  @error('gambar_produk3') is-invalid @enderror"
+                        <input type="file" class="form-control mb-2  @error('gambar_produk3') is-invalid @enderror"
                             name="gambar_produk3" value="{{ old('gambar_produk3') }}">
                         @error('gambar_produk3')
                         <span class="invalid-feedback" role="alert">
@@ -157,4 +159,36 @@
         </div>
     </form>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $('#kategori').on('change', function() {
+            var kategori_id = $(this).val();
+            if(kategori_id) {
+                $.ajax({
+                    url: '/getSub_kategori/'+kategori_id,
+                    type: "GET",
+                    data : {"_token":"{{ csrf_token() }}"},
+                    dataType: "json",
+                    success:function(data)
+                    {
+                        if(data){
+                        $('#sub_kategori').empty();
+                        $('#sub_kategori').append('<option hidden>Pilih Sub Kategori</option>'); 
+                        $.each(data, function(key, sub_kategori){
+                            $('select[name="sub_kategori_id"]').append('<option value="'+ sub_kategori.id +'">' + sub_kategori.sub_kategori+ '</option>');
+                        });
+                    }else{
+                        $('#sub_kategori').empty();
+                    }
+                    }
+                });
+            }else{
+                $('#sub_kategori').empty();
+            }
+        });
+    });
+</script>
 @endsection

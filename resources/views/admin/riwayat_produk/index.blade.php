@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-4 mb-4">
         <div class="card h-100">
             <div class="card-body">
@@ -14,11 +14,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="card shadow-lg rounded card">
     <div class="card-header" id="#atas">
-        @include('sweetalert::alert')
     </div>
     <div class="table-responsive text-nowrap">
         <div class="container">
@@ -49,15 +48,14 @@
                             </div>
                         </td>
                         <td>
-                            @if ($riwayat_produk->type == 'masuk')
-                            <div class="d-flex btn-sm btn-success col-8">
-                                {{ $riwayat_produk->type }}
+                            <div class="d-flex">
+                                @if ($riwayat_produk->type == 'masuk')
+                                <div class="badge rounded-pill bg-success w-75">{{ $riwayat_produk->type }}</div>
+                                @elseif ($riwayat_produk->type == 'keluar')
+                                <div class="badge rounded-pill bg-danger w-75">{{ $riwayat_produk->type }}
+                                </div>
+                                @endif
                             </div>
-                            @elseif ($riwayat_produk->type == 'keluar')
-                            <div class="d-flex btn-sm btn-danger col-8">
-                                {{ $riwayat_produk->type }}
-                            </div>
-                            @endif
                         </td>
                         <td>
                             <div class="d-flex">
@@ -83,7 +81,7 @@
                                         height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                         <path
                                             d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                                    </svg> Hapus
+                                    </svg>
                                 </button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
