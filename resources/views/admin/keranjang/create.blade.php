@@ -14,6 +14,7 @@
                         <label class="form-label">Name Pembeli</label>
                         <select name="user_id" class="form-select @error('user_id') is-invalid @enderror">
                             @foreach ($users as $user)
+                            <option value="" hidden>Pilih Pembeli</option>
                             <option value="{{ $user->id }}">{{ $user->username }}
                             </option>
                             @endforeach
@@ -28,6 +29,7 @@
                         <label class="form-label">Name Produk</label>
                         <select name="produk_id" class="form-select @error('produk_id') is-invalid @enderror">
                             @foreach ($produks as $produk)
+                            <option value="" hidden>Pilih Produk</option>
                             <option value="{{ $produk->id }}">{{ $produk->nama_produk }}
                             </option>
                             @endforeach
@@ -41,6 +43,7 @@
                     <div class="mb-3">
                         <label class="form-label">Ukuran Produk</label>
                         <select name="ukuran" class="form-select @error('ukuran') is-invalid @enderror">
+                            <option value="" hidden>Pilih Size</option>
                             <option value="S">S</option>
                             <option value="L">L</option>
                             <option value="X">X</option>

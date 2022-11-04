@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('review_produks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('transaksi_id');
             $table->foreign('transaksi_id')->references('id')->on('transaksis')->onDelete('cascade');
             $table->enum('status', ['recommended', 'not recommended']);

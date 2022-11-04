@@ -21,7 +21,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksis = Transaksi::with('keranjang', 'voucher', 'voucher_user')->latest()->get();
+        $transaksis = Transaksi::with('keranjang', 'voucher', 'voucher_user', 'user')->latest()->get();
         // $keranjangs = Keranjang::with('produk', 'user')->where('user_id', auth()->user()->id)->latest()->get();
 
         // $total_keranjangs = Keranjang::where('user_id', auth()->user()->id)->count();
@@ -36,10 +36,11 @@ class TransaksiController extends Controller
      */
     public function create()
     {
+        $users = User::all();
         $keranjangs = Keranjang::all();
         $voucher_users = Voucher_user::all();
         $vouchers = Voucher::where('status', 'aktif')->where('label', 'gratis')->get();
-        return view('admin.transaksi.create', compact('keranjangs', 'vouchers', 'voucher_users'));
+        return view('admin.transaksi.create', compact('keranjangs', 'vouchers', 'voucher_users','users'));
     }
 
     /**
@@ -69,6 +70,7 @@ class TransaksiController extends Controller
             $kode = "001";
         }
         $transaksis->kode_transaksi = 'GNQ-' . date('dmy') . $kode;
+        $transaksis->user_id = $request->user_id;
         $transaksis->keranjang_id = $request->keranjang_id;
         $transaksis->metode_pembayaran = $request->metode_pembayaran;
         $transaksis->waktu_pemesanan = $request->waktu_pemesanan;
@@ -137,6 +139,7 @@ class TransaksiController extends Controller
     public function show($id)
     {
         $transaksis = Transaksi::findOrFail($id);
+        // $users = User::all();
         $keranjangs = Keranjang::all();
         return view('admin.transaksi.show', compact('keranjangs', 'transaksis'));
 
@@ -150,10 +153,11 @@ class TransaksiController extends Controller
      */
     public function edit($id)
     {
+        $users = User::all();
         $transaksis = Transaksi::findOrFail($id);
         $keranjangs = Keranjang::all();
         $vouchers = Voucher::where('status', 'aktif')->get();
-        return view('admin.transaksi.edit', compact('keranjangs', 'transaksis', 'vouchers'));
+        return view('admin.transaksi.edit', compact('keranjangs', 'transaksis', 'vouchers','users'));
 
     }
 
@@ -181,6 +185,7 @@ class TransaksiController extends Controller
         $validasiData = $request->validate($rules);
 
         $transaksis->kode_transaksi = $request->kode_transaksi;
+        $transaksis->user_id = $request->user_id;
         $transaksis->keranjang_id = $request->keranjang_id;
         $transaksis->metode_pembayaran = $request->metode_pembayaran;
         $transaksis->waktu_pemesanan = $request->waktu_pemesanan;

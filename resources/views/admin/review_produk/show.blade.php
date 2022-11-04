@@ -12,7 +12,7 @@
                     <label class="form-label">nama_pembeli</label>
                     <input type="text" name="nama_pembeli"
                         class="form-control mb-2  @error('nama_pembeli') is-invalid @enderror"
-                        value="{{ $review_produks->transaksi->keranjang->user->name }}" disabled readonly>
+                        value="{{ $review_produks->transaksi->keranjang->user->username }}" disabled readonly>
                     @error('nama_pembeli')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

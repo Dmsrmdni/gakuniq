@@ -14,6 +14,7 @@
                         <label class="form-label">Name pembeli</label>
                         <select name="user_id" class="form-select @error('user_id') is-invalid @enderror">
                             @foreach ($users as $user)
+                            <option value="" hidden>Pilih Pembeli</option>
                             <option value="{{ $user->id }}">{{ $user->username }}
                             </option>
                             @endforeach
@@ -28,6 +29,7 @@
                         <label class="form-label">Name Voucher</label>
                         <select name="voucher_id" class="form-select @error('voucher_id') is-invalid @enderror">
                             @foreach ($vouchers as $voucher)
+                            <option value="" hidden>Pilih Voucher</option>
                             <option value="{{ $voucher->id }}">{{ $voucher->kode_voucher }}
                             </option>
                             @endforeach
@@ -42,6 +44,7 @@
                         <label class="form-label">Metode Pembayaran</label>
                         <select name="metode_pembayaran"
                             class="form-select @error('metode_pembayaran') is-invalid @enderror">
+                            <option value="" hidden>Pilih Metode Pembayaran</option>
                             <option value="m-banking">m-banking</option>
                             <option value="dana">dana</option>
                             <option value="gopay">gopay</option>

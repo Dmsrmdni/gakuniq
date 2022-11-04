@@ -26,6 +26,5 @@ class ProdukController extends Controller
             "data" => $produks,
             "status" => 200,
         ]);
-
     }
 }

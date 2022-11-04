@@ -54,12 +54,7 @@ class SubKategoriController extends Controller
             ->route('sub_kategori.index')->with('toast_success', 'Data has been added');
 
     }
-
-    public function getDropdownlist()
-    {
-        echo json_encode(Sub_kategori::where('kategori_id', $id)->orderBy('name', 'asc')->get());
-    }
-
+    
     /**
      * Display the specified resource.
      *

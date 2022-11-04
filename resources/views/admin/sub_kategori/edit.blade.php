@@ -16,7 +16,7 @@
                         <select name="kategori_id" class="form-select @error('kategori_id') is-invalid @enderror">
                             @foreach ($kategoris as $kategori)
                             @if (old('kategori_id', $kategori->id) == $sub_kategoris->kategori->id)
-                            <option value="{{ $kategori->id }}" selected>{{ $kategori->name }}</option>
+                            <option value="{{ $kategori->id }}" selected hidden>{{ $kategori->name }}</option>
                             @else
                             <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
                             @endif

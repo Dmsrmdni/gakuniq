@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\History;
-use App\Models\Keranjang;
-use App\Models\Review_produk;
 use App\Models\Voucher;
+use App\Models\Keranjang;
 use App\Models\Voucher_user;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Review_produk;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaksi extends Model
 {
@@ -27,6 +28,11 @@ class Transaksi extends Model
     public function voucher_user()
     {
         return $this->belongsTo(Voucher_user::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function history()

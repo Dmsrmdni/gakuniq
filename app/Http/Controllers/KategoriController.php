@@ -44,6 +44,8 @@ class KategoriController extends Controller
 
         $kategoris = new Kategori();
         $kategoris->name = $request->name;
+        $kategoris->link = $request->link;
+        $kategoris->hover = $request->hover;
         $kategoris->save();
         return redirect()
             ->route('kategori.index')->with('toast_success', 'Data has been added');
@@ -84,11 +86,14 @@ class KategoriController extends Controller
         $kategoris = Kategori::findOrFail($id);
 
         if ($request->name != $kategoris->name) {
-            $rules['name'] = 'required|unique:kategoris';
+            $rules['name'] = 'required';
         }
 
         $validasiData = $request->validate($rules);
+
         $kategoris->name = $request->name;
+        $kategoris->link = $request->link;
+        $kategoris->hover = $request->hover;
         $kategoris->save();
         return redirect()
             ->route('kategori.index')->with('toast_info', 'Data has been edited');

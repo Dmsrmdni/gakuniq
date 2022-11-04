@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Review_produk;
+use App\Models\User;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use App\Models\Review_produk;
+use App\Http\Controllers\Controller;
 
 class ReviewProdukController extends Controller
 {
@@ -15,7 +17,7 @@ class ReviewProdukController extends Controller
      */
     public function index()
     {
-        $review_produks = Review_produk::with('transaksi')->latest()->get();
+        $review_produks = Review_produk::with('transaksi','user')->latest()->get();
         return view('admin.review_produk.index', compact('review_produks'));
 
     }
@@ -28,7 +30,8 @@ class ReviewProdukController extends Controller
     public function create()
     {
         $transaksis = Transaksi::all();
-        return view('admin.review_produk.create', compact('transaksis'));
+        $users = User::all();
+        return view('admin.review_produk.create', compact('transaksis','users'));
 
     }
 
@@ -48,6 +51,7 @@ class ReviewProdukController extends Controller
         ]);
 
         $review_produks = new Review_produk();
+        $review_produks->user_id = $request->user_id;
         $review_produks->transaksi_id = $request->transaksi_id;
         $review_produks->status = $request->status;
         $review_produks->komen = $request->komen;

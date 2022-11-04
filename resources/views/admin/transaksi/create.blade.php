@@ -11,9 +11,25 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
+                        <label class="form-label">User</label>
+                        <select name="user_id" class="form-select @error('user_id') is-invalid @enderror">
+                            @foreach ($users as $user)
+                            <option value="" hidden>Pilih Pembeli</option>
+                            <option value="{{ $user->id }}">{{ $user->username }}
+                            </option>
+                            @endforeach
+                        </select>
+                        @error('user_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Name Produk</label>
                         <select name="keranjang_id" class="form-select @error('keranjang_id') is-invalid @enderror">
                             @foreach ($keranjangs as $keranjang)
+                            <option value="" hidden>Pilih Produk</option>
                             <option value="{{ $keranjang->id }}">{{ $keranjang->produk->nama_produk }}
                             </option>
                             @endforeach
@@ -38,7 +54,7 @@
                     <div class="mb-3">
                         <label class="form-label">Voucher</label>
                         <select name="voucher_id" class="form-select @error('voucher_id') is-invalid @enderror">
-                            <option value="" selected>Pilih Voucher</option>
+                            <option value="" selected hidden>Pilih Voucher</option>
                             @foreach ($vouchers as $voucher)
                             <option value="{{ $voucher->id }}">{{ $voucher->kode_voucher }}
                             </option>
@@ -60,6 +76,7 @@
                         <label class="form-label">Metode Pembayaran</label>
                         <select name="metode_pembayaran"
                             class="form-select @error('metode_pembayaran') is-invalid @enderror">
+                            <option value="" hidden>Pilih Metode Pembayaran</option>
                             <option value="m-banking">m-banking</option>
                             <option value="dana">dana</option>
                             <option value="gopay">gopay</option>

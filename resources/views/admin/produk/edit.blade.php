@@ -30,7 +30,7 @@
                         <label class="form-label">Sub Kategori</label>
                         <select name="sub_kategori_id" id="sub_kategori"
                             class="form-select @error('sub_kategori_id') is-invalid @enderror">
-                            <option hidden>Pilih Kategori Terlebih dulu</option>
+                            <option value="">Pilih Kategori Terlebih dulu</option>
                         </select>
                         @error('sub_kategori_id')
                         <span class="invalid-feedback" role="alert">

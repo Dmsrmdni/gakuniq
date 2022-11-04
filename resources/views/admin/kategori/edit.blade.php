@@ -23,6 +23,28 @@
                             </span>
                             @enderror
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Link Kategori</label>
+                            <input type="text" name="link"
+                                class="form-control mb-2  @error('link') is-invalid @enderror"
+                                value="{{ $kategoris->link }}">
+                            @error('link')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">hover Kategori</label>
+                            <input type="text" name="hover"
+                                class="form-control mb-2  @error('hover') is-invalid @enderror"
+                                value="{{ $kategoris->hover }}">
+                            @error('hover')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">

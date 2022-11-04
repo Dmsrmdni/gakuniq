@@ -11,6 +11,24 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
+                        <label class="form-label">User</label>
+                        <select name="user_id" class="form-select @error('user_id') is-invalid @enderror">
+                            @if(count($users))
+                            @foreach ($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->username }}
+                            </option>
+                            @endforeach
+                            @else
+                            <option hidden>Tidak ada data</option>
+                            @endif
+                        </select>
+                        @error('transaksi_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">kode transaksi</label>
                         <select name="transaksi_id" class="form-select @error('transaksi_id') is-invalid @enderror">
                             @if(count($transaksis))

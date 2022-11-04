@@ -2,68 +2,67 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="col-lg-8">
+        <div class="col-lg-6">
             <div class="card mb-4 shadow-lg rounded card" style="margin: 2%; padding:1% ">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4 class="mb-0">Data transaksi</h4>
+                    <h4 class="mb-0">{{ $transaksis->kode_transaksi }}</h4>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label">Kode Transaksi</label>
-                        <input type="text" name="kode_transaksi"
-                            class="form-control mb-2  @error('kode_transaksi') is-invalid @enderror"
-                            placeholder="Kode transaksi" value="{{ $transaksis->kode_transaksi }}" disabled readonly>
-                        @error('kode_transaksi')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">nama_produk</label>
-                        <input type="text" name="keranjang_id"
-                            class="form-control mb-2  @error('keranjang_id') is-invalid @enderror"
-                            value="{{ $transaksis->keranjang->produk->nama_produk }}" disabled readonly>
-                        @error('keranjang_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Diskon Voucher</label>
-                        <div class="input-group mb-3">
-                            @if ($transaksis->voucher == '')
-                                <input type="number" name="voucher_id" class="form-control mb-2 " value="0" disabled
-                                    readonly>
-                            @else
-                                <input type="number" name="voucher_id" class="form-control mb-2 "
-                                    value="{{ $transaksis->voucher->diskon }}" disabled readonly>
-                            @endif
-                            <button class="btn btn-secondary mb-2" type="button">%</button>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">metode_pembayaran</label>
-                        <input type="text" name="metode_pembayaran"
-                            class="form-control mb-2  @error('metode_pembayaran') is-invalid @enderror"
-                            value="{{ $transaksis->metode_pembayaran }}" disabled readonly>
-                        @error('metode_pembayaran')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Waktu pemesanan</label>
-                        <input type="text" name="waktu_pemesanan"
-                            class="form-control mb-2  @error('waktu_pemesanan') is-invalid @enderror"
-                            value="{{ $transaksis->waktu_pemesanan }}" disabled readonly>
-                        @error('waktu_pemesanan')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                    <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <strong>Nama Pembeli</strong>
+                            </td>
+                            <td>{{ $transaksis->user->username }}</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <strong>Nama Produk</strong>
+                            </td>
+                            <td>{{ $transaksis->keranjang->produk->nama_produk }}</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <strong>Harga Produk</strong>
+                            </td>
+                            <td>Rp. {{ number_format($transaksis->keranjang->produk->harga, 0, ',', '.') }}</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <strong>Jumlah Produk</strong>
+                            </td>
+                            <td>{{ $transaksis->keranjang->jumlah }}</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <strong>total Harga</strong>
+                            </td>
+                            <td>Rp. {{ number_format($transaksis->keranjang->total_harga, 0, ',', '.') }}</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <strong>Diskon</strong>
+                            </td>
+                            <td> {{ $transaksis->voucher->diskon }}%</td>
+                          </tr>
+                        </tbody>
+                        <tfoot class="table-border-bottom-0">
+                          <tr>
+                            <th><strong> Jumlah Total Harga </strong></th>
+                            <th><strong><i> Rp. {{ number_format($transaksis->total_harga, 0, ',', '.') }} </i> </strong></th>
+                          </tr>
+                          <tr>
+                            <th><strong> Metode Pembayaran </strong></th>
+                            <th><strong>{{ $transaksis->metode_pembayaran }}</strong></th>
+                          </tr>
+                          <tr>
+                            <th><strong> Waktu Pemesanan </strong></th>
+                            <th><strong>{{ $transaksis->waktu_pemesanan }}</strong></th>
+                          </tr>
+                        </tfoot>
+                      </table>
                     </div>
                 </div>
             </div>

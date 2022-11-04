@@ -10,7 +10,7 @@ class HistoryController extends Controller
     // Menampilkan Semua Data
     public function index()
     {
-        $histories = History::select("id", "kode_transaksi", "nama_pembeli", "nama_produk", "waktu_pemesanan", "status")->with("transaksi")->get();
+        $histories = History::where('nama_pembeli', auth()->user()->username)->select("id", "kode_transaksi", "nama_pembeli", "nama_produk", "waktu_pemesanan", "status")->with("transaksi")->get();
         return response()->json([
             "data" => $histories,
             "status" => 200,

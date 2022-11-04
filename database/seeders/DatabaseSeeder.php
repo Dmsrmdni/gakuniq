@@ -33,31 +33,31 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Kategori::create([
-            'name' => 'pria',
+            'name' => 'PRIA',
             'link' => '/kategori/pria',
             'hover' => '<HoverCategoryPria />'
         ]);
 
         Kategori::create([
-            'name' => 'wanita',
+            'name' => 'WANITA',
             'link' => '/kategori/wanita',
             'hover' => '<HoverCategoryWanita />'
         ]);
 
         Sub_kategori::create([
             'kategori_id' => 1,
-            'sub_kategori' => 'kaos',
+            'sub_kategori' => 'Modern Pria',
         ]);
 
         Sub_kategori::create([
             'kategori_id' => 2,
-            'sub_kategori' => 'baju',
+            'sub_kategori' => 'Modern Wanita',
         ]);
 
-        Sub_kategori::create([
-            'kategori_id' => 2,
-            'sub_kategori' => 'celana',
-        ]);
+        // Sub_kategori::create([
+        //     'kategori_id' => 2,
+        //     'sub_kategori' => 'celana',
+        // ]);
 
         \App\Models\Produk::factory(5)->create();
 

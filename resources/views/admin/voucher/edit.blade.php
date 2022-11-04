@@ -87,7 +87,7 @@
                         <div class="mb-3">
                             <label class="form-label">Status Voucher</label>
                             <select name="status" class="form-control @error('status') is-invalid @enderror">
-                                <option value="{{ $vouchers->status }}" selected>
+                                <option value="{{ $vouchers->status }}" selected hidden>
                                     {{ $vouchers->status }}</option>
                                 <option value="aktif">aktif</option>
                                 <option value="expired">expired</option>

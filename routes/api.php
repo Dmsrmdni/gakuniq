@@ -76,6 +76,7 @@ Route::middleware(['auth:api'])->group(function () {
     // Keranjang
     Route::get('keranjang', [KeranjangController::class, 'index']);
     Route::post('keranjang/create', [KeranjangController::class, 'store']);
+    Route::get('keranjang/{id}', [KeranjangController::class, 'show']);
     Route::put('keranjang/{id}/edit', [KeranjangController::class, 'update']);
     Route::delete('keranjang/{id}', [KeranjangController::class, 'destroy']);
     // endKeranjang
@@ -96,31 +97,30 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('transaksi/create', [TransaksiController::class, 'store']);
     Route::get('transaksi/{id}', [TransaksiController::class, 'show']);
     // endtransaksi
+    
+    // history
+    Route::get('history', [HistoryController::class, 'index']);
+    Route::get('history/{id}', [HistoryController::class, 'show']);
+    Route::delete('history/{id}', [HistoryController::class, 'destroy']);
+    // endhistory
+    
+    // reviewproduk
+    Route::get('review_produk', [ReviewProdukController::class, 'index']);
+    Route::post('review_produk/create', [ReviewProdukController::class, 'store']);
+    Route::get('review_produk/{id}', [ReviewProdukController::class, 'show']);
+    // Route::delete('review_produk/{id}', [ReviewProdukController::class, 'destroy']);
+    // endreviewproduk
+
+    // user
+    Route::get('user', [UserController::class, 'index']);
+    Route::put('user/{id}/edit', [UserController::class, 'update']);
+    // Route::delete('review_produk/{id}', [UserController::class, 'destroy']);
+    // enduser
 });
 
 
 
 
-// history
-Route::get('history', [HistoryController::class, 'index']);
-Route::get('history/{id}', [HistoryController::class, 'show']);
-Route::delete('history/{id}', [HistoryController::class, 'destroy']);
-// endhistory
 
-// reviewproduk
-Route::get('review_produk', [ReviewProdukController::class, 'index']);
-Route::post('review_produk/create', [ReviewProdukController::class, 'store']);
-Route::get('review_produk/{id}', [ReviewProdukController::class, 'show']);
-// Route::delete('review_produk/{id}', [ReviewProdukController::class, 'destroy']);
-// endreviewproduk
 
-// user
-Route::get('user', [UserController::class, 'index']);
-// route::middleware('auth:api')->get('/user',function(Request $request){
-//     return $request->user();
-// });
-
-Route::put('user/{id}/edit', [UserController::class, 'update']);
-// Route::delete('review_produk/{id}', [UserController::class, 'destroy']);
-// enduser
 

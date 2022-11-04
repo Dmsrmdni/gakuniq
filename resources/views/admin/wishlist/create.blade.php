@@ -14,11 +14,12 @@
                         <label class="form-label">Name Pembeli</label>
                         <select name="user_id" class="form-select @error('user_id') is-invalid @enderror">
                             @foreach ($users as $user)
+                            <option value="" hidden>Pilih Pembeli</option>
                             <option value="{{ $user->id }}">{{ $user->username }}
                             </option>
                             @endforeach
                         </select>
-                        @error('kategori_id')
+                        @error('user_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -28,11 +29,12 @@
                         <label class="form-label">Name Produk</label>
                         <select name="produk_id" class="form-select @error('produk_id') is-invalid @enderror">
                             @foreach ($produks as $produk)
+                            <option value="" hidden>Pilih Produk</option>
                             <option value="{{ $produk->id }}">{{ $produk->nama_produk }}
                             </option>
                             @endforeach
                         </select>
-                        @error('kategori_id')
+                        @error('produk_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

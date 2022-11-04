@@ -3,15 +3,16 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Keranjang;
 use App\Models\TopUp;
+use App\Models\Keranjang;
 use App\Models\Transaksi;
 use App\Models\Voucher_user;
+use App\Models\Review_produk;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -55,6 +56,11 @@ class User extends Authenticatable implements JWTSubject
     public function voucher_user()
     {
         return $this->hasMany(Voucher_user::class);
+    }
+
+    public function review_produk()
+    {
+        return $this->hasMany(Review_produk::class);
     }
 
     /**

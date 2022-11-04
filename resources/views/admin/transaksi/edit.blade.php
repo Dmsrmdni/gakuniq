@@ -23,6 +23,25 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Users</label>
+                        <select name="user_id" class="form-control @error('user_id') is-invalid @enderror">
+                            @foreach ($users as $user)
+                            @if (old('user_id', $user->id) == $transaksis->user->id)
+                            <option value="{{ $user->id }}" selected>{{ $user->username }}
+                            </option>
+                            @else
+                            <option value="{{ $user->id }}">{{ $user->username }}
+                            </option>
+                            @endif
+                            @endforeach
+                        </select>
+                        @error('user_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Name produk</label>
                         <select name="keranjang_id" class="form-control @error('keranjang_id') is-invalid @enderror">
                             @foreach ($keranjangs as $keranjang)
@@ -45,20 +64,20 @@
                         <label class="form-label">Vouher produk</label>
                         <select name="voucher_id" class="form-control @error('voucher_id') is-invalid @enderror">
                             @foreach ($vouchers as $voucher)
-                            @if ($transaksis->voucher == '')
-                            <option value="" selected>Pilih Voucher</option>
+                            {{-- @if ($transaksis->voucher == '')
+                            <option value="" selected hidden>Pilih Voucher</option>
                             <option value="{{ $voucher->id }}">{{ $voucher->title }}
                             </option>
-                            @else
-                            @if (old('voucher_id', $voucher->id) == $transaksis->voucher->id)
+                            @else --}}
+                            {{-- @if (old('voucher_id', $voucher->id) == $transaksis->voucher->id)
                             <option value="{{ $voucher->id }}" selected>{{ $voucher->title }}
                             </option>
                             <option value="">Pilih Voucher</option>
-                            @else
+                            @else --}}
                             <option value="{{ $voucher->id }}">{{ $voucher->title }}
                             </option>
-                            @endif
-                            @endif
+                            {{-- @endif --}}
+                            {{-- @endif --}}
                             @endforeach
                         </select>
                         @error('voucher_id')

@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers\Api\transaksi;
 
-use App\Http\Controllers\Controller;
-use App\Models\History;
-use App\Models\Produk;
-use App\Models\Transaksi;
 use App\Models\User;
+use App\Models\Produk;
+use App\Models\History;
+use App\Models\Keranjang;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class TransaksiController extends Controller
 {
     // Menampilkan Semua Data
     public function index()
     {
-        $transaksis = Transaksi::select("id", "kode_transaksi", "keranjang_id", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga")->with('keranjang', 'voucher')->where('keranjang.user_id', auth()->user()->id)->get();
+        $transaksis = Transaksi::select("id", "kode_transaksi", "user_id" ,"keranjang_id", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga")->with('keranjang', 'voucher','voucher_user')->where('user_id', auth()->user()->id)->get();
         return response()->json([
             "data" => $transaksis,
+            // 'users' => auth()->user()->username,
             "status" => 200,
         ]);
     }
@@ -43,6 +45,7 @@ class TransaksiController extends Controller
         } else {
             $kode = "001";
         }
+        $transaksis->user_id = auth()->user()->id;
         $transaksis->kode_transaksi = 'GNQ-' . date('dmy') . $kode;
         $transaksis->keranjang_id = $request->keranjang_id;
         $transaksis->voucher_id = $request->voucher_id;
@@ -83,7 +86,6 @@ class TransaksiController extends Controller
         if ($transaksis->metode_pembayaran == 'gakuniq wallet') {
             if ($users->saldo < $transaksis->total_harga) {
                 return response()->json(["message" => "saldo kurang"]);
-
             } else {
                 $users->saldo -= $transaksis->total_harga;
             }
@@ -93,10 +95,15 @@ class TransaksiController extends Controller
         // History
         $histories = new History();
         $histories->kode_transaksi = $transaksis->kode_transaksi;
-        $histories->nama_pembeli = $transaksis->keranjang->user->name;
+        $histories->nama_pembeli = $transaksis->keranjang->user->username;
         $histories->nama_produk = $transaksis->keranjang->produk->nama_produk;
         $histories->waktu_pemesanan = $transaksis->waktu_pemesanan;
         $histories->save();
+
+        // Keranjang
+        // $keranjangs = Keranjang::findOrFail(12);
+        // $keranjangs->jumlah = 20;
+        // $keranjangs->save();
 
         $transaksis->save();
 
@@ -109,7 +116,7 @@ class TransaksiController extends Controller
     // Menampilkan Data berdasakarkan id
     public function show($id)
     {
-        $transaksis = Transaksi::findOrFail($id);
+        $transaksis = Transaksi::findMany($id);
         return response()->json([
             "data" => $transaksis,
             "status" => 200,

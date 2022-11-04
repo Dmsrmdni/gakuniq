@@ -25,22 +25,41 @@ class KeranjangController extends Controller
     {
         //validasi
         $validated = $request->validate([
-            // 'user_id' => 'required',
             'produk_id' => 'required',
             'ukuran' => 'required',
             'warna' => 'required',
             'jumlah' => 'required',
         ]);
 
-        $keranjangs = new Keranjang();
-        $keranjangs->user_id = auth()->user()->id;
-        $keranjangs->produk_id = $request->produk_id;
-        $keranjangs->ukuran = $request->ukuran;
-        $keranjangs->warna = $request->warna;
-        $keranjangs->jumlah = $request->jumlah;
-        $diskon = (($keranjangs->produk->diskon / 100) * $keranjangs->produk->harga);
-        $keranjangs->total_harga = ($keranjangs->produk->harga * $request->jumlah) - $diskon;
-        $keranjangs->save();
+
+        // $cek_keranjangs = Keranjang::where('user_id',auth()->user()->id)->where('produk_id',$request->produk_id)->with('user', 'produk')->get();
+
+        // if(empty($cek_keranjangs)){
+            $keranjangs = new Keranjang();
+            $keranjangs->user_id = auth()->user()->id;
+            $keranjangs->produk_id = $request->produk_id;
+            $keranjangs->ukuran = $request->ukuran;
+            $keranjangs->warna = $request->warna;
+            $keranjangs->jumlah = $request->jumlah;
+            $diskon = (($keranjangs->produk->diskon / 100) * $keranjangs->produk->harga);
+            $keranjangs->total_harga = ($keranjangs->produk->harga * $request->jumlah) - $diskon;
+            $keranjangs->save();
+        // }
+        //     if(!empty($cek_keranjangs)){
+        //         $keranjangs = Keranjang::where('user_id',auth()->user()->id)->where('produk_id',$request->produk_id);
+        //         // $cek_keranjangs->user_id = auth()->user()->id;
+        //         // $keranjangs2 = new Keranjang();
+        //         $keranjangs = Keranjang::findOrFail($keranjangs->id);
+        //         $keranjangs->jumlah += $request->jumlah;
+        //         $diskon = (($keranjangs->produk->diskon / 100) * $keranjangs->produk->harga);
+        //         $keranjangs->total_harga = ($keranjangs->produk->harga * $request->jumlah) - $diskon;
+        //         $keranjangs->save();
+
+        //         return response()->json([
+        //             "status" => 201,
+        //             "messaage" => "succesfully updated Keranjang",
+        //         ]);
+        //     }
 
         return response()->json([
             "status" => 201,
@@ -71,6 +90,16 @@ class KeranjangController extends Controller
         return response()->json([
             "status" => 201,
             "messaage" => "succesfully updated Kategori",
+        ]);
+    }
+
+    // Menampilkan Data berdasakarkan id
+    public function show($id)
+    {
+        $keranjangs = Keranjang::findMany($id);
+        return response()->json([
+            "data" => $keranjangs,
+            "status" => 200,
         ]);
     }
 
