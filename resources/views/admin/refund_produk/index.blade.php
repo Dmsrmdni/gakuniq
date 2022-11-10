@@ -7,19 +7,20 @@
             <div class="card-body">
                 <div class="d-flex w-100 justify-content-between">
                     <div class="me-2">
-                        <h6 class="mb-0">Total voucher_user : </h6>
+                        <h6 class="mb-0">Total Review Produk : </h6>
                     </div>
-                    <h5 class="fw-semibold mb-0">{{ $total_voucher_users }}</h5>
+                    <h5 class="fw-semibold mb-0">{{ $total_refund_produks }}</h5>
                 </div>
             </div>
         </div>
     </div>
 </div> --}}
 
-    <div class="card shadow-lg rounded card">
+    <div class="card shadow-lg rounded card p-2 pb-3">
         <div class="card-header" id="#atas">
-            <a href="{{ route('voucher_user.create') }}" class="btn btn-sm btn-primary"><svg xmlns="http://www.w3.org/2000/svg"
-                    width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <a href="{{ route('refund_produk.create') }}" class="btn btn-sm btn-primary"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
+                    viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                         d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
                 </svg>Tambah Data</a>
@@ -30,18 +31,16 @@
                     <thead>
                         <tr>
                             <th>NO</th>
+                            <th>Kode Transaksi</th>
                             <th>Nama Pembeli</th>
-                            <th>Kode voucher</th>
-                            <th>Harga</th>
-                            <th>Diskon</th>
-                            <th>Status</th>
-                            <th>Metode Pembayaran</th>
+                            <th>Nama Produk</th>
+                            {{-- <th>Alasan</th> --}}
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @if (count($voucher_users))
-                            @foreach ($voucher_users as $voucher_user)
+                        @if (count($refund_produks))
+                            @foreach ($refund_produks as $refund_produk)
                                 <tr>
                                     <td>
                                         <div class="d-flex">
@@ -50,49 +49,37 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $voucher_user->user->username }}
+                                            {{ $refund_produk->transaksi->kode_transaksi }}
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $voucher_user->voucher->kode_voucher }}
+                                            {{ $refund_produk->user->username }}
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            RP. {{ number_format($voucher_user->voucher->harga, 0, ',', '.') }}
+                                            {{ $refund_produk->transaksi->keranjang->produk->nama_produk }}
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="d-flex">
-                                            {{ $voucher_user->voucher->diskon }}%
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex">
-                                            @if ($voucher_user->voucher->status == 'aktif')
-                                                <div class="badge rounded-pill bg-success w-100">
-                                                    {{ $voucher_user->voucher->status }}
-                                                </div>
-                                            @elseif ($voucher_user->voucher->status == 'expired')
-                                                <div class="badge rounded-pill bg-danger w-100">
-                                                    {{ $voucher_user->voucher->status }}
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex">
-                                            {{ $voucher_user->metode_pembayaran }}
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('voucher_user.destroy', $voucher_user->id) }}"
+                                        <form action="{{ route('refund_produk.destroy', $refund_produk->id) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
+                                            <a href="{{ route('refund_produk.show', $refund_produk->id) }}"
+                                                class="btn btn-sm btn-info" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                                data-bs-placement="top" data-bs-html="true"
+                                                title="<span>Show Data</span>"><svg xmlns="http://www.w3.org/2000/svg"
+                                                    width="16" height="16" fill="currentColor" class="bi bi-eye-fill"
+                                                    viewBox="0 0 16 16">
+                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                    <path
+                                                        d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                                </svg>
+                                            </a> |
                                             <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#modalCenter{{ $voucher_user->id }}"><svg
+                                                data-bs-target="#modalCenter{{ $refund_produk->id }}"><svg
                                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                                     <path
@@ -100,7 +87,7 @@
                                                 </svg>
                                             </button>
                                             <!-- Modal -->
-                                            <div class="modal fade" id="modalCenter{{ $voucher_user->id }}" tabindex="-1"
+                                            <div class="modal fade" id="modalCenter{{ $refund_produk->id }}" tabindex="-1"
                                                 aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">

@@ -15,9 +15,10 @@ class TopUpController extends Controller
      */
     public function index()
     {
-        $top_ups = TopUp::with('user')->latest()->get();
+        $top_ups = TopUp::with('user')
+            ->latest()
+            ->get();
         return view('admin.top_up.index', compact('top_ups'));
-
     }
 
     /**
@@ -56,8 +57,8 @@ class TopUpController extends Controller
         $users->save();
         $top_ups->save();
         return redirect()
-            ->route('top_up.index')->with('toast_success', 'Data has been added');
-
+            ->route('top_up.index')
+            ->with('toast_success', 'Data has been added');
     }
 
     /**
@@ -100,8 +101,12 @@ class TopUpController extends Controller
      * @param  \App\Models\TopUp  $topUp
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TopUp $topUp)
+    public function destroy($id)
     {
-        //
+        $top_ups = TopUp::findOrFail($id);
+        $top_ups->delete();
+        return redirect()
+            ->route('top_up.index')
+            ->with('toast_error', 'Data has been deleted');
     }
 }

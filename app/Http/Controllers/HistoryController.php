@@ -108,7 +108,6 @@ class HistoryController extends Controller
         $histories->save();
         return redirect()
             ->route('history.index')->with('toast_info', 'Data has been edited');
-
     }
 
     /**

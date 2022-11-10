@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class ReviewProdukController extends Controller
 {
     // Menampilkan Semua Data
-    public function index()
+    public function index($id)
     {
-        $review_produks = Review_produk::where("user_id", auth()->user()->id)->select("id", "user_id" , "transaksi_id", "status", "komen")->with('transaksi')->get();
+        $review_produks = Review_produk::where('produk_id', $id)->select("id", "user_id", "produk_id", "transaksi_id", "status", "komen")->with('transaksi')->get();
         return response()->json([
             "data" => $review_produks,
             "status" => 200,
@@ -31,6 +31,7 @@ class ReviewProdukController extends Controller
         $review_produks = new Review_produk();
         $review_produks->user_id = auth()->user()->id;
         $review_produks->transaksi_id = $request->transaksi_id;
+        $review_produks->produk_id = $review_produks->transaksi->keranjang->produk->id;
         $review_produks->status = $request->status;
         $review_produks->komen = $request->komen;
         $review_produks->save();

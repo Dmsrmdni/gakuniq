@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\keranjang;
 
 use App\Http\Controllers\Controller;
 use App\Models\Keranjang;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Request;
 
 class KeranjangController extends Controller
@@ -11,8 +12,8 @@ class KeranjangController extends Controller
     // Menampilkan Semua Data
     public function index(Request $request)
     {
-        $keranjangs = Keranjang::where('user_id', auth()->user()->id)->select("id", "user_id", "produk_id", "ukuran", "warna", "jumlah", "total_harga")->with('user', 'produk')->get();
-        $jumlah_keranjangs = Keranjang::where('user_id', auth()->user()->id)->count();
+        $keranjangs = Keranjang::where('user_id', auth()->user()->id)->where('status', 'keranjang')->select("id", "user_id", "produk_id", "ukuran", "warna", "jumlah", "total_harga")->with('user', 'produk')->get();
+        $jumlah_keranjangs = Keranjang::where('user_id', auth()->user()->id)->where('status', 'keranjang')->count();
         return response()->json([
             "data" => $keranjangs,
             "jumlah_keranjang" => $jumlah_keranjangs,
@@ -31,19 +32,18 @@ class KeranjangController extends Controller
             'jumlah' => 'required',
         ]);
 
-
         // $cek_keranjangs = Keranjang::where('user_id',auth()->user()->id)->where('produk_id',$request->produk_id)->with('user', 'produk')->get();
 
         // if(empty($cek_keranjangs)){
-            $keranjangs = new Keranjang();
-            $keranjangs->user_id = auth()->user()->id;
-            $keranjangs->produk_id = $request->produk_id;
-            $keranjangs->ukuran = $request->ukuran;
-            $keranjangs->warna = $request->warna;
-            $keranjangs->jumlah = $request->jumlah;
-            $diskon = (($keranjangs->produk->diskon / 100) * $keranjangs->produk->harga);
-            $keranjangs->total_harga = ($keranjangs->produk->harga * $request->jumlah) - $diskon;
-            $keranjangs->save();
+        $keranjangs = new Keranjang();
+        $keranjangs->user_id = auth()->user()->id;
+        $keranjangs->produk_id = $request->produk_id;
+        $keranjangs->ukuran = $request->ukuran;
+        $keranjangs->warna = $request->warna;
+        $keranjangs->jumlah = $request->jumlah;
+        $diskon = (($keranjangs->produk->diskon / 100) * $keranjangs->produk->harga);
+        $keranjangs->total_harga = ($keranjangs->produk->harga * $request->jumlah) - $diskon;
+        $keranjangs->save();
         // }
         //     if(!empty($cek_keranjangs)){
         //         $keranjangs = Keranjang::where('user_id',auth()->user()->id)->where('produk_id',$request->produk_id);
@@ -112,6 +112,15 @@ class KeranjangController extends Controller
         return response()->json([
             "status" => 201,
             "messaage" => "succesfully deleted keranjang",
+        ]);
+    }
+
+    public function destroyAll()
+    {
+        DB::table('keranjangs')->where('user_id', auth()->user()->id)->where('status', 'keranjang')->delete();
+        return response()->json([
+            "status" => 201,
+            "messaage" => "succesfully deleted All keranjang",
         ]);
     }
 }

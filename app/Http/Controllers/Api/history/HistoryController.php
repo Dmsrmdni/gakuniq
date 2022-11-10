@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Api\history;
 
 use App\Http\Controllers\Controller;
 use App\Models\History;
+use Illuminate\Http\Request;
 
 class HistoryController extends Controller
 {
     // Menampilkan Semua Data
     public function index()
     {
-        $histories = History::where('nama_pembeli', auth()->user()->username)->select("id", "kode_transaksi", "nama_pembeli", "nama_produk", "waktu_pemesanan", "status")->with("transaksi")->get();
+        $histories = History::where('nama_pembeli', auth()->user()->username)->select("id", "gambar_produk", "kode_transaksi", "nama_pembeli", "nama_produk", "jumlah", "total_harga", "waktu_pemesanan", "status")->with("transaksi")->get();
         return response()->json([
             "data" => $histories,
             "status" => 200,
@@ -24,6 +25,28 @@ class HistoryController extends Controller
         return response()->json([
             "data" => $histories,
             "status" => 200,
+        ]);
+    }
+
+    // Mengedit Data
+    public function update(Request $request, $id)
+    {
+
+        $histories = History::findOrFail($id);
+        // $histories->gambar_produk = $request->gambar_produk;
+        // $histories->kode_transaksi = $request->kode_transaksi;
+        // $histories->nama_pembeli = $request->nama_pembeli;
+        // $histories->nama_produk = $request->nama_produk;
+        // $histories->jumlah = $request->jumlah;
+        // $histories->total_harga = $request->total_harga;
+        // $histories->waktu_pemesanan = $request->waktu_pemesanan;
+        $histories->status = $request->status;
+
+        $histories->save();
+
+        return response()->json([
+            "status" => 201,
+            "messaage" => "succesfully updated Users",
         ]);
     }
 

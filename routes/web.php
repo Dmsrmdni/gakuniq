@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\RefundProdukController;
 use App\Http\Controllers\ReviewProdukController;
 use App\Http\Controllers\RiwayatProdukController;
 use App\Http\Controllers\SubKategoriController;
@@ -44,9 +46,12 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('sub_kategori', SubKategoriController::class)->except('show');
     Route::resource('produk', ProdukController::class);
     Route::resource('keranjang', KeranjangController::class)->except('show');
+    Route::get('keranjang/delete', [KeranjangController::class, 'destroyAll']);
     Route::resource('wishlist', WishlistController::class)->except('show');
-    // Route::delete('wishlist/destroyAll', [WishlistController::class, 'destroyAll']);
+    Route::get('wishlist/delete', [WishlistController::class, 'destroyAll']);
+    Route::resource('delete', DeleteController::class);
     Route::resource('review_produk', ReviewProdukController::class)->except('edit');
+    Route::resource('refund_produk', RefundProdukController::class)->except('edit');
     Route::resource('transaksi', TransaksiController::class);
     Route::resource('history', HistoryController::class);
     Route::resource('voucher', VoucherController::class);
@@ -60,7 +65,21 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 //     return view('admin.produk.create', ['kategori' => $kategori]);
 // });
 
+// Route::delete('wishlist/delete', [DeleteController::class, 'wishlist']);
 Route::get('getSub_kategori/{id}', function ($id) {
     $sub_kategoris = Sub_kategori::where('kategori_id', $id)->get();
     return response()->json($sub_kategoris);
 });
+
+// Route::delete('deleted', function () {
+//     DB::table('wishlists')->where('user_id', 1)->delete();
+//     return redirect()
+//         ->route('admin.wishlist.index')->with('toast_error', 'Data has been deleted');
+// });
+
+// Route::get('/changeStatus', [VoucherController::class, 'changeStatusVoucher']);
+
+// Route::get('/deleteWishlist', function () {
+//     $wishlist = Wishlist::all()->delete();
+//     return response()->json($wishlist);
+// });

@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('review_produks', function (Blueprint $table) {
+        Schema::create('refund_produks', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('transaksi_id');
             $table->foreign('transaksi_id')->references('id')->on('transaksis')->onDelete('cascade');
-            $table->unsignedBigInteger('produk_id');
-            $table->enum('status', ['Gak Recommended Banget', 'Gak Recommended', 'Biasa Saja', 'Recommended', 'Recommended Banget']);
-            $table->text('komen');
+            $table->text('alasan');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('review_produks');
+        Schema::dropIfExists('refund_produks');
     }
 };

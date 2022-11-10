@@ -16,4 +16,14 @@ class VoucherController extends Controller
             "status" => 200,
         ]);
     }
+
+    // Menampilkan Data berdasakarkan id
+    public function show($id)
+    {
+        $vouchers = Voucher::findOrFail($id);
+        return response()->json([
+            "data" => $vouchers,
+            "status" => 200,
+        ]);
+    }
 }

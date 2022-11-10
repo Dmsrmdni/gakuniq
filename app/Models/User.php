@@ -3,16 +3,17 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\TopUp;
 use App\Models\Keranjang;
+use App\Models\Refund_produk;
+use App\Models\Review_produk;
+use App\Models\TopUp;
 use App\Models\Transaksi;
 use App\Models\Voucher_user;
-use App\Models\Review_produk;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
-use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -63,6 +64,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Review_produk::class);
     }
 
+    public function refund_produk()
+    {
+        return $this->hasMany(Refund_produk::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -83,20 +89,20 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     /**
-    * Get the identifier that will be stored in the subject claim of the JWT.
-    *
-    * @return mixed
-    */
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
     public function getJWTIdentifier()
     {
         return $this->getKey();
     }
 
     /**
-    * Return a key value array, containing any custom claims to be added to the JWT.
-    *
-    * @return array
-    */
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
     public function getJWTCustomClaims()
     {
         return [];

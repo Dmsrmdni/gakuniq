@@ -85,6 +85,7 @@ class KategoriController extends Controller
     {
         $kategoris = Kategori::findOrFail($id);
 
+        $rules = [];
         if ($request->name != $kategoris->name) {
             $rules['name'] = 'required';
         }

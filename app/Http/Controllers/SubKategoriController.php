@@ -54,7 +54,7 @@ class SubKategoriController extends Controller
             ->route('sub_kategori.index')->with('toast_success', 'Data has been added');
 
     }
-    
+
     /**
      * Display the specified resource.
      *

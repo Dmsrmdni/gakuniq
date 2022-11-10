@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <form action="{{ route('review_produk.store') }}" method="POST">
+        <form action="{{ route('refund_produk.store') }}" method="POST">
             @csrf
             <div class="col-lg-8">
                 <div class="card mb-4 shadow-lg rounded card" style="margin: 2%; padding:1% ">
@@ -15,7 +15,7 @@
                             <select name="user_id" class="form-select @error('user_id') is-invalid @enderror">
                                 @if (count($users))
                                     @foreach ($users as $user)
-                                        <option value="" hidden>Pilih User</option>
+                                        <option value="" hidden>User</option>
                                         <option value="{{ $user->id }}">{{ $user->username }}
                                         </option>
                                     @endforeach
@@ -48,26 +48,10 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Status Produk</label>
-                            <select name="status" class="form-select @error('status') is-invalid @enderror">
-                                <option value="" hidden>Pilih Status</option>
-                                <option value="Gak Recommended Banget">Gak Recommended Banget</option>
-                                <option value="Gak Recommended">Gak Recommended</option>
-                                <option value="Biasa Saja">Biasa Saja</option>
-                                <option value="Recommended">Recommended</option>
-                                <option value="Recommended Banget">Recommended Banget</option>
-                            </select>
-                            @error('status')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">komen</label>
-                            <textarea name="komen" cols="30" rows="7" class="form-control mb-2  @error('komen') is-invalid @enderror"
-                                placeholder="komen" value="{{ old('komen') }}"></textarea>
-                            @error('komen')
+                            <label class="form-label">alasan</label>
+                            <textarea name="alasan" cols="30" rows="7" class="form-control mb-2  @error('alasan') is-invalid @enderror"
+                                placeholder="alasan" value="{{ old('alasan') }}"></textarea>
+                            @error('alasan')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -76,7 +60,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <a href="{{ url('/admin/review_produk') }}" class="btn btn-danger me-3"><svg
+                    <a href="{{ url('/admin/refund_produk') }}" class="btn btn-danger me-3"><svg
                             xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor"
                             class="bi bi-arrow-return-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"

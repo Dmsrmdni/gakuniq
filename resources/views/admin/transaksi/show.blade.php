@@ -9,60 +9,65 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
-                    <table class="table">
-                        <tbody>
-                          <tr>
-                            <td>
-                              <strong>Nama Pembeli</strong>
-                            </td>
-                            <td>{{ $transaksis->user->username }}</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <strong>Nama Produk</strong>
-                            </td>
-                            <td>{{ $transaksis->keranjang->produk->nama_produk }}</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <strong>Harga Produk</strong>
-                            </td>
-                            <td>Rp. {{ number_format($transaksis->keranjang->produk->harga, 0, ',', '.') }}</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <strong>Jumlah Produk</strong>
-                            </td>
-                            <td>{{ $transaksis->keranjang->jumlah }}</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <strong>total Harga</strong>
-                            </td>
-                            <td>Rp. {{ number_format($transaksis->keranjang->total_harga, 0, ',', '.') }}</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <strong>Diskon</strong>
-                            </td>
-                            <td> {{ $transaksis->voucher->diskon }}%</td>
-                          </tr>
-                        </tbody>
-                        <tfoot class="table-border-bottom-0">
-                          <tr>
-                            <th><strong> Jumlah Total Harga </strong></th>
-                            <th><strong><i> Rp. {{ number_format($transaksis->total_harga, 0, ',', '.') }} </i> </strong></th>
-                          </tr>
-                          <tr>
-                            <th><strong> Metode Pembayaran </strong></th>
-                            <th><strong>{{ $transaksis->metode_pembayaran }}</strong></th>
-                          </tr>
-                          <tr>
-                            <th><strong> Waktu Pemesanan </strong></th>
-                            <th><strong>{{ $transaksis->waktu_pemesanan }}</strong></th>
-                          </tr>
-                        </tfoot>
-                      </table>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>Nama Pembeli</strong>
+                                    </td>
+                                    <td>{{ $transaksis->user->username }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Nama Produk</strong>
+                                    </td>
+                                    <td>{{ $transaksis->keranjang->produk->nama_produk }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Harga Produk</strong>
+                                    </td>
+                                    <td>Rp. {{ number_format($transaksis->keranjang->produk->harga, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Jumlah Produk</strong>
+                                    </td>
+                                    <td>{{ $transaksis->keranjang->jumlah }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>total Harga</strong>
+                                    </td>
+                                    <td>Rp. {{ number_format($transaksis->keranjang->total_harga, 0, ',', '.') }}</td>
+                                </tr>
+                                <tr>
+                                    @if (!$transaksis->voucher == '')
+                                        <td>
+                                            <strong>Diskon</strong>
+                                        </td>
+                                        <td>
+                                            {{ $transaksis->voucher->diskon }}%
+                                        </td>
+                                    @endif
+                                </tr>
+                            </tbody>
+                            <tfoot class="table-border-bottom-0">
+                                <tr>
+                                    <th><strong> Jumlah Total Harga </strong></th>
+                                    <th><strong><i> Rp. {{ number_format($transaksis->total_harga, 0, ',', '.') }} </i>
+                                        </strong></th>
+                                </tr>
+                                <tr>
+                                    <th><strong> Metode Pembayaran </strong></th>
+                                    <th><strong>{{ $transaksis->metode_pembayaran }}</strong></th>
+                                </tr>
+                                <tr>
+                                    <th><strong> Waktu Pemesanan </strong></th>
+                                    <th><strong>{{ $transaksis->waktu_pemesanan }}</strong></th>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
             </div>

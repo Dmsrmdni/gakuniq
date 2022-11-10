@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\User;
 use App\Models\History;
-use App\Models\Voucher;
 use App\Models\Keranjang;
-use App\Models\Voucher_user;
+use App\Models\Refund_produk;
 use App\Models\Review_produk;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Voucher;
+use App\Models\Voucher_user;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
@@ -43,5 +44,10 @@ class Transaksi extends Model
     public function review_produk()
     {
         return $this->hasOne(Review_produk::class);
+    }
+
+    public function refund_produk()
+    {
+        return $this->hasOne(Refund_produk::class);
     }
 }

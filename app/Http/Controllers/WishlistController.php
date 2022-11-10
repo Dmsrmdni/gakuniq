@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Produk;
 use App\Models\User;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WishlistController extends Controller
 {
@@ -124,11 +126,10 @@ class WishlistController extends Controller
             ->route('wishlist.index')->with('toast_error', 'Data has been deleted');
     }
 
-    // public function destroyAll()
-    // {
-    //     $wishlists = Wishlist::all();
-    //     $wishlists->deleteAll();
-    //     return redirect()
-    //         ->route('wishlist.index')->with('toast_error', 'Data has been deleted');
-    // }
+    public function destroyAll()
+    {
+        DB::table('wishlists')->delete();
+        return redirect()
+            ->route('wishlist.index')->with('toast_error', 'All Data has been deleted');
+    }
 }

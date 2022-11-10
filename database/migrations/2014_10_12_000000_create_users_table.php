@@ -33,6 +33,7 @@ return new class extends Migration
             $table->enum('role', ['costumer', 'admin'])->default('costumer');
             $table->integer('saldo')->default('0');
             $table->integer('score')->default('0');
+            $table->enum('status', ['aktif', 'tidak aktif'])->default('tidak aktif');
             $table->rememberToken();
             $table->timestamps();
         });

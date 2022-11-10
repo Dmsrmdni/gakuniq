@@ -52,6 +52,7 @@ class ProdukController extends Controller
 
         $produks = new Produk();
         $produks->sub_kategori_id = $request->sub_kategori_id;
+        $produks->kategori_id = $produks->sub_kategori->kategori_id;
         $produks->nama_produk = $request->nama_produk;
         $produks->harga = $request->harga;
         $produks->stok = $request->stok;
@@ -63,7 +64,7 @@ class ProdukController extends Controller
             $image1 = $request->file('gambar_produk1');
             $name1 = rand(1000, 9999) . $image1->getClientOriginalName();
             $image1->move('images/gambar_produk1/', $name1);
-            $produks->gambar_produk1 = $name1;
+            $produks->gambar_produk1 = 'images/gambar_produk1/' . $name1;
         }
 
         if ($request->hasFile('gambar_produk2')) {
@@ -71,7 +72,7 @@ class ProdukController extends Controller
             $image2 = $request->file('gambar_produk2');
             $name2 = rand(1000, 9999) . $image2->getClientOriginalName();
             $image2->move('images/gambar_produk2/', $name2);
-            $produks->gambar_produk2 = $name2;
+            $produks->gambar_produk2 = 'images/gambar_produk2/' . $name2;
         }
 
         if ($request->hasFile('gambar_produk3')) {
@@ -79,7 +80,7 @@ class ProdukController extends Controller
             $image3 = $request->file('gambar_produk3');
             $name3 = rand(1000, 9999) . $image3->getClientOriginalName();
             $image3->move('images/gambar_produk3/', $name3);
-            $produks->gambar_produk3 = $name3;
+            $produks->gambar_produk3 = 'images/gambar_produk3/' . $name3;
         }
 
         $produks->save();
@@ -135,6 +136,7 @@ class ProdukController extends Controller
 
         $produks = Produk::findOrFail($id);
         $produks->sub_kategori_id = $request->sub_kategori_id;
+        $produks->kategori_id = $produks->sub_kategori->kategori_id;
         $produks->nama_produk = $request->nama_produk;
         $produks->harga = $request->harga;
         $produks->stok = $request->stok;
@@ -146,7 +148,7 @@ class ProdukController extends Controller
             $image1 = $request->file('gambar_produk1');
             $name1 = rand(1000, 9999) . $image1->getClientOriginalName();
             $image1->move('images/gambar_produk1/', $name1);
-            $produks->gambar_produk1 = $name1;
+            $produks->gambar_produk1 = 'images/gambar_produk1/' . $name1;
         }
 
         if ($request->hasFile('gambar_produk2')) {
@@ -154,7 +156,7 @@ class ProdukController extends Controller
             $image2 = $request->file('gambar_produk2');
             $name2 = rand(1000, 9999) . $image2->getClientOriginalName();
             $image2->move('images/gambar_produk2/', $name2);
-            $produks->gambar_produk2 = $name2;
+            $produks->gambar_produk2 = 'images/gambar_produk2/' . $name2;
         }
 
         if ($request->hasFile('gambar_produk3')) {
@@ -162,7 +164,7 @@ class ProdukController extends Controller
             $image3 = $request->file('gambar_produk3');
             $name3 = rand(1000, 9999) . $image3->getClientOriginalName();
             $image3->move('images/gambar_produk3/', $name3);
-            $produks->gambar_produk3 = $name3;
+            $produks->gambar_produk3 = 'images/gambar_produk3/' . $name3;
         }
         $produks->save();
         return redirect()

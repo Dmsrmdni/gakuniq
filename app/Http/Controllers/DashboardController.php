@@ -7,7 +7,6 @@ use App\Models\Kategori;
 use App\Models\Produk;
 use App\Models\Review_produk;
 use App\Models\Riwayat_produk;
-use App\Models\Sub_kategori;
 use App\Models\TopUp;
 use App\Models\Transaksi;
 use App\Models\User;
@@ -65,7 +64,6 @@ class DashboardController extends Controller
         // User
         $total_users = User::where('role', auth()->user()->role = 'costumer')->count();
         $total_produks = Produk::count();
-        $total_sub_kategoris = Sub_kategori::count();
         $total_review_produks = Review_produk::count();
         $total_vouchers = Voucher::count();
         $total_top_ups = TopUp::count();
@@ -123,8 +121,6 @@ class DashboardController extends Controller
 
             // User
             'total_users',
-            'total_kategoris',
-            'total_sub_kategoris',
             'total_produks',
             'total_review_produks',
             'total_vouchers',

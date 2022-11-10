@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('warna');
             $table->integer('jumlah');
             $table->integer('total_harga');
+            $table->enum('status',['checkout','keranjang'])->default('keranjang');
             $table->timestamps();
         });
     }

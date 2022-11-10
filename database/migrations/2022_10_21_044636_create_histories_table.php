@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
+            $table->string('gambar_produk')->nullable();
             $table->string('kode_transaksi');
             $table->string('nama_pembeli');
             $table->string('nama_produk');
+            $table->string('jumlah');
+            $table->string('total_harga');
             $table->date('waktu_pemesanan');
-            // $table->unsignedBigInteger('transaksi_id');
-            // $table->foreign('transaksi_id')->references('id')->on('transaksis')->onDelete('cascade');
-            $table->enum('status', ['prosess', 'success', 'gagal'])->default('prosess');
+            $table->enum('status', ['proses', 'sukses', 'dikembalikan', 'selesai'])->default('proses');
             $table->timestamps();
         });
     }

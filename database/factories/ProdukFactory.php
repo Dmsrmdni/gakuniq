@@ -18,7 +18,8 @@ class ProdukFactory extends Factory
     {
 
         return [
-            'sub_kategori_id' => mt_rand(1, 2),
+            'kategori_id' => mt_rand(1, 2),
+            'sub_kategori_id' => mt_rand(1, 6),
             'nama_produk' => fake()->word(),
             'harga' => fake()->randomNumber(6, true),
             'stok' => fake()->randomDigit(),

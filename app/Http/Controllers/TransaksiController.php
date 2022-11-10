@@ -21,12 +21,13 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksis = Transaksi::with('keranjang', 'voucher', 'voucher_user', 'user')->latest()->get();
+        $transaksis = Transaksi::with('keranjang', 'voucher', 'voucher_user', 'user')
+            ->latest()
+            ->get();
         // $keranjangs = Keranjang::with('produk', 'user')->where('user_id', auth()->user()->id)->latest()->get();
 
         // $total_keranjangs = Keranjang::where('user_id', auth()->user()->id)->count();
         return view('admin.transaksi.index', compact('transaksis'));
-
     }
 
     /**
@@ -36,11 +37,13 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $keranjangs = Keranjang::all();
+        $users = User::where('role', 'costumer')->get();
+        $keranjangs = Keranjang::where('status', 'keranjang')->get();
         $voucher_users = Voucher_user::all();
-        $vouchers = Voucher::where('status', 'aktif')->where('label', 'gratis')->get();
-        return view('admin.transaksi.create', compact('keranjangs', 'vouchers', 'voucher_users','users'));
+        $vouchers = Voucher::where('status', 'aktif')
+            ->where('label', 'gratis')
+            ->get();
+        return view('admin.transaksi.create', compact('keranjangs', 'vouchers', 'voucher_users', 'users'));
     }
 
     /**
@@ -64,10 +67,10 @@ class TransaksiController extends Controller
         if ($kode_transaksis->count() > 0) {
             foreach ($kode_transaksis->get() as $kode_transaksi) {
                 $x = ((int) $kode_transaksi->kode) + 1;
-                $kode = sprintf("%03s", $x);
+                $kode = sprintf('%03s', $x);
             }
         } else {
-            $kode = "001";
+            $kode = '001';
         }
         $transaksis->kode_transaksi = 'GNQ-' . date('dmy') . $kode;
         $transaksis->user_id = $request->user_id;
@@ -79,7 +82,7 @@ class TransaksiController extends Controller
         if ($transaksis->voucher_id == '') {
             $diskon = 0;
         } else {
-            $diskon = (($transaksis->voucher->diskon * $transaksis->keranjang->total_harga) / 100);
+            $diskon = ($transaksis->voucher->diskon * $transaksis->keranjang->total_harga) / 100;
         }
         $transaksis->total_harga = $transaksis->keranjang->total_harga - $diskon;
 
@@ -87,7 +90,8 @@ class TransaksiController extends Controller
         $produks = Produk::findOrFail($transaksis->keranjang->produk_id);
         if ($produks->stok < $transaksis->keranjang->jumlah) {
             return redirect()
-                ->route('transaksi.create')->with('toast_error', 'Stok Kurang');
+                ->route('transaksi.create')
+                ->with('toast_error', 'Stok Kurang');
         } else {
             $produks->stok -= $transaksis->keranjang->jumlah;
         }
@@ -110,7 +114,8 @@ class TransaksiController extends Controller
         if ($transaksis->metode_pembayaran == 'gakuniq wallet') {
             if ($users->saldo < $transaksis->total_harga) {
                 return redirect()
-                    ->route('transaksi.create')->with('toast_error', 'Saldo Kurang');
+                    ->route('transaksi.create')
+                    ->with('toast_error', 'Saldo Kurang');
             } else {
                 $users->saldo -= $transaksis->total_harga;
             }
@@ -119,15 +124,24 @@ class TransaksiController extends Controller
 
         // History
         $histories = new History();
+        $histories->gambar_produk = $transaksis->keranjang->produk->gambar_produk1;
         $histories->kode_transaksi = $transaksis->kode_transaksi;
         $histories->nama_pembeli = $transaksis->keranjang->user->username;
         $histories->nama_produk = $transaksis->keranjang->produk->nama_produk;
+        $histories->jumlah = $transaksis->keranjang->jumlah;
+        $histories->total_harga = $transaksis->total_harga;
         $histories->waktu_pemesanan = $transaksis->waktu_pemesanan;
         $histories->save();
 
+        // keranjang
+        $keranjangs = keranjang::findOrFail($transaksis->keranjang_id);
+        $keranjangs->status = 'checkout';
+        $keranjangs->save();
+
         $transaksis->save();
         return redirect()
-            ->route('transaksi.index')->with('toast_success', 'Data has been added');
+            ->route('transaksi.index')
+            ->with('toast_success', 'Data has been added');
     }
 
     /**
@@ -142,7 +156,6 @@ class TransaksiController extends Controller
         // $users = User::all();
         $keranjangs = Keranjang::all();
         return view('admin.transaksi.show', compact('keranjangs', 'transaksis'));
-
     }
 
     /**
@@ -157,8 +170,7 @@ class TransaksiController extends Controller
         $transaksis = Transaksi::findOrFail($id);
         $keranjangs = Keranjang::all();
         $vouchers = Voucher::where('status', 'aktif')->get();
-        return view('admin.transaksi.edit', compact('keranjangs', 'transaksis', 'vouchers','users'));
-
+        return view('admin.transaksi.edit', compact('keranjangs', 'transaksis', 'vouchers', 'users'));
     }
 
     /**
@@ -193,13 +205,13 @@ class TransaksiController extends Controller
         if ($transaksis->voucher_id == '') {
             $diskon = 0;
         } else {
-            $diskon = (($transaksis->voucher->diskon * $transaksis->keranjang->total_harga) / 100);
+            $diskon = ($transaksis->voucher->diskon * $transaksis->keranjang->total_harga) / 100;
         }
         $transaksis->total_harga = $transaksis->keranjang->total_harga - $diskon;
         $transaksis->save();
         return redirect()
-            ->route('transaksi.index')->with('toast_success', 'Data has been edited');
-
+            ->route('transaksi.index')
+            ->with('toast_success', 'Data has been edited');
     }
 
     /**
@@ -213,7 +225,7 @@ class TransaksiController extends Controller
         $transaksis = Transaksi::findOrFail($id);
         $transaksis->delete();
         return redirect()
-            ->route('transaksi.index')->with('toast_error', 'Data has been deleted');
-
+            ->route('transaksi.index')
+            ->with('toast_error', 'Data has been deleted');
     }
 }

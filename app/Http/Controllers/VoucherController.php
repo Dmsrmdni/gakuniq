@@ -62,6 +62,7 @@ class VoucherController extends Controller
         } else {
             $status = 'aktif';
         }
+
         $vouchers->status = $status;
         $vouchers->save();
         return redirect()
@@ -90,7 +91,7 @@ class VoucherController extends Controller
     public function edit($id)
     {
         $vouchers = Voucher::findOrFail($id);
-        return view('admin.voucher.edit', compact('vouchers'));
+        return view('admin.voucher.index', compact('vouchers'));
     }
 
     /**
@@ -102,23 +103,23 @@ class VoucherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //validasi
-        $validated = $request->validate([
-            'kode_voucher' => 'required',
-            'harga' => 'required',
-            // 'label' => 'required',
-            'diskon' => 'required',
-            'waktu_mulai' => 'required',
-            'waktu_berakhir' => 'required',
-        ]);
+        // //validasi
+        // $validated = $request->validate([
+        //     'kode_voucher' => 'required',
+        //     'harga' => 'required',
+        //     // 'label' => 'required',
+        //     'diskon' => 'required',
+        //     'waktu_mulai' => 'required',
+        //     'waktu_berakhir' => 'required',
+        // ]);
 
         $vouchers = Voucher::findOrFail($id);
-        $vouchers->kode_voucher = $request->kode_voucher;
-        $vouchers->harga = $request->harga;
-        $vouchers->label = $request->label;
-        $vouchers->diskon = $request->diskon;
-        $vouchers->waktu_mulai = $request->waktu_mulai;
-        $vouchers->waktu_berakhir = $request->waktu_berakhir;
+        // $vouchers->kode_voucher = $request->kode_voucher;
+        // $vouchers->harga = $request->harga;
+        // $vouchers->label = $request->label;
+        // $vouchers->diskon = $request->diskon;
+        // $vouchers->waktu_mulai = $request->waktu_mulai;
+        // $vouchers->waktu_berakhir = $request->waktu_berakhir;
         $vouchers->status = $request->status;
         $vouchers->save();
         return redirect()
@@ -138,6 +139,12 @@ class VoucherController extends Controller
         $vouchers->delete();
         return redirect()
             ->route('voucher.index')->with('toast_error', 'Data has been deleted');
+    }
 
+    public function changeStatusVoucher(Request $request)
+    {
+        $vouchers = Voucher::findOrFail($request->id);
+        $vouchers->status = $request->status;
+        $vouchers->save();
     }
 }

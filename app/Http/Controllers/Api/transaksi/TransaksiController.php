@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\Api\transaksi;
 
-use App\Models\User;
-use App\Models\Produk;
+use App\Http\Controllers\Controller;
 use App\Models\History;
 use App\Models\Keranjang;
+use App\Models\Produk;
 use App\Models\Transaksi;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
 class TransaksiController extends Controller
 {
     // Menampilkan Semua Data
     public function index()
     {
-        $transaksis = Transaksi::select("id", "kode_transaksi", "user_id" ,"keranjang_id", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga")->with('keranjang', 'voucher','voucher_user')->where('user_id', auth()->user()->id)->get();
+        $transaksis = Transaksi::select("id", "kode_transaksi", "user_id", "keranjang_id", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga")->with('keranjang', 'voucher', 'voucher_user')->where('user_id', auth()->user()->id)->get();
         return response()->json([
             "data" => $transaksis,
             // 'users' => auth()->user()->username,
@@ -94,16 +94,19 @@ class TransaksiController extends Controller
 
         // History
         $histories = new History();
+        $histories->gambar_produk = $transaksis->keranjang->produk->gambar_produk1;
         $histories->kode_transaksi = $transaksis->kode_transaksi;
         $histories->nama_pembeli = $transaksis->keranjang->user->username;
         $histories->nama_produk = $transaksis->keranjang->produk->nama_produk;
+        $histories->jumlah = $transaksis->keranjang->jumlah;
+        $histories->total_harga = $transaksis->total_harga;
         $histories->waktu_pemesanan = $transaksis->waktu_pemesanan;
         $histories->save();
 
-        // Keranjang
-        // $keranjangs = Keranjang::findOrFail(12);
-        // $keranjangs->jumlah = 20;
-        // $keranjangs->save();
+        // keranjang
+        $keranjangs = keranjang::findOrFail($transaksis->keranjang_id);
+        $keranjangs->status = 'checkout';
+        $keranjangs->save();
 
         $transaksis->save();
 
@@ -121,6 +124,5 @@ class TransaksiController extends Controller
             "data" => $transaksis,
             "status" => 200,
         ]);
-
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\wishlist;
 use App\Http\Controllers\Controller;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WishlistController extends Controller
 {
@@ -49,6 +50,15 @@ class WishlistController extends Controller
         return response()->json([
             "status" => 201,
             "messaage" => "succesfully deleted wishlist",
+        ]);
+    }
+
+    public function destroyAll()
+    {
+        DB::table('wishlists')->where('user_id', auth()->user()->id)->delete();
+        return response()->json([
+            "status" => 201,
+            "messaage" => "succesfully deleted All wishlist",
         ]);
     }
 }
