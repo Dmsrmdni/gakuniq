@@ -131,3 +131,7 @@ Route::middleware(['auth:api'])->group(function () {
 
 Route::get('review_produk/{id}', [ReviewProdukController::class, 'index']);
 Route::get('all/user', [UserController::class, 'allData']);
+
+// if(auth()->user()->jenis_kelamin){
+
+// }

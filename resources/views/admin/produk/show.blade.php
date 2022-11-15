@@ -14,18 +14,15 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100"
-                                        src="{{ asset('images/gambar_produk1/' . $produks->gambar_produk1) }}"
+                                    <img class="d-block w-100" src="{{ asset($produks->gambar_produk1) }}"
                                         alt="First slide" />
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100"
-                                        src="{{ asset('images/gambar_produk2/' . $produks->gambar_produk2) }}"
+                                    <img class="d-block w-100" src="{{ asset($produks->gambar_produk2) }}"
                                         alt="Second slide" />
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100"
-                                        src="{{ asset('images/gambar_produk3/' . $produks->gambar_produk3) }}"
+                                    <img class="d-block w-100" src="{{ asset($produks->gambar_produk3) }}"
                                         alt="Third slide" />
                                 </div>
                             </div>
