@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('kategori_id');
             $table->unsignedBigInteger('sub_kategori_id');
             $table->string('nama_produk');
+            $table->string('hpp');
             $table->string('harga');
             $table->integer('stok');
             $table->integer('diskon')->default('0')->nullable();

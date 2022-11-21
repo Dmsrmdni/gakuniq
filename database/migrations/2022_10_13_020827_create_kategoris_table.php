@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('kategoris', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('link');
-            $table->string('hover');
+            // $table->string('link');
+            // $table->string('hover');
+            // $table->enum('status', ['0', '1'])->default('0');
             $table->timestamps();
         });
     }

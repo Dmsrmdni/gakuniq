@@ -33,14 +33,14 @@ class RefundProdukController extends Controller
         $refund_produks->transaksi_id = $request->transaksi_id;
         $refund_produks->alasan = $request->alasan;
 
-        // saldo
-        $users = User::findOrFail($refund_produks->transaksi->keranjang->user_id);
+        // // saldo
+        // $users = User::findOrFail($refund_produks->transaksi->keranjang->user_id);
 
-        if ($refund_produks->transaksi->metode_pembayaran == 'gakuniq wallet') {
-            $users->saldo += $refund_produks->transaksi->total_harga;
-        }
+        // if ($refund_produks->transaksi->metode_pembayaran == 'gakuniq wallet') {
+        //     $users->saldo += $refund_produks->transaksi->total_harga;
+        // }
 
-        $users->save();
+        // $users->save();
 
         $refund_produks->save();
 

@@ -51,8 +51,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('wishlist/delete', [WishlistController::class, 'destroyAll']);
     Route::resource('delete', DeleteController::class);
     Route::resource('review_produk', ReviewProdukController::class)->except('edit');
-    Route::resource('refund_produk', RefundProdukController::class)->except('edit');
+    Route::resource('refund_produk', RefundProdukController::class);
     Route::resource('transaksi', TransaksiController::class);
+    Route::get('pdf/{id}', [TransaksiController::class, 'pdf']);
     Route::resource('history', HistoryController::class);
     Route::resource('voucher', VoucherController::class);
     Route::resource('voucher_user', VoucherUserController::class);

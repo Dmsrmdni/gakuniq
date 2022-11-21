@@ -317,12 +317,12 @@
         {{-- EndTransaksi --}}
 
         {{-- History --}}
-        <li class="menu-item {{ Request::is('admin/history*') ? 'active' : '' }}">
+        {{-- <li class="menu-item {{ Request::is('admin/history*') ? 'active' : '' }}">
             <a href="/admin/history" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-timer"></i>
                 <div>History</div>
             </a>
-        </li>
+        </li> --}}
         {{-- EndHistory --}}
 
         {{-- ReviewProduk --}}

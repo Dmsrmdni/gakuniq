@@ -2,15 +2,16 @@
 
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
+use App\Http\Controllers\Api\auth\password\ChangePasswordController;
+use App\Http\Controllers\Api\auth\password\PasswordResetRequestController;
 use App\Http\Controllers\Api\Auth\RegisterController;
-use App\Http\Controllers\Api\history\HistoryController;
+use App\Http\Controllers\Api\Chat\ChatController;
 use App\Http\Controllers\Api\kategori\KategoriController;
 use App\Http\Controllers\Api\keranjang\KeranjangController;
 use App\Http\Controllers\Api\Produk\ProdukController;
 use App\Http\Controllers\Api\refund_produk\RefundProdukController;
 use App\Http\Controllers\Api\reviewProduk\ReviewProdukController;
 use App\Http\Controllers\Api\SubKategori\SubKategoriController;
-use App\Http\Controllers\Api\TestingController;
 use App\Http\Controllers\Api\topUp\TopUpController;
 use App\Http\Controllers\Api\transaksi\TransaksiController;
 use App\Http\Controllers\api\User\UserController;
@@ -34,7 +35,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('test', [TestingController::class, 'test']);
+// Route::get('test', [TestingController::class, 'test']);
+Route::post('chat', [ChatController::class, 'message']);
 // Route::post('test/create', [TestingController::class, 'create']);
 
 // Authentikasi
@@ -69,6 +71,9 @@ Route::get('voucher/{id}', [VoucherController::class, 'show']);
 // endvoucher
 
 Route::middleware(['auth:api'])->group(function () {
+    // Produk
+    Route::get('referensi', [ProdukController::class, 'Referensi']);
+    // EndProduk
     // Wishlist
     Route::get('wishlist', [WishlistController::class, 'index']);
     Route::post('wishlist/create', [WishlistController::class, 'store']);
@@ -103,10 +108,10 @@ Route::middleware(['auth:api'])->group(function () {
     // endtransaksi
 
     // history
-    Route::get('history', [HistoryController::class, 'index']);
-    Route::get('history/{id}', [HistoryController::class, 'show']);
-    Route::put('history/{id}/edit', [HistoryController::class, 'update']);
-    Route::delete('history/{id}', [HistoryController::class, 'destroy']);
+    Route::get('history', [TransaksiController::class, 'history']);
+    Route::get('history/{id}', [TransaksiController::class, 'show']);
+    Route::put('history/{id}/edit', [TransaksiController::class, 'update']);
+    // Route::delete('history/{id}', [HistoryController::class, 'destroy']);
     // endhistory
 
     // reviewproduk
@@ -132,6 +137,14 @@ Route::middleware(['auth:api'])->group(function () {
 Route::get('review_produk/{id}', [ReviewProdukController::class, 'index']);
 Route::get('all/user', [UserController::class, 'allData']);
 
-// if(auth()->user()->jenis_kelamin){
+// Route::get('search', function (Request $request) {
+//     $query = $request->get('query');
+//     $filterResult = produk::where('nama_produk', 'LIKE', '%' . $request . '%')->get();
+//     return response()->json($filterResult);
+// });
 
-// }
+Route::post('sendPasswordResetLink', [PasswordResetRequestController::class, 'sendEmail']);
+Route::post('resetPassword', [ChangePasswordController::class, 'passwordResetProcess']);
+
+// Route::post('resetPassword', 'App\Http\Controllers\ChangePasswordController@passwordResetProcess');
+// Route::post('sendEmail', 'App\Http\Controllers\MailController@sendEmail');

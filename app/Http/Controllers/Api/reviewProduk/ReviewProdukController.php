@@ -11,7 +11,7 @@ class ReviewProdukController extends Controller
     // Menampilkan Semua Data
     public function index($id)
     {
-        $review_produks = Review_produk::where('produk_id', $id)->select("id", "user_id", "produk_id", "transaksi_id", "status", "komen")->with('transaksi')->get();
+        $review_produks = Review_produk::where('produk_id', $id)->select("id", "user_id", "produk_id", "transaksi_id", "status", "komen")->with('transaksi','user')->get();
         return response()->json([
             "data" => $review_produks,
             "status" => 200,

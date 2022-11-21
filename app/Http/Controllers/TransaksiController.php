@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\History;
+use App\Http\Controllers\Controller;
 use App\Models\Keranjang;
 use App\Models\Produk;
 use App\Models\Transaksi;
@@ -11,9 +11,11 @@ use App\Models\Voucher;
 use App\Models\Voucher_user;
 use DB;
 use Illuminate\Http\Request;
+use PDF;
 
 class TransaksiController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -75,9 +77,11 @@ class TransaksiController extends Controller
         $transaksis->kode_transaksi = 'GNQ-' . date('dmy') . $kode;
         $transaksis->user_id = $request->user_id;
         $transaksis->keranjang_id = $request->keranjang_id;
+        $transaksis->produk_id = $transaksis->keranjang->produk_id;
         $transaksis->metode_pembayaran = $request->metode_pembayaran;
         $transaksis->waktu_pemesanan = $request->waktu_pemesanan;
         $transaksis->voucher_id = $request->voucher_id;
+        // $transaksis->status = $request->status;
 
         if ($transaksis->voucher_id == '') {
             $diskon = 0;
@@ -123,15 +127,15 @@ class TransaksiController extends Controller
         }
 
         // History
-        $histories = new History();
-        $histories->gambar_produk = $transaksis->keranjang->produk->gambar_produk1;
-        $histories->kode_transaksi = $transaksis->kode_transaksi;
-        $histories->nama_pembeli = $transaksis->keranjang->user->username;
-        $histories->nama_produk = $transaksis->keranjang->produk->nama_produk;
-        $histories->jumlah = $transaksis->keranjang->jumlah;
-        $histories->total_harga = $transaksis->total_harga;
-        $histories->waktu_pemesanan = $transaksis->waktu_pemesanan;
-        $histories->save();
+        // $histories = new History();
+        // $histories->gambar_produk = $transaksis->keranjang->produk->gambar_produk1;
+        // $histories->kode_transaksi = $transaksis->kode_transaksi;
+        // $histories->nama_pembeli = $transaksis->keranjang->user->username;
+        // $histories->nama_produk = $transaksis->keranjang->produk->nama_produk;
+        // $histories->jumlah = $transaksis->keranjang->jumlah;
+        // $histories->total_harga = $transaksis->total_harga;
+        // $histories->waktu_pemesanan = $transaksis->waktu_pemesanan;
+        // $histories->save();
 
         // keranjang
         $keranjangs = keranjang::findOrFail($transaksis->keranjang_id);
@@ -139,6 +143,7 @@ class TransaksiController extends Controller
         $keranjangs->save();
 
         $transaksis->save();
+
         return redirect()
             ->route('transaksi.index')
             ->with('toast_success', 'Data has been added');
@@ -154,8 +159,8 @@ class TransaksiController extends Controller
     {
         $transaksis = Transaksi::findOrFail($id);
         // $users = User::all();
-        $keranjangs = Keranjang::all();
-        return view('admin.transaksi.show', compact('keranjangs', 'transaksis'));
+        // $keranjangs = Keranjang::all();
+        return view('admin.transaksi.show', compact('transaksis'));
     }
 
     /**
@@ -227,5 +232,14 @@ class TransaksiController extends Controller
         return redirect()
             ->route('transaksi.index')
             ->with('toast_error', 'Data has been deleted');
+    }
+
+    public function pdf($id)
+    {
+        $transaksis = Transaksi::findOrFail($id);
+
+        $pdf = PDF::loadView('pdf_download', compact('transaksis'));
+
+        return $pdf->download("Detail Transaksi {$transaksis->kode_transaksi}.pdf");
     }
 }

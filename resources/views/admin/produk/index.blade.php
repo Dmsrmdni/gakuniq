@@ -16,7 +16,7 @@
     </div>
 </div> --}}
 
-    <div class="card shadow-lg rounded card p-2 pb-3">
+    <div class="card shadow-lg rounded card">
         <div class="card-header" id="#atas">
             <a href="{{ route('produk.create') }}" class="btn btn-sm btn-primary"><svg xmlns="http://www.w3.org/2000/svg"
                     width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
@@ -123,6 +123,7 @@
                             <th>Kategori</th>
                             <th>Sub Kategori</th>
                             <th>Nama produk</th>
+                            <th>Hpp</th>
                             <th>Harga</th>
                             <th>Stok</th>
                             <th>Diskon</th>
@@ -151,6 +152,11 @@
                                     <td>
                                         <div class="d-flex">
                                             {{ $produk->nama_produk }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            Rp. {{ number_format($produk->hpp, 0, ',', '.') }}
                                         </div>
                                     </td>
                                     <td>

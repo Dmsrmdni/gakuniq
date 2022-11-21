@@ -11,7 +11,7 @@ class KategoriController extends Controller
     // Menampilkan Semua Data
     public function index()
     {
-        $kategoris = kategori::select("id", "name","link","hover")->get();
+        $kategoris = kategori::select("id", "name")->get();
         return response()->json([
             "data" => $kategoris,
             "status" => 200,

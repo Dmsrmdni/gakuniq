@@ -45,6 +45,7 @@ class ProdukController extends Controller
         $validated = $request->validate([
             'sub_kategori_id' => 'required',
             'nama_produk' => 'required',
+            'hpp' => 'required',
             'harga' => 'required',
             'stok' => 'required',
             'deskripsi' => 'required',
@@ -54,6 +55,7 @@ class ProdukController extends Controller
         $produks->sub_kategori_id = $request->sub_kategori_id;
         $produks->kategori_id = $produks->sub_kategori->kategori_id;
         $produks->nama_produk = $request->nama_produk;
+        $produks->hpp = $request->hpp;
         $produks->harga = $request->harga;
         $produks->stok = $request->stok;
         $produks->diskon = $request->diskon;
@@ -129,6 +131,7 @@ class ProdukController extends Controller
         $validated = $request->validate([
             'sub_kategori_id' => 'required',
             'nama_produk' => 'required',
+            'hpp' => 'required',
             'harga' => 'required',
             'stok' => 'required',
             'deskripsi' => 'required',
@@ -138,6 +141,7 @@ class ProdukController extends Controller
         $produks->sub_kategori_id = $request->sub_kategori_id;
         $produks->kategori_id = $produks->sub_kategori->kategori_id;
         $produks->nama_produk = $request->nama_produk;
+        $produks->hpp = $request->hpp;
         $produks->harga = $request->harga;
         $produks->stok = $request->stok;
         $produks->diskon = $request->diskon;

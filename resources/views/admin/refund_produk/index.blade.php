@@ -35,6 +35,7 @@
                             <th>Nama Pembeli</th>
                             <th>Nama Produk</th>
                             {{-- <th>Alasan</th> --}}
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -63,36 +64,64 @@
                                         </div>
                                     </td>
                                     <td>
+                                        <div class="d-flex">
+                                            @if ($refund_produk->status == 'di setujui')
+                                                <div class="badge rounded-pill bg-success w-100">
+                                                    {{ $refund_produk->status }}
+                                                </div>
+                                            @elseif ($refund_produk->status == 'pengajuan refund')
+                                                <div class="badge rounded-pill bg-warning w-100">
+                                                    {{ $refund_produk->status }}
+                                                </div>
+                                            @elseif ($refund_produk->status == 'di tolak')
+                                                <div class="badge rounded-pill bg-danger w-100">
+                                                    {{ $refund_produk->status }}
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#modalEdit{{ $refund_produk->id }}"> <svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                                            </svg>
+                                        </button> |
+
+                                        <a href="{{ route('refund_produk.show', $refund_produk->id) }}"
+                                            class="btn btn-sm btn-info" data-bs-toggle="tooltip" data-bs-offset="0,4"
+                                            data-bs-placement="top" data-bs-html="true" title="<span>Show Data</span>"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                <path
+                                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                            </svg>
+                                        </a> |
+
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#modalCenter{{ $refund_produk->id }}"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                            </svg>
+                                        </button>
+
                                         <form action="{{ route('refund_produk.destroy', $refund_produk->id) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
-                                            <a href="{{ route('refund_produk.show', $refund_produk->id) }}"
-                                                class="btn btn-sm btn-info" data-bs-toggle="tooltip" data-bs-offset="0,4"
-                                                data-bs-placement="top" data-bs-html="true"
-                                                title="<span>Show Data</span>"><svg xmlns="http://www.w3.org/2000/svg"
-                                                    width="16" height="16" fill="currentColor" class="bi bi-eye-fill"
-                                                    viewBox="0 0 16 16">
-                                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                                                    <path
-                                                        d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                                </svg>
-                                            </a> |
-                                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#modalCenter{{ $refund_produk->id }}"><svg
-                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                                                </svg>
-                                            </button>
                                             <!-- Modal -->
                                             <div class="modal fade" id="modalCenter{{ $refund_produk->id }}" tabindex="-1"
                                                 aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="modalCenterTitle">Apakah Anda Yakin?
+                                                            <h5 class="modal-title" id="modalCenterTitle">Apakah Anda
+                                                                Yakin?
                                                             </h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
@@ -103,6 +132,50 @@
                                                                 Kembali
                                                             </button>
                                                             <button type="submit" class="btn btn-danger">Hapus</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <form action="{{ route('refund_produk.update', $refund_produk->id) }}"
+                                            method="post">
+                                            @csrf
+                                            @method('put')
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modalEdit{{ $refund_produk->id }}" tabindex="-1"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalCenterTitle">Konfirmasi Refund
+                                                                produk</h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col mb-3">
+                                                                    <label class="form-label">Status</label>
+                                                                    <select name="status"
+                                                                        class="form-select @error('status') is-invalid @enderror">
+                                                                        <option value="" selected hidden>Pilih
+                                                                            Konfimasi</option>
+                                                                        <option value="di setujui">di setujui</option>
+                                                                        <option value="di tolak">di tolak</option>
+                                                                    </select>
+                                                                    @error('status')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">
+                                                                Kembali
+                                                            </button>
+                                                            <button type="submit" class="btn btn-primary">Edit</button>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -50,6 +50,17 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">Hpp Produk</label>
+                            <input type="number" name="hpp"
+                                class="form-control mb-2  @error('hpp') is-invalid @enderror" placeholder="hpp Produk"
+                                value="0">
+                            @error('hpp')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Harga Produk</label>
                             <input type="number" name="harga"
                                 class="form-control mb-2  @error('harga') is-invalid @enderror" placeholder="Harga Produk"

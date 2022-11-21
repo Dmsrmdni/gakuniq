@@ -198,6 +198,11 @@
         </div>
     </div>
 
+    <div class="buy-now">
+        <a href="https://dashboard.pusher.com/apps/1509935" target="_blank" class="btn btn-danger btn-buy-now"><i
+                class='bx bxs-chat'></i> Pesan</a>
+    </div>
+
     <!--/ Order Statistics -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>

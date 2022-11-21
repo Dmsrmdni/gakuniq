@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('transaksi_id');
             $table->foreign('transaksi_id')->references('id')->on('transaksis')->onDelete('cascade');
             $table->text('alasan');
+            $table->enum('status', ['pengajuan refund', 'di setujui', 'di tolak'])->default('pengajuan refund');
             $table->timestamps();
         });
     }

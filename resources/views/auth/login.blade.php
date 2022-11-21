@@ -67,7 +67,7 @@ data-template="vertical-menu-template-free"
     <!-- Content -->
 
 <div class="container-xxl">
-    <div class="authentication-wrapper authentication-basic container-p-y">
+            <div class="authentication-wrapper authentication-basic container-p-y">
     <div class="authentication-inner">
         <!-- Register -->
         <div class="card">
@@ -143,15 +143,15 @@ data-template="vertical-menu-template-free"
                 <label for="email" class="form-label">Email</label>
                 <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter your email " autofocus value="{{ old('email') }}" />
                 @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+    <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+@enderror
             </div>
             <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
                 <label class="form-label" for="password">Password</label>
-                <a href="auth-forgot-password-basic.html">
+                <a href="{{ route('password.request') }}">
                     <small>Forgot Password?</small>
                 </a>
                 </div>
@@ -159,10 +159,10 @@ data-template="vertical-menu-template-free"
                 <input type="password"id="password"class="form-control @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password"
                 value="{{ old('passsword') }}" />
                 @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+    <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+@enderror
                 {{-- <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span> --}}
                 </div>
             </div>

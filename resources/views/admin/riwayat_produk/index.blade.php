@@ -113,7 +113,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="3">
+                                <td colspan="10">
                                     <div class='alert alert-primary text-center'>
                                         Tidak ada data
                                     </div>

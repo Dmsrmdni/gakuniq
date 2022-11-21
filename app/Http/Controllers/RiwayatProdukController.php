@@ -64,7 +64,6 @@ class RiwayatProdukController extends Controller
                     ->route('produk.index')->with('toast_error', 'Stok Kurang');
             } else {
                 $produks->stok -= $riwayat_produks->qty;
-
             }
         }
 

@@ -3,21 +3,19 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Voucher;
-use Illuminate\Http\Request;
 
 class TestingController extends Controller
 {
-    public function test(Request $request)
+    public function test()
     {
-        // select("id", "kode_voucher")
+        // sel/* ect("id", "kode_voucher")
         // $vouchers = Voucher::get();
         // return response()->json([
         //     "data" => $vouchers,
         //     "status" => 200,
-        // ]);
+        // ]); */
 
-        return $request->user()->role;
+        return "Hello World";
     }
 
 //     public function create(Request $request)

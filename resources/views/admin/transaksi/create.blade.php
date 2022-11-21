@@ -78,11 +78,10 @@
                             <select name="metode_pembayaran"
                                 class="form-select @error('metode_pembayaran') is-invalid @enderror">
                                 <option value="" hidden>Pilih Metode Pembayaran</option>
-                                <option value="m-banking">m-banking</option>
-                                <option value="dana">dana</option>
-                                <option value="gopay">gopay</option>
-                                <option value="ovo">ovo</option>
-                                <option value="gakuniq wallet">gakuniq wallet</option>
+                                <option value="BRI">BRI</option>
+                                <option value="BCA">BCA</option>
+                                <option value="CLIMB NIAGA">CLIMB NIAGA</option>
+                                <option value="gakuniq wallet">GAKUNIQ WALLET</option>
                             </select>
                             @error('metode_pembayaran')
                                 <span class="invalid-feedback" role="alert">

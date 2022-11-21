@@ -16,20 +16,16 @@ class KategoriSeeder extends Seeder
     {
         Kategori::create([
             'name' => 'PRIA',
-            'link' => '/kategori/pria',
-            'hover' => '<HoverCategoryPria />',
+            // 'link' => '/kategori/pria',
+            // 'hover' => '<HoverCategoryPria />',
+            // 'status' => '0',
         ]);
 
         Kategori::create([
             'name' => 'WANITA',
-            'link' => '/kategori/wanita',
-            'hover' => '<HoverCategoryWanita />',
-        ]);
-
-        Kategori::create([
-            'name' => 'KATALOG',
-            'link' => '/katalog',
-            'hover' => '<HoverKatalog />',
+            // 'link' => '/kategori/wanita',
+            // 'hover' => '<HoverCategoryWanita />',
+            // 'status' => '0',
         ]);
 
     }

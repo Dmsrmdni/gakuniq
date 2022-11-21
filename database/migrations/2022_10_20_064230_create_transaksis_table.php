@@ -20,11 +20,13 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('keranjang_id');
             $table->foreign('keranjang_id')->references('id')->on('keranjangs')->onDelete('cascade');
+            $table->unsignedBigInteger('produk_id');
             $table->unsignedBigInteger('voucher_id')->nullable();
             // $table->foreign('voucher_id')->references('id')->on('vouchers')->onDelete('cascade');
             $table->integer('total_harga');
             $table->string('metode_pembayaran');
             $table->date('waktu_pemesanan');
+            $table->enum('status', ['proses', 'sukses', 'dikembalikan', 'selesai'])->default('proses');
             $table->timestamps();
         });
     }

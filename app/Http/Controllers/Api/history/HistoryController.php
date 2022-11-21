@@ -33,13 +33,6 @@ class HistoryController extends Controller
     {
 
         $histories = History::findOrFail($id);
-        // $histories->gambar_produk = $request->gambar_produk;
-        // $histories->kode_transaksi = $request->kode_transaksi;
-        // $histories->nama_pembeli = $request->nama_pembeli;
-        // $histories->nama_produk = $request->nama_produk;
-        // $histories->jumlah = $request->jumlah;
-        // $histories->total_harga = $request->total_harga;
-        // $histories->waktu_pemesanan = $request->waktu_pemesanan;
         $histories->status = $request->status;
 
         $histories->save();

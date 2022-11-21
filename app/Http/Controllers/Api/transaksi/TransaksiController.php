@@ -9,6 +9,7 @@ use App\Models\Produk;
 use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
+// use PDF;
 use Illuminate\Support\Facades\DB;
 
 class TransaksiController extends Controller
@@ -48,6 +49,7 @@ class TransaksiController extends Controller
         $transaksis->user_id = auth()->user()->id;
         $transaksis->kode_transaksi = 'GNQ-' . date('dmy') . $kode;
         $transaksis->keranjang_id = $request->keranjang_id;
+        $transaksis->produk_id = $transaksis->keranjang->produk_id;
         $transaksis->voucher_id = $request->voucher_id;
         $transaksis->metode_pembayaran = $request->metode_pembayaran;
         $transaksis->waktu_pemesanan = $request->waktu_pemesanan;
@@ -93,15 +95,15 @@ class TransaksiController extends Controller
         }
 
         // History
-        $histories = new History();
-        $histories->gambar_produk = $transaksis->keranjang->produk->gambar_produk1;
-        $histories->kode_transaksi = $transaksis->kode_transaksi;
-        $histories->nama_pembeli = $transaksis->keranjang->user->username;
-        $histories->nama_produk = $transaksis->keranjang->produk->nama_produk;
-        $histories->jumlah = $transaksis->keranjang->jumlah;
-        $histories->total_harga = $transaksis->total_harga;
-        $histories->waktu_pemesanan = $transaksis->waktu_pemesanan;
-        $histories->save();
+        // $histories = new History();
+        // $histories->gambar_produk = $transaksis->keranjang->produk->gambar_produk1;
+        // $histories->kode_transaksi = $transaksis->kode_transaksi;
+        // $histories->nama_pembeli = $transaksis->keranjang->user->username;
+        // $histories->nama_produk = $transaksis->keranjang->produk->nama_produk;
+        // $histories->jumlah = $transaksis->keranjang->jumlah;
+        // $histories->total_harga = $transaksis->total_harga;
+        // $histories->waktu_pemesanan = $transaksis->waktu_pemesanan;
+        // $histories->save();
 
         // keranjang
         $keranjangs = keranjang::findOrFail($transaksis->keranjang_id);
@@ -110,19 +112,65 @@ class TransaksiController extends Controller
 
         $transaksis->save();
 
+        // $pdf = PDF::loadView('pdf_download');
         return response()->json([
             "status" => 201,
             "messaage" => "succesfully created Transaksi",
+            // "pdf" => "$pdf->download('tutsmake.pdf')",
         ]);
     }
 
     // Menampilkan Data berdasakarkan id
     public function show($id)
     {
-        $transaksis = Transaksi::findMany($id);
+        $transaksis = Transaksi::select("kode_transaksi", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga", "status")->where('id', $id)->get();
         return response()->json([
             "data" => $transaksis,
             "status" => 200,
         ]);
     }
+
+    public function history()
+    {
+        // $transaksis = Transaksi::select("id", "kode_transaksi", "user_id", "keranjang_id", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga", "status")->with('keranjang', 'voucher', 'voucher_user')->where('user_id', auth()->user()->id)->get();
+        // $transaksis = Transaksi::where('user_id', auth()->user()->id)->with('keranjang')->get();
+        // $transaksis2 = $transaksis->keranjang->id;
+
+        // $data = DB::table('transaksis')->join('produks', 'transaksis.produk_id', '=', 'produks.id')->join('vouchers', 'transaksis.voucher_id', '=', 'vouchers.id')->get();
+        $transaksis = Transaksi::with('voucher', 'voucher_user', 'keranjang')->join('produks', 'transaksis.produk_id', '=', 'produks.id')
+            ->select('transaksis.id', "kode_transaksi", "keranjang_id", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga", "status", 'gambar_produk1', 'nama_produk')
+            ->where('transaksis.user_id', auth()->user()->id)
+            ->get();
+
+        return response()->json([
+            "data" => $transaksis,
+            "status" => 200,
+        ]);
+    }
+
+    // Mengedit Data
+    public function update(Request $request, $id)
+    {
+
+        $transaksis = Transaksi::findOrFail($id);
+        $transaksis->status = $request->status;
+        $transaksis->save();
+
+        return response()->json([
+            "status" => 201,
+            "messaage" => "succesfully updated History",
+        ]);
+    }
+
+    // // Menghapus Data
+    // public function destroy($id)
+    // {
+    //     $histories = History::findOrFail($id);
+    //     $histories->delete();
+
+    //     return response()->json([
+    //         "status" => 201,
+    //         "messaage" => "succesfully deleted History",
+    //     ]);
+    // }
 }

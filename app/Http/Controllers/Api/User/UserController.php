@@ -28,11 +28,11 @@ class UserController extends Controller
             'nama_belakang' => ['required'],
             'no_telepon' => ['required', 'string', 'min:12', 'max:14'],
             // 'username' => ['required'],
-            // 'email' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
             // 'tanggal_lahir' => ['required'],
             // 'jenis_kelamin' => ['required'],
-            'referensi' => ['required'],
+            // 'referensi' => ['required'],
             'label_alamat' => ['required'],
             'kota_kecamatan' => ['required'],
             'alamat_lengkap' => ['required'],
@@ -44,7 +44,7 @@ class UserController extends Controller
         $users->nama_belakang = $request->nama_belakang;
         $users->no_telepon = $request->no_telepon;
         // $users->username = $request->username;
-        // $users->email = $request->email;
+        $users->email = $request->email;
         // $users->tanggal_lahir = $request->tanggal_lahir;
         // $users->jenis_kelamin = $request->jenis_kelamin;
         $users->referensi = $request->referensi;

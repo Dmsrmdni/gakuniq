@@ -84,9 +84,25 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
+    {{-- <link rel="stylesheet" href="{{ asset('css/costum.css') }}"> --}}
+
+    {{-- <style>
+        .preloader
+            {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                background: url('https://cdn.dribbble.com/users/225707/screenshots/2958729/attachments/648705/straight-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+                opacity: .8;
+            }
+    </style> --}}
 </head>
 
 <body>
+    {{-- <div id="preloaders" class="preloader"></div> --}}
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -155,5 +171,11 @@
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {{-- <script>
+        $(window).load(function() {
+            $("#preloaders").fadeOut(2000);
+        });
+    </script> --}}
+        {{-- <script src="{{ asset('js/costum.js') }}"></script> --}}
 </body>
 </html>

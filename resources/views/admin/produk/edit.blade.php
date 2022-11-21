@@ -64,6 +64,16 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">Hpp Produk</label>
+                            <input type="number" name="hpp"
+                                class="form-control mb-2  @error('hpp') is-invalid @enderror" value="{{ $produks->hpp }}">
+                            @error('hpp')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Harga Produk</label>
                             <input type="number" name="harga"
                                 class="form-control mb-2  @error('harga') is-invalid @enderror"
@@ -146,7 +156,8 @@
                                         style="width:150px; height:150px; border-radius:10px" alt="">
                                 @endif
                             </p>
-                            <input type="file" class="form-control mb-2  @error('gambar_produk3') is-invalid @enderror"
+                            <input type="file"
+                                class="form-control mb-2  @error('gambar_produk3') is-invalid @enderror"
                                 name="gambar_produk3" value="{{ old('gambar_produk3') }}">
                             @error('gambar_produk3')
                                 <span class="invalid-feedback" role="alert">
