@@ -71,4 +71,5 @@
                     </svg> Kembali</a>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

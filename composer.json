@@ -14,7 +14,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
         "php-open-source-saver/jwt-auth": "^2.0",
-        "pusher/pusher-php-server": "5.0.3",
+        "pusher/pusher-php-server": "^7.2",
         "realrashid/sweet-alert": "^5.1"
     },
     "require-dev": {

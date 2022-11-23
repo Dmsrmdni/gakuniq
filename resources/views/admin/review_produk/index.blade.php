@@ -33,8 +33,7 @@
                             <th>NO</th>
                             <th>Nama Pembeli</th>
                             <th>Nama Produk</th>
-                            <th>Status</th>
-                            {{-- <th>Komen</th> --}}
+                            <th>Rating</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -59,11 +58,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{-- @if ($review_produk->status == 'recommended') --}}
-                                            <div class="badge bg-label-success w-75">{{ $review_produk->status }}</div>
-                                            {{-- @elseif ( $review_produk->status == 'not recommended')
-                                <div class="badge bg-label-danger w-75">{{ $review_produk->status }}</div>
-                                @endif --}}
+                                            {{ $review_produk->rating }}
                                         </div>
                                     </td>
                                     <td>

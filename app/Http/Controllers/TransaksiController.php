@@ -26,9 +26,7 @@ class TransaksiController extends Controller
         $transaksis = Transaksi::with('keranjang', 'voucher', 'voucher_user', 'user')
             ->latest()
             ->get();
-        // $keranjangs = Keranjang::with('produk', 'user')->where('user_id', auth()->user()->id)->latest()->get();
 
-        // $total_keranjangs = Keranjang::where('user_id', auth()->user()->id)->count();
         return view('admin.transaksi.index', compact('transaksis'));
     }
 

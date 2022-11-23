@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chat;
 use App\Models\Kategori;
 use App\Models\Produk;
 use App\Models\Review_produk;
@@ -11,6 +12,7 @@ use App\Models\TopUp;
 use App\Models\Transaksi;
 use App\Models\User;
 use App\Models\Voucher;
+use App\Models\Voucher_user;
 
 class DashboardController extends Controller
 {
@@ -59,8 +61,33 @@ class DashboardController extends Controller
         $pembelian_okt = Transaksi::whereMonth('waktu_pemesanan', '10')->count();
         $pembelian_nov = Transaksi::whereMonth('waktu_pemesanan', '11')->count();
         $pembelian_des = Transaksi::whereMonth('waktu_pemesanan', '12')->count();
-
         //endPembelian
+
+        // PendapatanTransaksi
+        $transaksis = Transaksi::where('status', 'selesai')->orWhere('status', 'sukses')->get();
+        $pendapatan_transaksi = collect($transaksis)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->total_harga - ($item->keranjang->produk->hpp * $item->keranjang->jumlah);
+            }, 0);
+        // EndPendapatanTransaksi
+
+        // produk
+        $produk = collect($transaksis)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->keranjang->jumlah;
+            }, 0);
+        // Endproduk
+
+        // PendapatanVoucher
+        $voucher_users = Voucher_user::all();
+        $pendapatan_voucher = collect($voucher_users)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->voucher->harga;
+            }, 0);
+        // EndPendapatanVoucher
+
+        // Total Pendapatan
+
         // User
         $total_users = User::where('role', auth()->user()->role = 'costumer')->count();
         $total_produks = Produk::count();
@@ -69,8 +96,11 @@ class DashboardController extends Controller
         $total_top_ups = TopUp::count();
         $total_kategoris = Kategori::count();
         $total_transaksis = Transaksi::count();
-
         // EndUser
+
+        $chats = Chat::all();
+
+// return view('admin.index', compact());
 
         return view('admin.index', compact(
             'barang_masuk',
@@ -126,8 +156,20 @@ class DashboardController extends Controller
             'total_vouchers',
             'total_top_ups',
             'total_transaksis',
-
             // EndUser
+
+            // Pendapatan
+            'pendapatan_transaksi',
+            // EndPendapatan
+
+            // Pendapatan
+            'pendapatan_voucher',
+            // EndPendapatan
+
+            // Produk
+            'produk',
+            // EndProduk
+            'chats',
         ));
 
     }

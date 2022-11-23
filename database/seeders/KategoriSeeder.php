@@ -28,5 +28,12 @@ class KategoriSeeder extends Seeder
             // 'status' => '0',
         ]);
 
+        Kategori::create([
+            'name' => 'ANAK',
+            // 'link' => '/kategori/wanita',
+            // 'hover' => '<HoverCategoryWanita />',
+            // 'status' => '0',
+        ]);
+
     }
 }

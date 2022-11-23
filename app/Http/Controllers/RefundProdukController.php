@@ -52,6 +52,9 @@ class RefundProdukController extends Controller
         $refund_produks->user_id = $request->user_id;
         $refund_produks->transaksi_id = $request->transaksi_id;
         $refund_produks->alasan = $request->alasan;
+        $transaksis = Transaksi::findOrFail($refund_produks->transaksi_id);
+        $transaksis->status = "pengajuan refund";
+        $transaksis->save();
 
         $refund_produks->save();
         return redirect()

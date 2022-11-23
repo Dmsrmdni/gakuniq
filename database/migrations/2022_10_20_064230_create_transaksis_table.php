@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('total_harga');
             $table->string('metode_pembayaran');
             $table->date('waktu_pemesanan');
-            $table->enum('status', ['proses', 'sukses', 'dikembalikan', 'selesai'])->default('proses');
+            $table->enum('status', ['proses', 'sukses', 'dikembalikan', 'selesai', 'pengajuan refund'])->default('proses');
             $table->timestamps();
         });
     }

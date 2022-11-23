@@ -138,7 +138,7 @@ class TransaksiController extends Controller
 
         // $data = DB::table('transaksis')->join('produks', 'transaksis.produk_id', '=', 'produks.id')->join('vouchers', 'transaksis.voucher_id', '=', 'vouchers.id')->get();
         $transaksis = Transaksi::with('voucher', 'voucher_user', 'keranjang')->join('produks', 'transaksis.produk_id', '=', 'produks.id')
-            ->select('transaksis.id', "kode_transaksi", "keranjang_id", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga", "status", 'gambar_produk1', 'nama_produk')
+            ->select('transaksis.id', "kode_transaksi", "keranjang_id", "produk_id", "metode_pembayaran", "waktu_pemesanan", "voucher_id", "total_harga", "status", 'gambar_produk1', 'nama_produk')
             ->where('transaksis.user_id', auth()->user()->id)
             ->get();
 

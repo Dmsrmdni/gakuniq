@@ -48,16 +48,11 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Status Produk</label>
-                            <select name="status" class="form-select @error('status') is-invalid @enderror">
-                                <option value="" hidden>Pilih Status</option>
-                                <option value="Gak Recommended Banget">Gak Recommended Banget</option>
-                                <option value="Gak Recommended">Gak Recommended</option>
-                                <option value="Biasa Saja">Biasa Saja</option>
-                                <option value="Recommended">Recommended</option>
-                                <option value="Recommended Banget">Recommended Banget</option>
-                            </select>
-                            @error('status')
+                            <label class="form-label">Rating Produk</label>
+                            <input type="number" name="rating"
+                                class="form-control mb-2  @error('rating') is-invalid @enderror"
+                                placeholder="rating Produk">
+                            @error('rating')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

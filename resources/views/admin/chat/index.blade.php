@@ -1,11 +1,9 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-
     <div class="card shadow-lg rounded card p-2 pb-3">
         <div class="card-header" id="#atas">
-            @include('sweetalert::alert')
-            <a href="{{ route('kategori.create') }}" class="btn btn-sm btn-primary"><svg xmlns="http://www.w3.org/2000/svg"
+            <a href="{{ route('chat.create') }}" class="btn btn-sm btn-primary"><svg xmlns="http://www.w3.org/2000/svg"
                     width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                         d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
@@ -17,13 +15,15 @@
                     <thead>
                         <tr>
                             <th>NO</th>
-                            <th>Nama kategori</th>
+                            <th>user_id</th>
+                            <th>room</th>
+                            <th>message</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @if (count($kategoris))
-                            @foreach ($kategoris as $kategori)
+                        @if (count($chats))
+                            @foreach ($chats as $chat)
                                 <tr>
                                     <td>
                                         <div class="d-flex">
@@ -32,25 +32,25 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $kategori->name }}
+                                            {{ $chat->user_id }}
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="{{ route('kategori.destroy', $kategori->id) }}" method="post">
+                                        <div class="d-flex">
+                                            {{ $chat->room }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            {{ $chat->message }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('chat.destroy', $chat->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <a href="{{ route('kategori.edit', $kategori->id) }}"
-                                                class="btn btn-sm btn-secondary" data-bs-toggle="tooltip"
-                                                data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true"
-                                                title="<span>Edit Data</span>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
-                                                </svg>
-                                            </a> |
                                             <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#modalCenter{{ $kategori->id }}"><svg
+                                                data-bs-target="#modalCenter{{ $chat->id }}"><svg
                                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                                     <path
@@ -58,7 +58,7 @@
                                                 </svg>
                                             </button>
                                             <!-- Modal -->
-                                            <div class="modal fade" id="modalCenter{{ $kategori->id }}" tabindex="-1"
+                                            <div class="modal fade" id="modalCenter{{ $chat->id }}" tabindex="-1"
                                                 aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
@@ -84,7 +84,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="3">
+                                <td colspan="9">
                                     <div class='alert alert-primary text-center'>
                                         Tidak ada data
                                     </div>

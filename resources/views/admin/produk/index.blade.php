@@ -1,20 +1,6 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-    {{-- <div class="row">
-    <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <div class="d-flex w-100 justify-content-between">
-                    <div class="me-2">
-                        <h6 class="mb-0">Total produk : </h6>
-                    </div>
-                    <h5 class="fw-semibold mb-0">{{ $total_produks }}</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 
     <div class="card shadow-lg rounded card">
         <div class="card-header" id="#atas">
@@ -26,7 +12,7 @@
             <!-- Default Modal -->
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#backDropModal">
                 Set stok <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -35,7 +21,7 @@
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="backDropModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">

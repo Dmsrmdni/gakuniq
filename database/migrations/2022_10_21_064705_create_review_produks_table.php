@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('transaksi_id');
             $table->foreign('transaksi_id')->references('id')->on('transaksis')->onDelete('cascade');
             $table->unsignedBigInteger('produk_id');
-            $table->enum('status', ['Gak Recommended Banget', 'Gak Recommended', 'Biasa Saja', 'Recommended', 'Recommended Banget']);
+            $table->integer('rating');
             $table->text('komen');
             $table->timestamps();
         });

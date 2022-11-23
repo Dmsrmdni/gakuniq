@@ -8,16 +8,18 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class Chat implements ShouldBroadcast
+class HelloEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct(
-        // public string $room,
-        // public string $username,
-        // public string $message
-    ) {
-        // $this->message = $message;
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
     }
 
     /**
@@ -27,11 +29,6 @@ class Chat implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['gnq-development'];
-    }
-
-    public function broadcastAs()
-    {
-        return 'Chat';
+        return new Channel('hello-channel');
     }
 }

@@ -43,6 +43,8 @@ Route::post('chat', [ChatController::class, 'message']);
 Route::post('/register', RegisterController::class)->name('register');
 Route::post('/login', LoginController::class)->name('login');
 Route::post('/logout/{id}', LogoutController::class)->name('logout');
+Route::post('sendPasswordResetLink', [PasswordResetRequestController::class, 'sendEmail']);
+Route::post('resetPassword', [ChangePasswordController::class, 'passwordResetProcess']);
 // EndAuthentikasi
 
 // Kategori
@@ -74,6 +76,7 @@ Route::middleware(['auth:api'])->group(function () {
     // Produk
     Route::get('referensi', [ProdukController::class, 'Referensi']);
     // EndProduk
+
     // Wishlist
     Route::get('wishlist', [WishlistController::class, 'index']);
     Route::post('wishlist/create', [WishlistController::class, 'store']);
@@ -143,8 +146,11 @@ Route::get('all/user', [UserController::class, 'allData']);
 //     return response()->json($filterResult);
 // });
 
-Route::post('sendPasswordResetLink', [PasswordResetRequestController::class, 'sendEmail']);
-Route::post('resetPassword', [ChangePasswordController::class, 'passwordResetProcess']);
+Route::get('chat', [ChatController::class, 'index']);
+Route::post('chat/create', [ChatController::class, 'store']);
+Route::delete('chat/{id}', [ChatController::class, 'destroy']);
+
+//
 
 // Route::post('resetPassword', 'App\Http\Controllers\ChangePasswordController@passwordResetProcess');
 // Route::post('sendEmail', 'App\Http\Controllers\MailController@sendEmail');

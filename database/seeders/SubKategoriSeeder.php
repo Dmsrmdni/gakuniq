@@ -44,5 +44,20 @@ class SubKategoriSeeder extends Seeder
             'sub_kategori' => 'Retro Wanita',
         ]);
 
+        Sub_kategori::create([
+            'kategori_id' => 3,
+            'sub_kategori' => 'Modern Anak',
+        ]);
+
+        Sub_kategori::create([
+            'kategori_id' => 3,
+            'sub_kategori' => 'Klasik Anak',
+        ]);
+
+        Sub_kategori::create([
+            'kategori_id' => 3,
+            'sub_kategori' => 'Retro Anak',
+        ]);
+
     }
 }

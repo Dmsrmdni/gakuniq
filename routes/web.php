@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\HistoryController;
@@ -32,7 +33,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -59,28 +60,14 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('voucher_user', VoucherUserController::class);
     Route::resource('riwayat_produk', RiwayatProdukController::class)->except('show', 'edit');
     Route::resource('top_up', TopUpController::class)->except('show', 'edit');
+    Route::resource('chat', ChatController::class)->except('show', 'edit');
 });
 
-// Route::get('/admin/produk/create', function () {
-//     $kategori = App\Models\Kategori::all();
-//     return view('admin.produk.create', ['kategori' => $kategori]);
-// });
-
-// Route::delete('wishlist/delete', [DeleteController::class, 'wishlist']);
 Route::get('getSub_kategori/{id}', function ($id) {
     $sub_kategoris = Sub_kategori::where('kategori_id', $id)->get();
     return response()->json($sub_kategoris);
 });
 
-// Route::delete('deleted', function () {
-//     DB::table('wishlists')->where('user_id', 1)->delete();
-//     return redirect()
-//         ->route('admin.wishlist.index')->with('toast_error', 'Data has been deleted');
-// });
-
-// Route::get('/changeStatus', [VoucherController::class, 'changeStatusVoucher']);
-
-// Route::get('/deleteWishlist', function () {
-//     $wishlist = Wishlist::all()->delete();
-//     return response()->json($wishlist);
-// });
+Route::get('/send-event', function () {
+    broadcast(new \App\Events\HelloEvent());
+});

@@ -11,10 +11,10 @@ class ReviewProdukController extends Controller
     // Menampilkan Semua Data
     public function index($id)
     {
-        $review_produks = Review_produk::where('produk_id', $id)->select("id", "user_id", "produk_id", "transaksi_id", "status", "komen")->with('transaksi','user')->get();
+        $review_produks = Review_produk::where('produk_id', $id)->select("id", "user_id", "produk_id", "transaksi_id", "rating", "komen")->with('transaksi', 'user')->get();
         return response()->json([
             "data" => $review_produks,
-            "status" => 200,
+            "rating" => 200,
         ]);
     }
 
@@ -24,7 +24,7 @@ class ReviewProdukController extends Controller
         //validasi
         $validated = $request->validate([
             'transaksi_id' => 'required',
-            'status' => 'required',
+            'rating' => 'required',
             'komen' => 'required',
         ]);
 
@@ -32,12 +32,12 @@ class ReviewProdukController extends Controller
         $review_produks->user_id = auth()->user()->id;
         $review_produks->transaksi_id = $request->transaksi_id;
         $review_produks->produk_id = $review_produks->transaksi->keranjang->produk->id;
-        $review_produks->status = $request->status;
+        $review_produks->rating = $request->rating;
         $review_produks->komen = $request->komen;
         $review_produks->save();
 
         return response()->json([
-            "status" => 201,
+            "rating" => 201,
             "messaage" => "succesfully created Review Produks",
         ]);
     }
@@ -48,7 +48,7 @@ class ReviewProdukController extends Controller
         $review_produks = Review_produk::findOrFail($id);
         return response()->json([
             "data" => $review_produks,
-            "status" => 200,
+            "rating" => 200,
         ]);
     }
 }

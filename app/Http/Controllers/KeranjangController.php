@@ -20,9 +20,7 @@ class KeranjangController extends Controller
     public function index()
     {
         $keranjangs = Keranjang::where('status', 'keranjang')->with('produk', 'user')->latest()->get();
-        // $keranjangs = Keranjang::with('produk', 'user')->where('user_id', auth()->user()->id)->latest()->get();
         $total_keranjangs = Keranjang::where('status', 'keranjang')->count();
-        // $total_keranjangs = Keranjang::where('user_id', auth()->user()->id)->count();
         return view('admin.keranjang.index', compact('keranjangs', 'total_keranjangs'));
     }
 
@@ -36,7 +34,6 @@ class KeranjangController extends Controller
         $produks = Produk::all();
         $users = User::where('role', 'costumer')->get();
         return view('admin.keranjang.create', compact('produks', 'users'));
-
     }
 
     /**
@@ -56,22 +53,6 @@ class KeranjangController extends Controller
             'jumlah' => 'required',
         ]);
 
-        // $keranjangs = new Keranjang();
-        // $keranjangs->user_id = $request->user_id;
-        // $keranjangs->produk_id = $request->produk_id;
-        // $keranjangs->ukuran = $request->ukuran;
-        // $keranjangs->warna = $request->warna;
-        // $keranjangs->jumlah = $request->jumlah;
-        // $diskon = (($keranjangs->produk->diskon / 100) * $keranjangs->produk->harga);
-        // $keranjangs->total_harga = ($keranjangs->produk->harga * $request->jumlah) - $diskon;
-        // $keranjangs->save();
-        // return redirect()
-        //     ->route('keranjang.index')->with('toast_success', 'Data has been added');
-
-        // $keranjangs = Keranjang::all();
-        // $cek_keranjangs = Keranjang::where('user_id', $keranjangs->user_id)->where('produk_id', $keranjangs->produk_id)->where('ukuran', $keranjangs->ukuran)->where('warna',$keranjangs->warna)->where('status','keranjang')->get();
-
-        // if(empty($cek_keranjangs)){
         $keranjangs = new Keranjang();
         $keranjangs->user_id = $request->user_id;
         $keranjangs->produk_id = $request->produk_id;
@@ -83,15 +64,6 @@ class KeranjangController extends Controller
         $keranjangs->save();
         return redirect()
             ->route('keranjang.index')->with('toast_success', 'Data has been added');
-        // }
-        // else{
-        // $cek_keranjangs = Keranjang::where('user_id', $cek_keranjangs->user_id)->where('produk_id', $cek_keranjangs->produk_id)->where('ukuran', $cek_keranjangs->ukuran)->where('warna',$cek_keranjangs->warna)->where('status','keranjang')->get();
-        // $Keranjangs = Keranjang::findMany(1);
-        // $keranjangs->jumlah = $request->jumlah;
-        // $keranjangs->save();
-        //     return redirect()
-        //         ->route('keranjang.index')->with('toast_success', 'Data has been updated');
-        // }
     }
 
     /**

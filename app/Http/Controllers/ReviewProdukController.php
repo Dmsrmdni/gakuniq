@@ -46,7 +46,7 @@ class ReviewProdukController extends Controller
         //validasi
         $validated = $request->validate([
             'transaksi_id' => 'required',
-            'status' => 'required',
+            'rating' => 'required',
             'komen' => 'required',
         ]);
 
@@ -54,7 +54,7 @@ class ReviewProdukController extends Controller
         $review_produks->user_id = $request->user_id;
         $review_produks->transaksi_id = $request->transaksi_id;
         $review_produks->produk_id = $review_produks->transaksi->keranjang->produk->id;
-        $review_produks->status = $request->status;
+        $review_produks->rating = $request->rating;
         $review_produks->komen = $request->komen;
         $review_produks->save();
         return redirect()
@@ -70,7 +70,6 @@ class ReviewProdukController extends Controller
     public function show($id)
     {
         $review_produks = Review_Produk::findOrFail($id);
-        // $kategoris = Kategori::all();
         return view('admin.review_produk.show', compact('review_produks'));
 
     }

@@ -76,7 +76,7 @@ class VoucherSeeder extends Seeder
 
         Voucher::create([
             'kode_voucher' => 'Spesial Ulang Tahun',
-            'harga' => 170000,
+            'harga' => 17000,
             'label' => 'berbayar',
             'diskon' => 10,
             'waktu_mulai' => '2022-10-01',

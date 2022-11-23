@@ -402,24 +402,26 @@
             font-family: 'Nunito', sans-serif;
         }
     </style>
+
+    {{-- @vite('resources/css/app.css') --}}
 </head>
 
 <body class="antialiased">
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         @if (Route::has('login'))
-        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            @auth
-                <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-            @else
-            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                @auth
+                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                @else
+                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}"
-                class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-            @endif
-            @endauth
-        </div>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}"
+                            class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                    @endif
+                @endauth
+            </div>
         @endif
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
@@ -524,7 +526,8 @@
                                     href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a
                                     href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a
                                     href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a
-                                    href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
+                                    href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and
+                                more.
                             </div>
                         </div>
                     </div>
@@ -564,6 +567,17 @@
             </div>
         </div>
     </div>
+    {{-- @vite('resources/js/app.js')
+    <script>
+        //for everyone else
+        document.addEventListener("DOMContentLoaded", function(event) {
+            Echo.Channel('hello-channel')
+                .listen('HelloEvent', (e) => {
+                    console.log('event from hello')
+                    console.log(e.order);
+                });
+        }),
+    </script> --}}
 </body>
 
 </html>

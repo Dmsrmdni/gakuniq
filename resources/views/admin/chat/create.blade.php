@@ -2,47 +2,46 @@
 
 @section('content')
     <div class="container-fluid">
-        <form action="{{ route('kategori.store') }}" method="POST">
+        <form action="{{ route('chat.store') }}" method="POST">
             @csrf
             <div class="col-lg-8">
                 <div class="card mb-4 shadow-lg rounded card" style="margin: 2%; padding:1% ">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0">Data Kategori</h4>
+                        <h4 class="mb-0">Data Chat</h4>
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
-                            <label class="form-label">Nama Kategori</label>
-                            <input type="text" name="name"
-                                class="form-control mb-2  @error('name') is-invalid @enderror" placeholder="Nama Kategori"
-                                value="{{ old('name') }}">
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        {{-- <div class="mb-3">
-                            <label class="form-label">Link Kategori</label>
-                            <input type="text" name="link"
-                                class="form-control mb-2  @error('link') is-invalid @enderror" placeholder="Link Kategori"
-                                value="{{ old('link') }}">
-                            @error('link')
+                            <label class="form-label">user_id</label>
+                            <input type="text" name="user_id"
+                                class="form-control mb-2  @error('user_id') is-invalid @enderror" placeholder="Nama Users"
+                                value="{{ old('user_id') }}">
+                            @error('user_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">hover Kategori</label>
-                            <input type="text" name="hover"
-                                class="form-control mb-2  @error('hover') is-invalid @enderror" placeholder="hover Kategori"
-                                value="{{ old('hover') }}">
-                            @error('hover')
+                            <label class="form-label">room</label>
+                            <input type="text" name="room"
+                                class="form-control mb-2  @error('room') is-invalid @enderror" placeholder="Nama Kategori"
+                                value="{{ old('room') }}">
+                            @error('room')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div> --}}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea name="message" cols="30" rows="7" class="form-control mb-2  @error('message') is-invalid @enderror"
+                                placeholder="message" value="{{ old('message') }}"></textarea>
+                            @error('message')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
