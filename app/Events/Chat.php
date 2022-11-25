@@ -13,9 +13,9 @@ class Chat implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public function __construct(
-        // public string $room,
-        // public string $username,
-        // public string $message
+        public string $room,
+        public string $username,
+        public string $message
     ) {
         // $this->message = $message;
     }

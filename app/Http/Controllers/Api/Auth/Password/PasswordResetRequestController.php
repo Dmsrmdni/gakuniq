@@ -17,22 +17,23 @@ class PasswordResetRequestController extends Controller
     public function sendEmail(Request $request)
     { // this is most important function to send mail and inside of that there are another function {
         if (!$this->validateEmail($request->email)) { // this is validate to fail send mail or true
-            return $this->failedResponse();
+            return response()->json([
+                'data' => 'Email does\'t found on our database',
+            ]);
         }
-        $this->send($request->email); //this is a function to send mail
-        return $this->successResponse();
-    }
 
-    public function send($email)
-    { //this is a function to send mail {
-        $token = $this->createToken($email);
-        Mail::to($email)->send(new SendMailreset($token, $email)); // token is important in send mail
+        $token = $this->createToken($request->email);
+        Mail::to($request->email)->send(new SendMailreset($token, $request->email)); // token is important in send mail
+
+        return response()->json([
+            'data' => 'successfully, please check your inbox.',
+        ]);
+
     }
 
     public function createToken($email)
     { // this is a function to get your request email that there are or not to send mail {
         $oldToken = DB::table('password_resets')->where('email', $email)->first();
-
         if ($oldToken) {
             return $oldToken->token;
         }
@@ -54,19 +55,5 @@ class PasswordResetRequestController extends Controller
     public function validateEmail($email)
     { //this is a function to get your email from database {
         return !!User::where('email', $email)->first();
-    }
-
-    public function failedResponse()
-    {
-        return response()->json([
-            'error' => 'Email does\'t found on our database',
-        ], Response::HTTP_NOT_FOUND);
-    }
-
-    public function successResponse()
-    {
-        return response()->json([
-            'data' => 'Reset Email is send successfully, please check your inbox.',
-        ], Response::HTTP_OK);
     }
 }

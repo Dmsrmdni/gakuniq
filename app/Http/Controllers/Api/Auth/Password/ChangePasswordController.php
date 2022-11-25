@@ -29,7 +29,7 @@ class ChangePasswordController extends Controller
     {
         return response()->json([
             'error' => 'Either your email or token is wrong.',
-        ], Response::HTTP_UNPROCESSABLE_ENTITY);
+        ]);
     }
 
     // Reset password
@@ -47,6 +47,6 @@ class ChangePasswordController extends Controller
         // reset password response
         return response()->json([
             'data' => 'Password has been updated.',
-        ], Response::HTTP_CREATED);
+        ]);
     }
 }

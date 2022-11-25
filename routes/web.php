@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KeranjangController;
@@ -50,7 +49,6 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('keranjang/delete', [KeranjangController::class, 'destroyAll']);
     Route::resource('wishlist', WishlistController::class)->except('show');
     Route::get('wishlist/delete', [WishlistController::class, 'destroyAll']);
-    Route::resource('delete', DeleteController::class);
     Route::resource('review_produk', ReviewProdukController::class)->except('edit');
     Route::resource('refund_produk', RefundProdukController::class);
     Route::resource('transaksi', TransaksiController::class);

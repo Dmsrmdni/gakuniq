@@ -18,75 +18,267 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // barang
-        $barang_masuk = Riwayat_produk::where('type', 'masuk')->count();
-        $barang_keluar = Riwayat_produk::where('type', 'keluar')->count();
-        $barang_masuk_jan = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '01')->count();
-        $barang_masuk_feb = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '02')->count();
-        $barang_masuk_mar = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '03')->count();
-        $barang_masuk_apr = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '04')->count();
-        $barang_masuk_mei = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '05')->count();
-        $barang_masuk_jun = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '06')->count();
-        $barang_masuk_jul = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '07')->count();
-        $barang_masuk_agu = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '08')->count();
-        $barang_masuk_sep = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '09')->count();
-        $barang_masuk_okt = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '10')->count();
-        $barang_masuk_nov = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '11')->count();
-        $barang_masuk_des = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '12')->count();
+        // BarangMasukKeluar2021
+        $barang_masuk_2021 = Riwayat_produk::where('type', 'masuk')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_2021 = Riwayat_produk::where('type', 'keluar')->whereYear('waktu_riwayat', '2021')->count();
+        // endBarangMasukKeluar2021
 
-        $barang_keluar_jan = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '01')->count();
-        $barang_keluar_feb = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '02')->count();
-        $barang_keluar_mar = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '03')->count();
-        $barang_keluar_apr = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '04')->count();
-        $barang_keluar_mei = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '05')->count();
-        $barang_keluar_jun = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '06')->count();
-        $barang_keluar_jul = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '07')->count();
-        $barang_keluar_agu = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '08')->count();
-        $barang_keluar_sep = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '09')->count();
-        $barang_keluar_okt = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '10')->count();
-        $barang_keluar_nov = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '11')->count();
-        $barang_keluar_des = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '12')->count();
-        // endbarang
+        // BarangMasuk_2021
+        $barang_masuk_jan_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '01')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_feb_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '02')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_mar_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '03')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_apr_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '04')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_mei_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '05')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_jun_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '06')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_jul_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '07')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_agu_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '08')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_sep_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '09')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_okt_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '10')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_nov_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '11')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_masuk_des_2021 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '12')->whereYear('waktu_riwayat', '2021')->count();
+        // endBarangMasuk_2021
 
-        // pembelian
-        $pembelian_jan = Transaksi::whereMonth('waktu_pemesanan', '01')->count();
-        $pembelian_feb = Transaksi::whereMonth('waktu_pemesanan', '02')->count();
-        $pembelian_mar = Transaksi::whereMonth('waktu_pemesanan', '03')->count();
-        $pembelian_apr = Transaksi::whereMonth('waktu_pemesanan', '04')->count();
-        $pembelian_mei = Transaksi::whereMonth('waktu_pemesanan', '05')->count();
-        $pembelian_jun = Transaksi::whereMonth('waktu_pemesanan', '06')->count();
-        $pembelian_jul = Transaksi::whereMonth('waktu_pemesanan', '07')->count();
-        $pembelian_agu = Transaksi::whereMonth('waktu_pemesanan', '08')->count();
-        $pembelian_sep = Transaksi::whereMonth('waktu_pemesanan', '09')->count();
-        $pembelian_okt = Transaksi::whereMonth('waktu_pemesanan', '10')->count();
-        $pembelian_nov = Transaksi::whereMonth('waktu_pemesanan', '11')->count();
-        $pembelian_des = Transaksi::whereMonth('waktu_pemesanan', '12')->count();
-        //endPembelian
+        // BarangKeluar_2021
+        $barang_keluar_jan_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '01')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_feb_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '02')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_mar_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '03')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_apr_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '04')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_mei_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '05')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_jun_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '06')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_jul_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '07')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_agu_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '08')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_sep_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '09')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_okt_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '10')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_nov_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '11')->whereYear('waktu_riwayat', '2021')->count();
+        $barang_keluar_des_2021 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '12')->whereYear('waktu_riwayat', '2021')->count();
+        // endBarangKeluar_2021
+
+        // BarangMasukKeluar2022
+        $barang_masuk_2022 = Riwayat_produk::where('type', 'masuk')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_2022 = Riwayat_produk::where('type', 'keluar')->whereYear('waktu_riwayat', '2022')->count();
+        // endBarangMasukKeluar2022
+
+        // BarangMasuk_2022
+        $barang_masuk_jan_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '01')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_feb_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '02')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_mar_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '03')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_apr_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '04')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_mei_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '05')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_jun_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '06')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_jul_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '07')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_agu_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '08')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_sep_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '09')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_okt_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '10')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_nov_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '11')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_masuk_des_2022 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '12')->whereYear('waktu_riwayat', '2022')->count();
+        // endBarangMasuk_2022
+
+        // BarangKeluar_2022
+        $barang_keluar_jan_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '01')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_feb_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '02')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_mar_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '03')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_apr_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '04')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_mei_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '05')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_jun_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '06')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_jul_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '07')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_agu_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '08')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_sep_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '09')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_okt_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '10')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_nov_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '11')->whereYear('waktu_riwayat', '2022')->count();
+        $barang_keluar_des_2022 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '12')->whereYear('waktu_riwayat', '2022')->count();
+        // endBarangKeluar_2022
+
+        // BarangMasukKeluar2023
+        $barang_masuk_2023 = Riwayat_produk::where('type', 'masuk')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_2023 = Riwayat_produk::where('type', 'keluar')->whereYear('waktu_riwayat', '2023')->count();
+        // endBarangMasukKeluar2023
+
+        // BarangMasuk_2023
+        $barang_masuk_jan_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '01')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_feb_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '02')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_mar_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '03')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_apr_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '04')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_mei_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '05')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_jun_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '06')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_jul_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '07')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_agu_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '08')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_sep_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '09')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_okt_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '10')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_nov_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '11')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_masuk_des_2023 = Riwayat_produk::where('type', 'masuk')->whereMonth('waktu_riwayat', '12')->whereYear('waktu_riwayat', '2023')->count();
+        // endBarangMasuk_2023
+
+        // BarangKeluar_2023
+        $barang_keluar_jan_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '01')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_feb_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '02')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_mar_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '03')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_apr_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '04')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_mei_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '05')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_jun_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '06')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_jul_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '07')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_agu_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '08')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_sep_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '09')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_okt_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '10')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_nov_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '11')->whereYear('waktu_riwayat', '2023')->count();
+        $barang_keluar_des_2023 = Riwayat_produk::where('type', 'keluar')->whereMonth('waktu_riwayat', '12')->whereYear('waktu_riwayat', '2023')->count();
+        // endBarangKeluar_2023
+
+        // pembelianTahun2021
+        $pembelian_jan_2021 = Transaksi::whereMonth('waktu_pemesanan', '01')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_feb_2021 = Transaksi::whereMonth('waktu_pemesanan', '02')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_mar_2021 = Transaksi::whereMonth('waktu_pemesanan', '03')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_apr_2021 = Transaksi::whereMonth('waktu_pemesanan', '04')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_mei_2021 = Transaksi::whereMonth('waktu_pemesanan', '05')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_jun_2021 = Transaksi::whereMonth('waktu_pemesanan', '06')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_jul_2021 = Transaksi::whereMonth('waktu_pemesanan', '07')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_agu_2021 = Transaksi::whereMonth('waktu_pemesanan', '08')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_sep_2021 = Transaksi::whereMonth('waktu_pemesanan', '09')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_okt_2021 = Transaksi::whereMonth('waktu_pemesanan', '10')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_nov_2021 = Transaksi::whereMonth('waktu_pemesanan', '11')->whereYear('waktu_pemesanan', '2021')->count();
+        $pembelian_des_2021 = Transaksi::whereMonth('waktu_pemesanan', '12')->whereYear('waktu_pemesanan', '2021')->count();
+        //endPembelianTahun2021
+
+        // pembelianTahun2022
+        $pembelian_jan_2022 = Transaksi::whereMonth('waktu_pemesanan', '01')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_feb_2022 = Transaksi::whereMonth('waktu_pemesanan', '02')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_mar_2022 = Transaksi::whereMonth('waktu_pemesanan', '03')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_apr_2022 = Transaksi::whereMonth('waktu_pemesanan', '04')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_mei_2022 = Transaksi::whereMonth('waktu_pemesanan', '05')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_jun_2022 = Transaksi::whereMonth('waktu_pemesanan', '06')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_jul_2022 = Transaksi::whereMonth('waktu_pemesanan', '07')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_agu_2022 = Transaksi::whereMonth('waktu_pemesanan', '08')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_sep_2022 = Transaksi::whereMonth('waktu_pemesanan', '09')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_okt_2022 = Transaksi::whereMonth('waktu_pemesanan', '10')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_nov_2022 = Transaksi::whereMonth('waktu_pemesanan', '11')->whereYear('waktu_pemesanan', '2022')->count();
+        $pembelian_des_2022 = Transaksi::whereMonth('waktu_pemesanan', '12')->whereYear('waktu_pemesanan', '2022')->count();
+        //endPembelian2022
+
+        // pembelianTahun2023
+        $pembelian_jan_2023 = Transaksi::whereMonth('waktu_pemesanan', '01')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_feb_2023 = Transaksi::whereMonth('waktu_pemesanan', '02')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_mar_2023 = Transaksi::whereMonth('waktu_pemesanan', '03')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_apr_2023 = Transaksi::whereMonth('waktu_pemesanan', '04')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_mei_2023 = Transaksi::whereMonth('waktu_pemesanan', '05')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_jun_2023 = Transaksi::whereMonth('waktu_pemesanan', '06')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_jul_2023 = Transaksi::whereMonth('waktu_pemesanan', '07')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_agu_2023 = Transaksi::whereMonth('waktu_pemesanan', '08')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_sep_2023 = Transaksi::whereMonth('waktu_pemesanan', '09')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_okt_2023 = Transaksi::whereMonth('waktu_pemesanan', '10')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_nov_2023 = Transaksi::whereMonth('waktu_pemesanan', '11')->whereYear('waktu_pemesanan', '2023')->count();
+        $pembelian_des_2023 = Transaksi::whereMonth('waktu_pemesanan', '12')->whereYear('waktu_pemesanan', '2023')->count();
+        //endPembelian2023
+
+        // pembelianVoucherTahun2021
+        $pembelian_voucher_jan_2021 = Voucher_user::whereMonth('created_at', '01')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_feb_2021 = Voucher_user::whereMonth('created_at', '02')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_mar_2021 = Voucher_user::whereMonth('created_at', '03')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_apr_2021 = Voucher_user::whereMonth('created_at', '04')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_mei_2021 = Voucher_user::whereMonth('created_at', '05')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_jun_2021 = Voucher_user::whereMonth('created_at', '06')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_jul_2021 = Voucher_user::whereMonth('created_at', '07')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_agu_2021 = Voucher_user::whereMonth('created_at', '08')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_sep_2021 = Voucher_user::whereMonth('created_at', '09')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_okt_2021 = Voucher_user::whereMonth('created_at', '10')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_nov_2021 = Voucher_user::whereMonth('created_at', '11')->whereYear('created_at', '2021')->count();
+        $pembelian_voucher_des_2021 = Voucher_user::whereMonth('created_at', '12')->whereYear('created_at', '2021')->count();
+        //endPembelianVoucherTahun2021
+
+        // pembelianVoucherTahun2022
+        $pembelian_voucher_jan_2022 = Voucher_user::whereMonth('created_at', '01')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_feb_2022 = Voucher_user::whereMonth('created_at', '02')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_mar_2022 = Voucher_user::whereMonth('created_at', '03')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_apr_2022 = Voucher_user::whereMonth('created_at', '04')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_mei_2022 = Voucher_user::whereMonth('created_at', '05')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_jun_2022 = Voucher_user::whereMonth('created_at', '06')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_jul_2022 = Voucher_user::whereMonth('created_at', '07')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_agu_2022 = Voucher_user::whereMonth('created_at', '08')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_sep_2022 = Voucher_user::whereMonth('created_at', '09')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_okt_2022 = Voucher_user::whereMonth('created_at', '10')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_nov_2022 = Voucher_user::whereMonth('created_at', '11')->whereYear('created_at', '2022')->count();
+        $pembelian_voucher_des_2022 = Voucher_user::whereMonth('created_at', '12')->whereYear('created_at', '2022')->count();
+        //endPembelianVoucherTahun2022
+
+        // pembelianVoucherTahun2023
+        $pembelian_voucher_jan_2023 = Voucher_user::whereMonth('created_at', '01')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_feb_2023 = Voucher_user::whereMonth('created_at', '02')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_mar_2023 = Voucher_user::whereMonth('created_at', '03')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_apr_2023 = Voucher_user::whereMonth('created_at', '04')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_mei_2023 = Voucher_user::whereMonth('created_at', '05')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_jun_2023 = Voucher_user::whereMonth('created_at', '06')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_jul_2023 = Voucher_user::whereMonth('created_at', '07')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_agu_2023 = Voucher_user::whereMonth('created_at', '08')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_sep_2023 = Voucher_user::whereMonth('created_at', '09')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_okt_2023 = Voucher_user::whereMonth('created_at', '10')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_nov_2023 = Voucher_user::whereMonth('created_at', '11')->whereYear('created_at', '2023')->count();
+        $pembelian_voucher_des_2023 = Voucher_user::whereMonth('created_at', '12')->whereYear('created_at', '2023')->count();
+        //endPembelianVoucherTahun2023
 
         // PendapatanTransaksi
-        $transaksis = Transaksi::where('status', 'selesai')->orWhere('status', 'sukses')->get();
-        $pendapatan_transaksi = collect($transaksis)
+        // 2021
+        $transaksis_2021 = Transaksi::whereIn('status', ['selesai', 'sukses'])->whereYear('waktu_pemesanan', '2021')->get();
+        $pendapatan_produk_2021 = collect($transaksis_2021)
             ->reduce(function ($carry, $item) {
                 return $carry + $item->total_harga - ($item->keranjang->produk->hpp * $item->keranjang->jumlah);
             }, 0);
+        // End2021
+        // 2022
+        $transaksis_2022 = Transaksi::whereIn('status', ['selesai', 'sukses'])->whereYear('waktu_pemesanan', '2022')->get();
+        $pendapatan_produk_2022 = collect($transaksis_2022)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->total_harga - ($item->keranjang->produk->hpp * $item->keranjang->jumlah);
+            }, 0);
+        // End2022
+        // 2023
+        $transaksis_2023 = Transaksi::whereIn('status', ['selesai', 'sukses'])->whereYear('waktu_pemesanan', '2023')->get();
+        $pendapatan_produk_2023 = collect($transaksis_2023)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->total_harga - ($item->keranjang->produk->hpp * $item->keranjang->jumlah);
+            }, 0);
+        // End2023
         // EndPendapatanTransaksi
 
-        // produk
-        $produk = collect($transaksis)
-            ->reduce(function ($carry, $item) {
-                return $carry + $item->keranjang->jumlah;
-            }, 0);
-        // Endproduk
-
         // PendapatanVoucher
-        $voucher_users = Voucher_user::all();
-        $pendapatan_voucher = collect($voucher_users)
+        // 2021
+        $voucher_users_2021 = Voucher_user::whereYear('created_at', '2021')->get();
+        $pendapatan_voucher_2021 = collect($voucher_users_2021)
             ->reduce(function ($carry, $item) {
                 return $carry + $item->voucher->harga;
             }, 0);
+        // end2021
+        // 2022
+        $voucher_users_2022 = Voucher_user::whereYear('created_at', '2022')->get();
+        $pendapatan_voucher_2022 = collect($voucher_users_2022)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->voucher->harga;
+            }, 0);
+        // end2022
+        // 2021
+        $voucher_users_2023 = Voucher_user::whereYear('created_at', '2023')->get();
+        $pendapatan_voucher_2023 = collect($voucher_users_2023)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->voucher->harga;
+            }, 0);
+        // end2023
         // EndPendapatanVoucher
 
         // Total Pendapatan
+        // 2021
+        $total_pendapatan_2021 = $pendapatan_produk_2021 + $pendapatan_voucher_2021;
+        // end2021
+        // 2022
+        $total_pendapatan_2022 = $pendapatan_produk_2022 + $pendapatan_voucher_2022;
+        // end2022
+        // 2023
+        $total_pendapatan_2023 = $pendapatan_produk_2023 + $pendapatan_voucher_2023;
+        // end2023
+        // EndTotalpendapatan
+
+        // produk
+        // $produk = collect($transaksis)
+        //     ->reduce(function ($carry, $item) {
+        //         return $carry + $item->keranjang->jumlah;
+        //     }, 0);
+        // Endproduk
 
         // User
         $total_users = User::where('role', auth()->user()->role = 'costumer')->count();
@@ -103,51 +295,200 @@ class DashboardController extends Controller
 // return view('admin.index', compact());
 
         return view('admin.index', compact(
-            'barang_masuk',
-            'barang_keluar',
-            //barangMasuk
-            'barang_masuk_jan',
-            'barang_masuk_feb',
-            'barang_masuk_mar',
-            'barang_masuk_apr',
-            'barang_masuk_mei',
-            'barang_masuk_jun',
-            'barang_masuk_jul',
-            'barang_masuk_agu',
-            'barang_masuk_sep',
-            'barang_masuk_okt',
-            'barang_masuk_nov',
-            'barang_masuk_des',
-            // EndBarangMasuk
-            // barangKeluar
-            'barang_keluar_jan',
-            'barang_keluar_feb',
-            'barang_keluar_mar',
-            'barang_keluar_apr',
-            'barang_keluar_mei',
-            'barang_keluar_jun',
-            'barang_keluar_jul',
-            'barang_keluar_agu',
-            'barang_keluar_sep',
-            'barang_keluar_okt',
-            'barang_keluar_nov',
-            'barang_keluar_des',
-            // endBarangKeluar
+            // barangMasuk/keluar2021
+            'barang_masuk_2021',
+            'barang_keluar_2021',
+            //endbarangMasuk/keluar2021
 
-            //Pembelian
-            'pembelian_jan',
-            'pembelian_feb',
-            'pembelian_mar',
-            'pembelian_apr',
-            'pembelian_mei',
-            'pembelian_jun',
-            'pembelian_jul',
-            'pembelian_agu',
-            'pembelian_sep',
-            'pembelian_okt',
-            'pembelian_nov',
-            'pembelian_des',
-            // EndPembelian
+            // barangMasuk2021
+            'barang_masuk_jan_2021',
+            'barang_masuk_feb_2021',
+            'barang_masuk_mar_2021',
+            'barang_masuk_apr_2021',
+            'barang_masuk_mei_2021',
+            'barang_masuk_jun_2021',
+            'barang_masuk_jul_2021',
+            'barang_masuk_agu_2021',
+            'barang_masuk_sep_2021',
+            'barang_masuk_okt_2021',
+            'barang_masuk_nov_2021',
+            'barang_masuk_des_2021',
+            // EndBarangMasuk2021
+
+            // barangKeluar2021
+            'barang_keluar_jan_2021',
+            'barang_keluar_feb_2021',
+            'barang_keluar_mar_2021',
+            'barang_keluar_apr_2021',
+            'barang_keluar_mei_2021',
+            'barang_keluar_jun_2021',
+            'barang_keluar_jul_2021',
+            'barang_keluar_agu_2021',
+            'barang_keluar_sep_2021',
+            'barang_keluar_okt_2021',
+            'barang_keluar_nov_2021',
+            'barang_keluar_des_2021',
+            // endBarangKeluar2021
+
+            // barangMasuk/keluar2022
+            'barang_masuk_2022',
+            'barang_keluar_2022',
+            //endbarangMasuk/keluar2022
+
+            // barangMasuk2022
+            'barang_masuk_jan_2022',
+            'barang_masuk_feb_2022',
+            'barang_masuk_mar_2022',
+            'barang_masuk_apr_2022',
+            'barang_masuk_mei_2022',
+            'barang_masuk_jun_2022',
+            'barang_masuk_jul_2022',
+            'barang_masuk_agu_2022',
+            'barang_masuk_sep_2022',
+            'barang_masuk_okt_2022',
+            'barang_masuk_nov_2022',
+            'barang_masuk_des_2022',
+            // EndBarangMasuk2022
+
+            // barangKeluar2022
+            'barang_keluar_jan_2022',
+            'barang_keluar_feb_2022',
+            'barang_keluar_mar_2022',
+            'barang_keluar_apr_2022',
+            'barang_keluar_mei_2022',
+            'barang_keluar_jun_2022',
+            'barang_keluar_jul_2022',
+            'barang_keluar_agu_2022',
+            'barang_keluar_sep_2022',
+            'barang_keluar_okt_2022',
+            'barang_keluar_nov_2022',
+            'barang_keluar_des_2022',
+            // endBarangKeluar2022
+
+            // barangMasuk/keluar2023
+            'barang_masuk_2023',
+            'barang_keluar_2023',
+            //endbarangMasuk/keluar2023
+
+            // barangMasuk2023
+            'barang_masuk_jan_2023',
+            'barang_masuk_feb_2023',
+            'barang_masuk_mar_2023',
+            'barang_masuk_apr_2023',
+            'barang_masuk_mei_2023',
+            'barang_masuk_jun_2023',
+            'barang_masuk_jul_2023',
+            'barang_masuk_agu_2023',
+            'barang_masuk_sep_2023',
+            'barang_masuk_okt_2023',
+            'barang_masuk_nov_2023',
+            'barang_masuk_des_2023',
+            // EndBarangMasuk2023
+
+            // barangKeluar2023
+            'barang_keluar_jan_2023',
+            'barang_keluar_feb_2023',
+            'barang_keluar_mar_2023',
+            'barang_keluar_apr_2023',
+            'barang_keluar_mei_2023',
+            'barang_keluar_jun_2023',
+            'barang_keluar_jul_2023',
+            'barang_keluar_agu_2023',
+            'barang_keluar_sep_2023',
+            'barang_keluar_okt_2023',
+            'barang_keluar_nov_2023',
+            'barang_keluar_des_2023',
+            // endBarangKeluar2023
+
+            //PembelianTahun2021
+            'pembelian_jan_2021',
+            'pembelian_feb_2021',
+            'pembelian_mar_2021',
+            'pembelian_apr_2021',
+            'pembelian_mei_2021',
+            'pembelian_jun_2021',
+            'pembelian_jul_2021',
+            'pembelian_agu_2021',
+            'pembelian_sep_2021',
+            'pembelian_okt_2021',
+            'pembelian_nov_2021',
+            'pembelian_des_2021',
+            // EndPembelianTahun2021
+
+            //PembelianTahun2022
+            'pembelian_jan_2022',
+            'pembelian_feb_2022',
+            'pembelian_mar_2022',
+            'pembelian_apr_2022',
+            'pembelian_mei_2022',
+            'pembelian_jun_2022',
+            'pembelian_jul_2022',
+            'pembelian_agu_2022',
+            'pembelian_sep_2022',
+            'pembelian_okt_2022',
+            'pembelian_nov_2022',
+            'pembelian_des_2022',
+            // EndPembelianTahun2022
+
+            //PembelianTahun2023
+            'pembelian_jan_2023',
+            'pembelian_feb_2023',
+            'pembelian_mar_2023',
+            'pembelian_apr_2023',
+            'pembelian_mei_2023',
+            'pembelian_jun_2023',
+            'pembelian_jul_2023',
+            'pembelian_agu_2023',
+            'pembelian_sep_2023',
+            'pembelian_okt_2023',
+            'pembelian_nov_2023',
+            'pembelian_des_2023',
+            // EndPembelianTahun2023
+
+            //PembelianVoucherTahun2021
+            'pembelian_voucher_jan_2021',
+            'pembelian_voucher_feb_2021',
+            'pembelian_voucher_mar_2021',
+            'pembelian_voucher_apr_2021',
+            'pembelian_voucher_mei_2021',
+            'pembelian_voucher_jun_2021',
+            'pembelian_voucher_jul_2021',
+            'pembelian_voucher_agu_2021',
+            'pembelian_voucher_sep_2021',
+            'pembelian_voucher_okt_2021',
+            'pembelian_voucher_nov_2021',
+            'pembelian_voucher_des_2021',
+            // EndPembelianVoucherTahun2021
+
+            //PembelianVoucherTahun2022
+            'pembelian_voucher_jan_2022',
+            'pembelian_voucher_feb_2022',
+            'pembelian_voucher_mar_2022',
+            'pembelian_voucher_apr_2022',
+            'pembelian_voucher_mei_2022',
+            'pembelian_voucher_jun_2022',
+            'pembelian_voucher_jul_2022',
+            'pembelian_voucher_agu_2022',
+            'pembelian_voucher_sep_2022',
+            'pembelian_voucher_okt_2022',
+            'pembelian_voucher_nov_2022',
+            'pembelian_voucher_des_2022',
+            // EndPembelianVoucherTahun2022
+
+            //PembelianVoucherTahun2023
+            'pembelian_voucher_jan_2023',
+            'pembelian_voucher_feb_2023',
+            'pembelian_voucher_mar_2023',
+            'pembelian_voucher_apr_2023',
+            'pembelian_voucher_mei_2023',
+            'pembelian_voucher_jun_2023',
+            'pembelian_voucher_jul_2023',
+            'pembelian_voucher_agu_2023',
+            'pembelian_voucher_sep_2023',
+            'pembelian_voucher_okt_2023',
+            'pembelian_voucher_nov_2023',
+            'pembelian_voucher_des_2023',
+            // EndPembelianVoucherTahun2023
 
             // User
             'total_users',
@@ -159,15 +500,25 @@ class DashboardController extends Controller
             // EndUser
 
             // Pendapatan
-            'pendapatan_transaksi',
+            'pendapatan_produk_2021',
+            'pendapatan_produk_2022',
+            'pendapatan_produk_2023',
             // EndPendapatan
 
             // Pendapatan
-            'pendapatan_voucher',
+            'pendapatan_voucher_2021',
+            'pendapatan_voucher_2022',
+            'pendapatan_voucher_2023',
             // EndPendapatan
 
+            // Total Pendapatan
+            'total_pendapatan_2021',
+            'total_pendapatan_2022',
+            'total_pendapatan_2023',
+            // EndTotalPendapatan
+
             // Produk
-            'produk',
+            // 'produk',
             // EndProduk
             'chats',
         ));

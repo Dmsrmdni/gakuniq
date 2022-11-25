@@ -109,7 +109,6 @@ class RefundProdukController extends Controller
             $transaksis->save();
 
             // saldo
-
             if ($refund_produks->transaksi->metode_pembayaran == 'gakuniq wallet') {
                 $users = User::findOrFail($refund_produks->transaksi->keranjang->user_id);
                 $users->saldo += $refund_produks->transaksi->total_harga;
@@ -120,7 +119,7 @@ class RefundProdukController extends Controller
         if ($refund_produks->status == 'di tolak') {
 
             $transaksis = Transaksi::findOrFail($refund_produks->transaksi_id);
-            $transaksis->status = "proses";
+            $transaksis->status = "selesai";
             $transaksis->save();
         }
 
