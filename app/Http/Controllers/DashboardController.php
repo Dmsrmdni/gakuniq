@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Chat;
-use App\Models\Kategori;
 use App\Models\Produk;
-use App\Models\Review_produk;
 use App\Models\Riwayat_produk;
-use App\Models\TopUp;
 use App\Models\Transaksi;
 use App\Models\User;
 use App\Models\Voucher;
@@ -273,26 +270,60 @@ class DashboardController extends Controller
         // end2023
         // EndTotalpendapatan
 
-        // produk
-        // $produk = collect($transaksis)
-        //     ->reduce(function ($carry, $item) {
-        //         return $carry + $item->keranjang->jumlah;
-        //     }, 0);
-        // Endproduk
+        // UserRegister
+        $users_2021 = User::where('role', auth()->user()->role = 'costumer')->whereYear('created_at', '2021')->count();
+        $users_2022 = User::where('role', auth()->user()->role = 'costumer')->whereYear('created_at', '2022')->count();
+        $users_2023 = User::where('role', auth()->user()->role = 'costumer')->whereYear('created_at', '2023')->count();
+        // endUserRegister
 
-        // User
-        $total_users = User::where('role', auth()->user()->role = 'costumer')->count();
-        $total_produks = Produk::count();
-        $total_review_produks = Review_produk::count();
-        $total_vouchers = Voucher::count();
-        $total_top_ups = TopUp::count();
-        $total_kategoris = Kategori::count();
-        $total_transaksis = Transaksi::count();
-        // EndUser
+        // produkTerjual
+        // 2021
+        $produk_terjual_2021 = collect($transaksis_2021)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->keranjang->jumlah;
+            }, 0);
+        // End2021
+        // 2022
+        $produk_terjual_2022 = collect($transaksis_2022)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->keranjang->jumlah;
+            }, 0);
+        // End2022
+        // 2023
+        $produk_terjual_2023 = collect($transaksis_2023)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->keranjang->jumlah;
+            }, 0);
+        // End2023
+
+        // EndprodukTerjual
+
+        // RefundProduk
+        // 2021
+        $refund_2021 = Transaksi::where('status', 'dikembalikan')->whereYear('waktu_pemesanan', '2021')->get();
+        $refund_produk_2021 = collect($refund_2021)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->keranjang->jumlah;
+            }, 0);
+        // end2021
+        // 2022
+        $refund_2022 = Transaksi::where('status', 'dikembalikan')->whereYear('waktu_pemesanan', '2022')->get();
+        $refund_produk_2022 = collect($refund_2022)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->keranjang->jumlah;
+            }, 0);
+        // end2022
+        // 2023
+        $refund_2023 = Transaksi::where('status', 'dikembalikan')->whereYear('waktu_pemesanan', '2023')->get();
+        $refund_produk_2023 = collect($refund_2023)
+            ->reduce(function ($carry, $item) {
+                return $carry + $item->keranjang->jumlah;
+            }, 0);
+        // end2023
+
+        // EndRefundProduk
 
         $chats = Chat::all();
-
-// return view('admin.index', compact());
 
         return view('admin.index', compact(
             // barangMasuk/keluar2021
@@ -491,12 +522,9 @@ class DashboardController extends Controller
             // EndPembelianVoucherTahun2023
 
             // User
-            'total_users',
-            'total_produks',
-            'total_review_produks',
-            'total_vouchers',
-            'total_top_ups',
-            'total_transaksis',
+            'users_2021',
+            'users_2022',
+            'users_2023',
             // EndUser
 
             // Pendapatan
@@ -517,9 +545,17 @@ class DashboardController extends Controller
             'total_pendapatan_2023',
             // EndTotalPendapatan
 
-            // Produk
-            // 'produk',
-            // EndProduk
+            // ProdukTerjual
+            'produk_terjual_2021',
+            'produk_terjual_2022',
+            'produk_terjual_2023',
+            // EndProdukTerjual
+
+            // RefundProduk
+            'refund_produk_2021',
+            'refund_produk_2022',
+            'refund_produk_2023',
+            // EndRefundProduk
             'chats',
         ));
 

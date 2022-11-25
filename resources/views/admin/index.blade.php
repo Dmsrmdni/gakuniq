@@ -1,164 +1,6 @@
 @extends('admin.layouts.admin')
 
-{{-- <link rel="stylesheet" href="{{ asset('css/chat.css') }}" /> --}}
-
 @section('content')
-    {{-- <section style="background-color: #eee;">
-        <div class="container py-5">
-
-            <div class="row">
-
-                <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
-
-                    <div class="card">
-                        <div class="card-body">
-
-                            <ul class="list-unstyled mb-0">
-                                <li class="p-2 border-bottom" style="background-color: #eee;">
-                                    <a href="#!" class="d-flex justify-content-between">
-                                        <div class="d-flex flex-row">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp"
-                                                alt="avatar"
-                                                class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
-                                                width="60">
-                                            <div class="pt-1">
-                                                <p class="fw-bold mb-0">John Doe</p>
-                                                <p class="small text-muted">Hello, Are you there?</p>
-                                            </div>
-                                        </div>
-                                        <div class="pt-1">
-                                            <p class="small text-muted mb-1">Just now</p>
-                                            <span class="badge bg-danger float-end">1</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="p-2 border-bottom">
-                                    <a href="#!" class="d-flex justify-content-between">
-                                        <div class="d-flex flex-row">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp"
-                                                alt="avatar"
-                                                class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
-                                                width="60">
-                                            <div class="pt-1">
-                                                <p class="fw-bold mb-0">Danny Smith</p>
-                                                <p class="small text-muted">Lorem ipsum dolor sit.</p>
-                                            </div>
-                                        </div>
-                                        <div class="pt-1">
-                                            <p class="small text-muted mb-1">5 mins ago</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="p-2 border-bottom">
-                                    <a href="#!" class="d-flex justify-content-between">
-                                        <div class="d-flex flex-row">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp"
-                                                alt="avatar"
-                                                class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
-                                                width="60">
-                                            <div class="pt-1">
-                                                <p class="fw-bold mb-0">Alex Steward</p>
-                                                <p class="small text-muted">Lorem ipsum dolor sit.</p>
-                                            </div>
-                                        </div>
-                                        <div class="pt-1">
-                                            <p class="small text-muted mb-1">Yesterday</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="p-2 border-bottom">
-                                    <a href="#!" class="d-flex justify-content-between">
-                                        <div class="d-flex flex-row">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp"
-                                                alt="avatar"
-                                                class="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
-                                                width="60">
-                                            <div class="pt-1">
-                                                <p class="fw-bold mb-0">Ashley Olsen</p>
-                                                <p class="small text-muted">Lorem ipsum dolor sit.</p>
-                                            </div>
-                                        </div>
-                                        <div class="pt-1">
-                                            <p class="small text-muted mb-1">Yesterday</p>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-md-6 col-lg-7 col-xl-8">
-                    <ul class="list-unstyled">
-                        <li class="d-flex justify-content-between mb-4">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
-                                class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between p-3">
-                                    <p class="fw-bold mb-0">Brad Pitt</p>
-                                    <p class="text-muted small mb-0"><i class="far fa-clock"></i> 12 mins ago</p>
-                                </div>
-                                <div class="card-body">
-                                    <p class="mb-0">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut
-                                        labore et dolore magna aliqua.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex justify-content-between mb-4">
-                            <div class="card w-100">
-                                <div class="card-header d-flex justify-content-between p-3">
-                                    <p class="fw-bold mb-0">Lara Croft</p>
-                                    <p class="text-muted small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
-                                </div>
-                                <div class="card-body">
-                                    <p class="mb-0">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque
-                                        laudantium.
-                                    </p>
-                                </div>
-                            </div>
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
-                                class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-                        </li>
-                        <li class="d-flex justify-content-between mb-4">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
-                                class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between p-3">
-                                    <p class="fw-bold mb-0">Brad Pitt</p>
-                                    <p class="text-muted small mb-0"><i class="far fa-clock"></i> 10 mins ago</p>
-                                </div>
-                                <div class="card-body">
-                                    <p class="mb-0">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut
-                                        labore et dolore magna aliqua.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="bg-white mb-3">
-                            <div class="form-outline">
-                                <textarea class="form-control" id="textAreaExample2" rows="4"></textarea>
-                                <label class="form-label" for="textAreaExample2">Message</label>
-                            </div>
-                        </li>
-                        <button type="button" class="btn btn-info btn-rounded float-end">Send</button>
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section> --}}
-
     {{-- <section>
         <div class="container py-5">
 
@@ -361,6 +203,8 @@
 
         </div>
     </section> --}}
+    {{-- Content --}}
+
     <div class="row mb-3">
         {{-- Pembelian Produk --}}
         <div class="col-xl-4">
@@ -486,7 +330,7 @@
         </div>
         {{-- EndPembelianVoucher --}}
 
-        {{-- Pembelian Voucher --}}
+        {{-- TotalPendapatan --}}
         <div class="col-xl-4">
             <div class="nav-align-top mb-4">
                 <ul class="nav nav-tabs" role="tablist">
@@ -546,8 +390,399 @@
                 </div>
             </div>
         </div>
-        {{-- EndPembelianVoucher --}}
+        {{-- EndTotalPendapatan --}}
     </div>
+
+    <div class="row mb-3">
+        {{-- Data Transaksi --}}
+        <div class="col-xl-6">
+            <div class="nav-align-top mb-4">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_transaksi_2021" aria-controls="data_transaksi_2021"
+                            aria-selected="true">
+                            2021
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_transaksi_2022" aria-controls="data_transaksi_2022"
+                            aria-selected="true">
+                            2022
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_transaksi_2023" aria-controls="data_transaksi_2023"
+                            aria-selected="true">
+                            2023
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade" id="data_transaksi_2021" role="tabpanel">
+                        <h5 class="m-0 me-2">Data Pembelian/bulan</h5>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <canvas id="pembelian_tahun_2021"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="data_transaksi_2022" role="tabpanel">
+                        <h5 class="m-0 me-2">Data Pembelian/bulan</h5>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <canvas id="pembelian_tahun_2022"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="data_transaksi_2023" role="tabpanel">
+                        <h5 class="m-0 me-2">Data Pembelian/bulan</h5>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <canvas id="pembelian_tahun_2023"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- EndData Transaksi --}}
+
+        {{-- Data Pembelian Voucher --}}
+        <div class="col-xl-6">
+            <div class="nav-align-top mb-4">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_voucher_2021" aria-controls="data_voucher_2021" aria-selected="true">
+                            2021
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_voucher_2022" aria-controls="data_voucher_2022" aria-selected="true">
+                            2022
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_voucher_2023" aria-controls="data_voucher_2023" aria-selected="true">
+                            2023
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade" id="data_voucher_2021" role="tabpanel">
+                        <h5 class="m-0 me-2">Data Pembelian Voucher/bulan</h5>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <canvas id="pembelian_voucher_tahun_2021"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="data_voucher_2022" role="tabpanel">
+                        <h5 class="m-0 me-2">Data Pembelian Voucher/bulan</h5>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <canvas id="pembelian_voucher_tahun_2022"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="data_voucher_2023" role="tabpanel">
+                        <h5 class="m-0 me-2">Data Pembelian Voucher/bulan</h5>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <canvas id="pembelian_voucher_tahun_2023"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- End Data Pembelian Voucher --}}
+    </div>
+
+    <div class="row mb-3">
+        {{-- Barang Masuk/Keluar --}}
+        <div class="col-xl-8">
+            <div class="nav-align-top mb-4">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_barang_2021" aria-controls="data_barang_2021" aria-selected="true">
+                            2021
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_barang_2022" aria-controls="data_barang_2022" aria-selected="true">
+                            2022
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_barang_2023" aria-controls="data_barang_2023" aria-selected="true">
+                            2023
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade" id="data_barang_2021" role="tabpanel">
+                        <div class="card">
+                            <div class="row row-bordered g-0">
+                                <div class="col-md-8">
+                                    <h5 class="card-header m-0 me-2 pb-3">Barang Masuk dan Keluar/Bulan</h5>
+                                    <canvas id="barang_masuk_keluar_bulan_2021" style="margin: 10px"></canvas>
+                                </div>
+                                <div class="col-md-4">
+                                    <canvas style="margin: 20px 10px 0px" id="barang_masuk_keluar_2021"></canvas>
+                                    <h5 class="card-title mx-2 my-3 pb-3">Barang Masuk/Keluar</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="data_barang_2022" role="tabpanel">
+                        <div class="card">
+                            <div class="row row-bordered g-0">
+                                <div class="col-md-8">
+                                    <h5 class="card-header m-0 me-2 pb-3">Barang Masuk dan Keluar/Bulan</h5>
+                                    <canvas id="barang_masuk_keluar_bulan_2022" style="margin: 10px"></canvas>
+                                </div>
+                                <div class="col-md-4">
+                                    <canvas style="margin: 20px 10px 0px" id="barang_masuk_keluar_2022"></canvas>
+                                    <h5 class="card-title mx-2 my-3 pb-3">Barang Masuk/Keluar</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="data_barang_2023" role="tabpanel">
+                        <div class="card">
+                            <div class="row row-bordered g-0">
+                                <div class="col-md-8">
+                                    <h5 class="card-header m-0 me-2 pb-3">Barang Masuk dan Keluar/Bulan</h5>
+                                    <canvas id="barang_masuk_keluar_bulan_2023" style="margin: 10px"></canvas>
+                                </div>
+                                <div class="col-md-4">
+                                    <canvas style="margin: 20px 10px 0px" id="barang_masuk_keluar_2023"></canvas>
+                                    <h5 class="card-title mx-2 my-3 pb-3">Barang Masuk/Keluar</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- EndBarang Masuk/Keluar --}}
+        <!-- Data History -->
+        <div class="col-xl-4">
+            <div class="nav-align-top mb-4">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_history_2021" aria-controls="data_history_2021" aria-selected="true">
+                            2021
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_history_2022" aria-controls="data_history_2022" aria-selected="true">
+                            2022
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                            data-bs-target="#data_history_2023" aria-controls="data_history_2023" aria-selected="true">
+                            2023
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade" id="data_history_2021" role="tabpanel">
+                        <div class="card">
+                            <h5 class="card-title m-2">History</h5>
+                            <div class="card-body">
+                                <ul class="p-0 m-0">
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-secondary"><i
+                                                    class="bx bxs-user"></i></span>
+                                        </div>
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">User Register</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">{{ number_format($users_2021, 0, ',', '.') }}</h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-info"><i
+                                                    class="bx bx-closet"></i></span>
+                                        </div>
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">Produk Terjual</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">{{ number_format($produk_terjual_2021, 0, ',', '.') }}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-danger"><i
+                                                    class="bx bx-recycle"></i></span>
+                                        </div>
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">Refund Produk</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">{{ number_format($refund_produk_2021, 0, ',', '.') }}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show active" id="data_history_2022" role="tabpanel">
+                        <div class="card">
+                            <h5 class="card-title m-2">History</h5>
+                            <div class="card-body">
+                                <ul class="p-0 m-0">
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-secondary"><i
+                                                    class="bx bxs-user"></i></span>
+                                        </div>
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">User Register</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">{{ number_format($users_2022, 0, ',', '.') }}</h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-info"><i
+                                                    class="bx bx-closet"></i></span>
+                                        </div>
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">Produk Terjual</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">{{ number_format($produk_terjual_2022, 0, ',', '.') }}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-danger"><i
+                                                    class="bx bx-recycle"></i></span>
+                                        </div>
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">Refund Produk</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">{{ number_format($refund_produk_2022, 0, ',', '.') }}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="data_history_2023" role="tabpanel">
+                        <div class="card">
+                            <h5 class="card-title m-2">History</h5>
+                            <div class="card-body">
+                                <ul class="p-0 m-0">
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-secondary"><i
+                                                    class="bx bxs-user"></i></span>
+                                        </div>
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">User Register</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">{{ number_format($users_2023, 0, ',', '.') }}</h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-info"><i
+                                                    class="bx bx-closet"></i></span>
+                                        </div>
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">Produk Terjual</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">{{ number_format($produk_terjual_2023, 0, ',', '.') }}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div class="avatar flex-shrink-0 me-3">
+                                            <span class="avatar-initial rounded bg-label-danger"><i
+                                                    class="bx bx-recycle"></i></span>
+                                        </div>
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">Refund Produk</h6>
+                                            </div>
+                                            <div class="user-progress d-flex align-items-center gap-1">
+                                                <h6 class="mb-0">{{ number_format($refund_produk_2023, 0, ',', '.') }}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- endDataHistory -->
+    </div>
+
+    {{-- EndContent --}}
+
+
+    {{-- <div class="buy-now">
+            <button class="btn btn-danger btn-buy-now" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">
+                <i class='bx bxs-chat'></i> Pesan</a>
+            </button>
+        </div> --}}
+
     {{-- <div class="col-lg-3 col-md-6">
         <div class="mt-3">
             <div class="offcanvas offcanvas-end" style="min-width: 60vw" tabindex="-1" id="offcanvasEnd"
@@ -792,398 +1027,12 @@
         </div>
     </div> --}}
 
-    {{-- Content --}}
-
-    {{-- Pendapatan --}}
-    <div class="row mb-3">
-        {{-- Data Transaksi --}}
-        <div class="col-xl-6">
-            <div class="nav-align-top mb-4">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_transaksi_2021" aria-controls="data_transaksi_2021"
-                            aria-selected="true">
-                            2021
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_transaksi_2022" aria-controls="data_transaksi_2022"
-                            aria-selected="true">
-                            2022
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_transaksi_2023" aria-controls="data_transaksi_2023"
-                            aria-selected="true">
-                            2023
-                        </button>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade" id="data_transaksi_2021" role="tabpanel">
-                        <h5 class="m-0 me-2">Data Pembelian/bulan</h5>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <canvas id="pembelian_tahun_2021"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade show active" id="data_transaksi_2022" role="tabpanel">
-                        <h5 class="m-0 me-2">Data Pembelian/bulan</h5>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <canvas id="pembelian_tahun_2022"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="data_transaksi_2023" role="tabpanel">
-                        <h5 class="m-0 me-2">Data Pembelian/bulan</h5>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <canvas id="pembelian_tahun_2023"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- EndData Transaksi --}}
-
-        {{-- Data Pembelian Voucher --}}
-        <div class="col-xl-6">
-            <div class="nav-align-top mb-4">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_voucher_2021" aria-controls="data_voucher_2021" aria-selected="true">
-                            2021
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_voucher_2022" aria-controls="data_voucher_2022" aria-selected="true">
-                            2022
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_voucher_2023" aria-controls="data_voucher_2023" aria-selected="true">
-                            2023
-                        </button>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade" id="data_voucher_2021" role="tabpanel">
-                        <h5 class="m-0 me-2">Data Pembelian Voucher/bulan</h5>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <canvas id="pembelian_voucher_tahun_2021"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade show active" id="data_voucher_2022" role="tabpanel">
-                        <h5 class="m-0 me-2">Data Pembelian Voucher/bulan</h5>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <canvas id="pembelian_voucher_tahun_2022"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="data_voucher_2023" role="tabpanel">
-                        <h5 class="m-0 me-2">Data Pembelian Voucher/bulan</h5>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <canvas id="pembelian_voucher_tahun_2023"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- End Data Pembelian Voucher --}}
-    </div>
-    {{-- EndPendapatan --}}
-
-    {{-- Barang Masuk/Keluar --}}
-    <div class="row mb-3">
-        <div class="col-xl-8">
-            <div class="nav-align-top mb-4">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_barang_2021" aria-controls="data_barang_2021" aria-selected="true">
-                            2021
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_barang_2022" aria-controls="data_barang_2022" aria-selected="true">
-                            2022
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_barang_2023" aria-controls="data_barang_2023" aria-selected="true">
-                            2023
-                        </button>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade" id="data_barang_2021" role="tabpanel">
-                        <div class="card">
-                            <div class="row row-bordered g-0">
-                                <div class="col-md-8">
-                                    <h5 class="card-header m-0 me-2 pb-3">Barang Masuk dan Keluar/Bulan</h5>
-                                    <canvas id="barang_masuk_keluar_bulan_2021" style="margin: 10px"></canvas>
-                                </div>
-                                <div class="col-md-4">
-                                    <canvas style="margin: 20px 10px 0px" id="barang_masuk_keluar_2021"></canvas>
-                                    <h5 class="card-title mx-2 my-3 pb-3">Barang Masuk/Keluar</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade show active" id="data_barang_2022" role="tabpanel">
-                        <div class="card">
-                            <div class="row row-bordered g-0">
-                                <div class="col-md-8">
-                                    <h5 class="card-header m-0 me-2 pb-3">Barang Masuk dan Keluar/Bulan</h5>
-                                    <canvas id="barang_masuk_keluar_bulan_2022" style="margin: 10px"></canvas>
-                                </div>
-                                <div class="col-md-4">
-                                    <canvas style="margin: 20px 10px 0px" id="barang_masuk_keluar_2022"></canvas>
-                                    <h5 class="card-title mx-2 my-3 pb-3">Barang Masuk/Keluar</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="data_barang_2023" role="tabpanel">
-                        <div class="card">
-                            <div class="row row-bordered g-0">
-                                <div class="col-md-8">
-                                    <h5 class="card-header m-0 me-2 pb-3">Barang Masuk dan Keluar/Bulan</h5>
-                                    <canvas id="barang_masuk_keluar_bulan_2023" style="margin: 10px"></canvas>
-                                </div>
-                                <div class="col-md-4">
-                                    <canvas style="margin: 20px 10px 0px" id="barang_masuk_keluar_2023"></canvas>
-                                    <h5 class="card-title mx-2 my-3 pb-3">Barang Masuk/Keluar</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Data Transaksi -->
-        <div class="col-xl-4">
-            <div class="nav-align-top mb-4">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_history_2021" aria-controls="data_history_2021" aria-selected="true">
-                            2021
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_history_2022" aria-controls="data_history_2022" aria-selected="true">
-                            2022
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                            data-bs-target="#data_history_2023" aria-controls="data_history_2023" aria-selected="true">
-                            2023
-                        </button>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade" id="data_history_2021" role="tabpanel">
-                        <div class="card">
-                            <h5 class="card-title m-2">History</h5>
-                            <div class="card-body">
-                                <ul class="p-0 m-0">
-                                    <li class="d-flex mb-4 pb-1">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="{{ asset('images/users.png') }}" alt="User" class="rounded" />
-                                        </div>
-                                        <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">User Register</h6>
-                                            </div>
-                                            <div class="user-progress d-flex align-items-center gap-1">
-                                                <h6 class="mb-0">+82.6</h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex mb-4 pb-1">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="../assets/img/icons/unicons/wallet.png" alt="User"
-                                                class="rounded" />
-                                        </div>
-                                        <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Produk Terjual</h6>
-                                            </div>
-                                            <div class="user-progress d-flex align-items-center gap-1">
-                                                <h6 class="mb-0">+270.69</h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex mb-4 pb-1">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="../assets/img/icons/unicons/chart.png" alt="User"
-                                                class="rounded" />
-                                        </div>
-                                        <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">TopUp</h6>
-                                            </div>
-                                            <div class="user-progress d-flex align-items-center gap-1">
-                                                <h6 class="mb-0">+637.91</h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade show active" id="data_history_2022" role="tabpanel">
-                        <div class="card">
-                            <h5 class="card-title m-2">History</h5>
-                            <div class="card-body">
-                                <ul class="p-0 m-0">
-                                    <li class="d-flex mb-4 pb-1">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="../assets/img/icons/unicons/paypal.png" alt="User"
-                                                class="rounded" />
-                                        </div>
-                                        <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">User Register</h6>
-                                            </div>
-                                            <div class="user-progress d-flex align-items-center gap-1">
-                                                <h6 class="mb-0">+82.6</h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex mb-4 pb-1">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="../assets/img/icons/unicons/wallet.png" alt="User"
-                                                class="rounded" />
-                                        </div>
-                                        <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Produk Terjual</h6>
-                                            </div>
-                                            <div class="user-progress d-flex align-items-center gap-1">
-                                                <h6 class="mb-0">+270.69</h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex mb-4 pb-1">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="../assets/img/icons/unicons/chart.png" alt="User"
-                                                class="rounded" />
-                                        </div>
-                                        <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">TopUp</h6>
-                                            </div>
-                                            <div class="user-progress d-flex align-items-center gap-1">
-                                                <h6 class="mb-0">+637.91</h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="data_history_2023" role="tabpanel">
-                        <div class="card">
-                            <h5 class="card-title m-2">History</h5>
-                            <div class="card-body">
-                                <ul class="p-0 m-0">
-                                    <li class="d-flex mb-4 pb-1">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="../assets/img/icons/unicons/paypal.png" alt="User"
-                                                class="rounded" />
-                                        </div>
-                                        <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">User Register</h6>
-                                            </div>
-                                            <div class="user-progress d-flex align-items-center gap-1">
-                                                <h6 class="mb-0">+82.6</h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex mb-4 pb-1">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="../assets/img/icons/unicons/wallet.png" alt="User"
-                                                class="rounded" />
-                                        </div>
-                                        <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">Produk Terjual</h6>
-                                            </div>
-                                            <div class="user-progress d-flex align-items-center gap-1">
-                                                <h6 class="mb-0">+270.69</h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex mb-4 pb-1">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <img src="../assets/img/icons/unicons/chart.png" alt="User"
-                                                class="rounded" />
-                                        </div>
-                                        <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">TopUp</h6>
-                                            </div>
-                                            <div class="user-progress d-flex align-items-center gap-1">
-                                                <h6 class="mb-0">+637.91</h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- endDataTransaksi -->
-    </div>
-    {{-- EndBarang Masuk/Keluar --}}
-
-    {{-- EndContent --}}
-
-
-    {{-- <div class="buy-now">
-            <button class="btn btn-danger btn-buy-now" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">
-                <i class='bx bxs-chat'></i> Pesan</a>
-            </button>
-        </div> --}}
 
     <!--/ Order Statistics -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    {{-- Barang Masuk/Keluar 2021 --}}
+    {{-- Barang Masuk/Keluar --}}
+    {{-- 2021 --}}
     <script>
         const masuk_keluar_2021 = document.getElementById('barang_masuk_keluar_2021');
         const barang_masuk_keluar_2021 = new Chart(masuk_keluar_2021, {
@@ -1213,9 +1062,73 @@
             }
         });
     </script>
-    {{-- endBarang Masuk/Keluar 2021 --}}
+    {{-- end2021 --}}
+    {{-- 2022 --}}
+    <script>
+        const masuk_keluar_2022 = document.getElementById('barang_masuk_keluar_2022');
+        const barang_masuk_keluar_2022 = new Chart(masuk_keluar_2022, {
+            type: 'doughnut',
+            data: {
+                labels: ['Barang Masuk', 'Barang Keluar'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [{{ $barang_masuk_2022 }}, {{ $barang_keluar_2022 }}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    {{-- end2022 --}}
+    {{-- 2023 --}}
+    <script>
+        const masuk_keluar_2023 = document.getElementById('barang_masuk_keluar_2023');
+        const barang_masuk_keluar_2023 = new Chart(masuk_keluar_2023, {
+            type: 'doughnut',
+            data: {
+                labels: ['Barang Masuk', 'Barang Keluar'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [{{ $barang_masuk_2023 }}, {{ $barang_keluar_2023 }}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    {{-- end2023 --}}
+    {{-- endBarang Masuk/Keluar --}}
 
-    {{-- Barang Masuk/Keluar /BUlan 2021 --}}
+    {{-- Barang Masuk/Keluar /BUlan --}}
+    {{-- 2021 --}}
     <script>
         const barang_bulan_2021 = document.getElementById('barang_masuk_keluar_bulan_2021');
         const barang_masuk_keluar_bulan_2021 = new Chart(barang_bulan_2021, {
@@ -1283,41 +1196,8 @@
             }
         });
     </script>
-    {{-- End Barang Masuk/Keluar /BUlan 2021 --}}
-
-    {{-- Barang Masuk/Keluar 2022 --}}
-    <script>
-        const masuk_keluar_2022 = document.getElementById('barang_masuk_keluar_2022');
-        const barang_masuk_keluar_2022 = new Chart(masuk_keluar_2022, {
-            type: 'doughnut',
-            data: {
-                labels: ['Barang Masuk', 'Barang Keluar'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [{{ $barang_masuk_2022 }}, {{ $barang_keluar_2022 }}],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-    {{-- endBarang Masuk/Keluar 2022 --}}
-
-    {{-- Barang Masuk/Keluar /BUlan 2022 --}}
+    {{-- end2021 --}}
+    {{-- 2022 --}}
     <script>
         const barang_bulan_2022 = document.getElementById('barang_masuk_keluar_bulan_2022');
         const barang_masuk_keluar_bulan_2022 = new Chart(barang_bulan_2022, {
@@ -1385,41 +1265,8 @@
             }
         });
     </script>
-    {{-- End Barang Masuk/Keluar /BUlan 2022 --}}
-
-    {{-- Barang Masuk/Keluar 2023 --}}
-    <script>
-        const masuk_keluar_2023 = document.getElementById('barang_masuk_keluar_2023');
-        const barang_masuk_keluar_2023 = new Chart(masuk_keluar_2023, {
-            type: 'doughnut',
-            data: {
-                labels: ['Barang Masuk', 'Barang Keluar'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [{{ $barang_masuk_2023 }}, {{ $barang_keluar_2023 }}],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-    {{-- endBarang Masuk/Keluar 2023 --}}
-
-    {{-- Barang Masuk/Keluar /BUlan 2023 --}}
+    {{-- end2022 --}}
+    {{-- 2023 --}}
     <script>
         const barang_bulan_2023 = document.getElementById('barang_masuk_keluar_bulan_2023');
         const barang_masuk_keluar_bulan_2023 = new Chart(barang_bulan_2023, {
@@ -1487,9 +1334,11 @@
             }
         });
     </script>
-    {{-- End Barang Masuk/Keluar /BUlan 2023 --}}
+    {{-- end2023 --}}
+    {{-- End Barang Masuk/Keluar /BUlan --}}
 
-    {{-- Pembelian Tahun 2021 --}}
+    {{-- Pembelian Produk --}}
+    {{-- 2021 --}}
     <script>
         const pembelian_tahun_2021 = document.getElementById('pembelian_tahun_2021');
         const lineChart_2021 = new Chart(pembelian_tahun_2021, {
@@ -1532,9 +1381,8 @@
             }
         });
     </script>
-    {{-- End Pembelian Tahun 2021 --}}
-
-    {{-- Pembelian Tahun 2022 --}}
+    {{-- end2021 --}}
+    {{-- 2022 --}}
     <script>
         const pembelian_tahun_2022 = document.getElementById('pembelian_tahun_2022');
         const lineChart_2022 = new Chart(pembelian_tahun_2022, {
@@ -1577,9 +1425,8 @@
             }
         });
     </script>
-    {{-- End Pembelian Tahun 2022 --}}
-
-    {{-- Pembelian Tahun 2022 --}}
+    {{-- end2022 --}}
+    {{-- 2023 --}}
     <script>
         const pembelian_tahun_2023 = document.getElementById('pembelian_tahun_2023');
         const lineChart_2023 = new Chart(pembelian_tahun_2023, {
@@ -1622,9 +1469,11 @@
             }
         });
     </script>
-    {{-- End Pembelian Tahun 2022 --}}
+    {{-- end2023 --}}
+    {{-- EndPembelianProduk --}}
 
-    {{-- Pembelian Voucher Tahun 2021 --}}
+    {{-- Pembelian Voucher --}}
+    {{-- 2021 --}}
     <script>
         const pembelian_voucher_tahun_2021 = document.getElementById('pembelian_voucher_tahun_2021');
         const lineChart_voucher_2021 = new Chart(pembelian_voucher_tahun_2021, {
@@ -1667,9 +1516,8 @@
             }
         });
     </script>
-    {{-- End Pembelian Voucher Tahun 2021 --}}
-
-    {{-- Pembelian Voucher Tahun 2022 --}}
+    {{-- end2021 --}}
+    {{-- 2022 --}}
     <script>
         const pembelian_voucher_tahun_2022 = document.getElementById('pembelian_voucher_tahun_2022');
         const lineChart_voucher_2022 = new Chart(pembelian_voucher_tahun_2022, {
@@ -1712,9 +1560,8 @@
             }
         });
     </script>
-    {{-- End Pembelian Voucher Tahun 2022 --}}
-
-    {{-- Pembelian Voucher Tahun 2023 --}}
+    {{-- end2022 --}}
+    {{-- 2023 --}}
     <script>
         const pembelian_voucher_tahun_2023 = document.getElementById('pembelian_voucher_tahun_2023');
         const lineChart_voucher_2023 = new Chart(pembelian_voucher_tahun_2023, {
@@ -1757,5 +1604,6 @@
             }
         });
     </script>
-    {{-- End Pembelian Voucher Tahun 2023 --}}
+    {{-- end2023 --}}
+    {{-- End Pembelian Voucher --}}
 @endsection
