@@ -139,7 +139,7 @@ class ProdukSeeder extends Seeder
             'deskripsi' => 'Cream / khaki cotton twill slimfit cargo longpants with brown leather patch.',
             'gambar_produk1' => 'images/gambar_produk1/shuts-1.jpg',
             'gambar_produk2' => 'images/gambar_produk2/shuts-2.jpg',
-            'gambar_produk3' => 'images/gambar_produk2/shuts-3.jpg',
+            'gambar_produk3' => 'images/gambar_produk3/shuts-3.jpg',
         ]);
         // EndLakiLaki
 
@@ -337,9 +337,9 @@ class ProdukSeeder extends Seeder
             'stok' => 50,
             'diskon' => 0,
             'deskripsi' => 'Long Sleeve Denim Shirt',
-            'gambar_produk1' => 'images/gambar_produk1/delacto-1.jpg',
-            'gambar_produk2' => 'images/gambar_produk2/delacto-2.jpg',
-            'gambar_produk3' => 'images/gambar_produk3/delacto-3.jpg',
+            'gambar_produk1' => 'images/gambar_produk1/delacto1.jpg',
+            'gambar_produk2' => 'images/gambar_produk2/delacto2.jpg',
+            'gambar_produk3' => 'images/gambar_produk3/delacto3.jpg',
         ]);
 
         Produk::create([

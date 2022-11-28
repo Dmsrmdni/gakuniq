@@ -86,22 +86,25 @@
     <script src="{{ asset('assets/js/config.js') }}"></script>
     {{-- <link rel="stylesheet" href="{{ asset('css/costum.css') }}"> --}}
 
-    {{-- <style>
-        .preloader
-            {
-                position: fixed;
-                left: 0px;
-                top: 0px;
-                width: 100%;
-                height: 100%;
-                z-index: 9999;
-                background: url('https://cdn.dribbble.com/users/225707/screenshots/2958729/attachments/648705/straight-loader.gif') 50% 50% no-repeat rgb(249,249,249);
-                opacity: .8;
-            }
-    </style> --}}
+    {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script> --}}
+
+    <style>
+        #loader {
+            background: #fff url('https://cdn.dribbble.com/users/2973561/screenshots/5757826/loading__.gif') no-repeat center center;
+            background-size: 30%;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            left: 100px;
+            z-index: 5;
+            animation-delay: 2s;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="loader"></div>
+
     {{-- <div id="preloaders" class="preloader"></div> --}}
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
@@ -140,7 +143,7 @@
 
         <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
-</div>
+    </div>
     <!-- / Layout wrapper -->
 
     <!-- Core JS -->
@@ -171,11 +174,14 @@
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    {{-- <script>
-        $(window).load(function() {
-            $("#preloaders").fadeOut(2000);
+    <script>
+        let loader = document.getElementById('loader');
+
+        window.addEventListener('load', () => {
+            setTimeout(function() {
+                loader.style.display = 'none';
+            }, 700);
         });
-    </script> --}}
-        {{-- <script src="{{ asset('js/costum.js') }}"></script> --}}
+    </script>
 </body>
 </html>

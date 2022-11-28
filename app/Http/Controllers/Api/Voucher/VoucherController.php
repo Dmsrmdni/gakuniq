@@ -10,7 +10,16 @@ class VoucherController extends Controller
     // Menampilkan Semua Data
     public function index()
     {
-        $vouchers = Voucher::select("id", "kode_voucher", "harga", "diskon", "label", "waktu_mulai", "waktu_berakhir", "status")->get();
+        $vouchers = Voucher::select("id", "kode_voucher", "harga", "diskon", "label", "waktu_mulai", "waktu_berakhir", "status")->Where('status', 'aktif')->get();
+        return response()->json([
+            "data" => $vouchers,
+            "status" => 200,
+        ]);
+    }
+
+    public function index2()
+    {
+        $vouchers = Voucher::select("id", "kode_voucher", "harga", "diskon", "label", "waktu_mulai", "waktu_berakhir", "status")->where('label', 'gratis')->Where('status', 'aktif')->get();
         return response()->json([
             "data" => $vouchers,
             "status" => 200,

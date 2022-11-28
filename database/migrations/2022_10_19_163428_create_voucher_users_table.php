@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('voucher_id');
             $table->foreign('voucher_id')->references('id')->on('vouchers')->onDelete('cascade');
             $table->string('metode_pembayaran');
+            // $table->enum('status', ['digunakan', 'belum digunakan'])->default('belum digunakan');
             $table->timestamps();
         });
     }

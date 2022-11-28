@@ -775,12 +775,13 @@
     {{-- EndContent --}}
 
 
-    <div class="buy-now">
+    {{-- <div class="buy-now">
         <button class="btn btn-danger btn-buy-now" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">
             <i class='bx bxs-chat'></i> Pesan</a>
         </button>
-    </div>
+    </div> --}}
+
 
     <div class="col-lg-3 col-md-6">
         <div class="mt-3">
@@ -1022,6 +1023,11 @@
     </div>
 
 
+
+    {{-- <div>
+        <canvas id="total_pendapatan_januari_2022"></canvas>
+    </div> --}}
+
     <!--/ Order Statistics -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1065,7 +1071,7 @@
             data: {
                 labels: ['Barang Masuk', 'Barang Keluar'],
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Jumlah Barang',
                     data: [{{ $barang_masuk_2022 }}, {{ $barang_keluar_2022 }}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -1600,4 +1606,33 @@
     </script>
     {{-- end2023 --}}
     {{-- End Pembelian Voucher --}}
+
+
+
+    {{-- <script>
+        const pendapatan_januari_2022 = document.getElementById('total_pendapatan_januari_2022');
+
+        new Chart(pendapatan_januari_2022, {
+            type: 'line',
+            data: {
+                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
+                    26, 27, 28, 29, 30, 31
+                ],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3, 33, 23, 23, 34, 4, 54, 454, 44, 45, 45, 45, 4, 545, 4, 54, 5,
+                        45, 4, 5, 34, 324, 34, 34, 34, 2
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script> --}}
 @endsection

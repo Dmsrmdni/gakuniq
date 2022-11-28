@@ -1,6 +1,19 @@
 @extends('admin.layouts.admin')
 
 @section('content')
+    {{-- @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Please check the form below for errors</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif --}}
+
+    {{-- @if ($errors->any())
+        @php
+            toast('Isi semua data', 'error');
+        @endphp
+    @endif --}}
+
     <div class="container-fluid">
         <form action="{{ route('kategori.store') }}" method="POST">
             @csrf

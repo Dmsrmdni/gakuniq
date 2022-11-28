@@ -85,7 +85,15 @@ class TransaksiController extends Controller
             $diskon = 0;
         } else {
             $diskon = ($transaksis->voucher->diskon * $transaksis->keranjang->total_harga) / 100;
+            // $voucher_user = Voucher_user::where('voucher_id', $transaksis->voucher_id)->get();
+            // $voucher_user = Voucher_user::join('vouchers', 'voucher_users.voucher_id', '=', 'vouchers.id')->
+            //     select("voucher_users.id")->get();
+
+            // $voucher_users = Voucher_user::findOrFail($voucher_user->id);
+            // $voucher_users->status = 'digunakan';
+            // $voucher_users->save();
         }
+
         $transaksis->total_harga = $transaksis->keranjang->total_harga - $diskon;
 
         // stok produk
@@ -102,13 +110,13 @@ class TransaksiController extends Controller
         // score
         $users = User::findOrFail($transaksis->keranjang->user_id);
         if ($transaksis->total_harga >= 100000 && $transaksis->total_harga < 199999) {
-            $users->score += 10;
+            $users->score += 1000;
         } elseif ($transaksis->total_harga >= 200000 && $transaksis->total_harga < 299999) {
-            $users->score += 20;
+            $users->score += 2000;
         } elseif ($transaksis->total_harga >= 300000 && $transaksis->total_harga < 399999) {
-            $users->score += 30;
+            $users->score += 3000;
         } elseif ($transaksis->total_harga >= 400000) {
-            $users->score += 50;
+            $users->score += 5000;
         }
         $users->save();
 

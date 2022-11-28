@@ -68,6 +68,7 @@ Route::get('produk/subkategori/{id}', [ProdukController::class, 'SubKategoriProd
 
 // voucher
 Route::get('voucher', [VoucherController::class, 'index']);
+Route::get('voucher2', [VoucherController::class, 'index2']);
 Route::get('voucher/{id}', [VoucherController::class, 'show']);
 
 // endvoucher
