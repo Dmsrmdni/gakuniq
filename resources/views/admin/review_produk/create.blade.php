@@ -16,7 +16,7 @@
                                 @if (count($users))
                                     @foreach ($users as $user)
                                         <option value="" hidden>Pilih User</option>
-                                        <option value="{{ $user->id }}">{{ $user->username }}
+                                        <option value="{{ $user->id }}">{{ $user->name }}
                                         </option>
                                     @endforeach
                                 @else

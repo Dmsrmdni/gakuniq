@@ -83,7 +83,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $keranjang->user->username }}
+                                            {{ $keranjang->user->name }}
                                         </div>
                                     </td>
                                     <td>

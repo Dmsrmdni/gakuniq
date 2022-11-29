@@ -55,7 +55,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $refund_produk->user->username }}
+                                            {{ $refund_produk->user->name }}
                                         </div>
                                     </td>
                                     <td>

@@ -16,7 +16,7 @@
     </div>
 </div> --}}
 
-    <div class="card shadow-lg rounded card">
+    <div class="card shadow-lg rounded card p-2 pb-3">
         <div class="card-header" id="#atas">
         </div>
         <div class="table-responsive text-nowrap">
@@ -25,7 +25,7 @@
                     <thead>
                         <tr>
                             <th>NO</th>
-                            <th>Username</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>No Telepon</th>
                             {{-- <th>Jenis Kelamin</th> --}}
@@ -46,7 +46,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $user->username }}
+                                            {{ $user->name }}
                                         </div>
                                     </td>
                                     <td>

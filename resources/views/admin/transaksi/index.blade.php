@@ -58,7 +58,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $transaksi->user->username }}
+                                            {{ $transaksi->user->name }}
                                         </div>
                                     </td>
                                     <td>

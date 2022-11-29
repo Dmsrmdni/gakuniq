@@ -23,7 +23,7 @@
                         <label class="form-label">nama_pembeli</label>
                         <input type="text" name="nama_pembeli"
                             class="form-control mb-2  @error('nama_pembeli') is-invalid @enderror"
-                            value="{{ $refund_produks->transaksi->keranjang->user->username }}" disabled readonly>
+                            value="{{ $refund_produks->transaksi->keranjang->user->name }}" disabled readonly>
                         @error('nama_pembeli')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -83,7 +83,7 @@
                                 </blockquote>
                                 <figcaption class="blockquote-footer mb-0 text-muted">
                                     <cite
-                                        title="Source Title">{{ $refund_produks->transaksi->keranjang->user->username }}</cite>
+                                        title="Source Title">{{ $refund_produks->transaksi->keranjang->user->name }}</cite>
                                 </figcaption>
                             </figure>
                         </div>

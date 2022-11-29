@@ -12,7 +12,7 @@ class UserController extends Controller
     // Menampilkan Semua Data
     public function index()
     {
-        $users = User::select("id", "nama_depan", "nama_belakang", "no_telepon", "username", "email", "tanggal_lahir", "jenis_kelamin", "referensi", "label_alamat", "kota_kecamatan", "alamat_lengkap", "saldo", "score", "status")->where('id', auth()->guard('api')->user()->id)->get();
+        $users = User::select("id", "nama_depan", "nama_belakang", "no_telepon", "name", "email", "tanggal_lahir", "jenis_kelamin", "referensi", "label_alamat", "kota_kecamatan", "alamat_lengkap", "saldo", "score", "status")->where('id', auth()->guard('api')->user()->id)->get();
         return response()->json([
             "data" => $users,
             "status" => 200,
@@ -27,7 +27,7 @@ class UserController extends Controller
             'nama_depan' => ['required'],
             'nama_belakang' => ['required'],
             'no_telepon' => ['required', 'string', 'min:12', 'max:14'],
-            // 'username' => ['required'],
+            // 'name' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255'],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
             // 'tanggal_lahir' => ['required'],
@@ -43,7 +43,7 @@ class UserController extends Controller
         $users->nama_depan = $request->nama_depan;
         $users->nama_belakang = $request->nama_belakang;
         $users->no_telepon = $request->no_telepon;
-        // $users->username = $request->username;
+        // $users->name = $request->name;
         $users->email = $request->email;
         // $users->tanggal_lahir = $request->tanggal_lahir;
         // $users->jenis_kelamin = $request->jenis_kelamin;
@@ -81,7 +81,7 @@ class UserController extends Controller
     // Menampilkan Semua Data
     public function allData()
     {
-        $users = User::select("id", "nama_depan", "nama_belakang", "username")->get();
+        $users = User::select("id", "nama_depan", "nama_belakang", "name")->get();
         return response()->json([
             "data" => $users,
             "status" => 200,

@@ -15,7 +15,7 @@
                                     <td>
                                         <strong>Nama Pembeli</strong>
                                     </td>
-                                    <td>{{ $transaksis->user->username }}</td>
+                                    <td>{{ $transaksis->user->name }}</td>
                                 </tr>
                                 <tr>
                                     <td>

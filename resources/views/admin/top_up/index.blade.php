@@ -47,7 +47,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $top_up->user->username }}
+                                            {{ $top_up->user->name }}
                                         </div>
                                     </td>
                                     <td>

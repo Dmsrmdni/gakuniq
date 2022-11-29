@@ -79,7 +79,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $wishlist->user->username }}
+                                            {{ $wishlist->user->name }}
                                         </div>
                                     </td>
                                     <td>

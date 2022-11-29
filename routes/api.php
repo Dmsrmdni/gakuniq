@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Route::get('test', [TestingController::class, 'test']);
-Route::post('chat', [ChatController::class, 'message']);
+// Route::post('chat', [ChatController::class, 'message']);
 // Route::post('test/create', [TestingController::class, 'create']);
 
 // Authentikasi
@@ -136,6 +136,10 @@ Route::middleware(['auth:api'])->group(function () {
     Route::put('user/{id}/editstatus', [UserController::class, 'updateStatus']);
     // Route::delete('review_produk/{id}', [UserController::class, 'destroy']);
     // enduser
+
+    Route::get('chat', [ChatController::class, 'index']);
+    Route::post('chat/create', [ChatController::class, 'store']);
+
 });
 
 Route::get('review_produk/{id}', [ReviewProdukController::class, 'index']);
@@ -147,8 +151,6 @@ Route::get('all/user', [UserController::class, 'allData']);
 //     return response()->json($filterResult);
 // });
 
-Route::get('chat', [ChatController::class, 'index']);
-Route::post('chat/create', [ChatController::class, 'store']);
 Route::delete('chat/{id}', [ChatController::class, 'destroy']);
 
 //

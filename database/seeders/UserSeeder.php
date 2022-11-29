@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'username' => 'Admin',
+            'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345678'),
             'role' => 'admin',
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'nama_depan' => 'Dikha',
             'nama_belakang' => 'Nugraha',
             'no_telepon' => '0897659876349',
-            'username' => 'Nugraha',
+            'name' => 'Nugraha',
             'email' => 'nugraha@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'), // password
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             'nama_depan' => 'Dinar',
             'nama_belakang' => 'Arya',
             'no_telepon' => '081765627304',
-            'username' => 'Arya',
+            'name' => 'Arya',
             'email' => 'dinar@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'), // password
@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
             'nama_depan' => 'Melani',
             'nama_belakang' => 'Wulan sari',
             'no_telepon' => '082390483764',
-            'username' => 'Melaniii',
+            'name' => 'Melaniii',
             'email' => 'melani@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'), // password
@@ -68,7 +68,7 @@ class UserSeeder extends Seeder
             'nama_depan' => 'Haddad',
             'nama_belakang' => 'Hikmah',
             'no_telepon' => '084320934831',
-            'username' => 'Haddad',
+            'name' => 'Haddad',
             'email' => 'haddad@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'), // password
@@ -82,7 +82,7 @@ class UserSeeder extends Seeder
             'nama_depan' => 'Radit',
             'nama_belakang' => 'Dika',
             'no_telepon' => '089123912306',
-            'username' => 'Raditt',
+            'name' => 'Raditt',
             'email' => 'radit@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'), // password

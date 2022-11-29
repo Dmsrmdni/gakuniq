@@ -48,7 +48,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $review_produk->user->username }}
+                                            {{ $review_produk->user->name }}
                                         </div>
                                     </td>
                                     <td>
