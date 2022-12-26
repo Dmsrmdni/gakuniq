@@ -13,9 +13,12 @@ class Chat implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public function __construct(
-        public string $room,
-        public string $username,
-        public string $message
+        public string $id,
+        public string $type,
+        public string $from_id,
+        public string $to_id,
+        public string $body,
+        public string $attachment,
     ) {
         // $this->message = $message;
     }
@@ -27,11 +30,11 @@ class Chat implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['gnq-development'];
+        return ['chat-admin'];
     }
 
     public function broadcastAs()
     {
-        return 'Chat';
+        return 'chat';
     }
 }

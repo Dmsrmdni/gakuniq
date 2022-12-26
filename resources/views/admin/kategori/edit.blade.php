@@ -6,7 +6,7 @@
             <form action="{{ route('kategori.update', $kategoris->id) }}" method="post">
                 @csrf
                 @method('put')
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="card mb-4 shadow-lg rounded card" style="margin: 2%; padding:1% ">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h4 class="mb-0">Data Kategori</h4>
@@ -23,28 +23,6 @@
                                     </span>
                                 @enderror
                             </div>
-                            {{-- <div class="mb-3">
-                            <label class="form-label">Link Kategori</label>
-                            <input type="text" name="link"
-                                class="form-control mb-2  @error('link') is-invalid @enderror"
-                                value="{{ $kategoris->link }}">
-                            @error('link')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">hover Kategori</label>
-                            <input type="text" name="hover"
-                                class="form-control mb-2  @error('hover') is-invalid @enderror"
-                                value="{{ $kategoris->hover }}">
-                            @error('hover')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div> --}}
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">

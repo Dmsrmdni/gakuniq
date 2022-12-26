@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
     public function __invoke(Request $request)
     {
-          //validasi
+        //validasi
         $validated = $request->validate([
             'nama_depan' => ['required', 'string', 'max:255'],
             'nama_belakang' => ['required', 'string', 'max:255'],
             'no_telepon' => ['required', 'string', 'min:12', 'max:14'],
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
             'tanggal_lahir' => ['required'],
@@ -32,7 +32,7 @@ class RegisterController extends Controller
         $users->nama_depan = $request->nama_depan;
         $users->nama_belakang = $request->nama_belakang;
         $users->no_telepon = $request->no_telepon;
-        $users->username = $request->username;
+        $users->name = $request->name;
         $users->email = $request->email;
         $users->password = Hash::make($request->password);
         $users->tanggal_lahir = $request->tanggal_lahir;

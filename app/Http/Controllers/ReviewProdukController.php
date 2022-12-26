@@ -108,7 +108,7 @@ class ReviewProdukController extends Controller
         $review_produks = Review_Produk::findOrFail($id);
         $review_produks->delete();
         return redirect()
-            ->route('review_produk.index')->with('toast_error', 'Data has been deleted');
+            ->route('review_produk.index')->with('toast_success', 'Data has been deleted');
 
     }
 }

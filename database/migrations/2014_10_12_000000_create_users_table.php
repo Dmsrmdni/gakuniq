@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('profile')->nullable()->default('images/users/profile.jpeg');
             $table->string('nama_depan')->nullable();
             $table->string('nama_belakang')->nullable();
             $table->string('no_telepon')->nullable();

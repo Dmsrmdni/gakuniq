@@ -108,7 +108,7 @@ class WishlistController extends Controller
         $wishlists->produk_id = $request->produk_id;
         $wishlists->save();
         return redirect()
-            ->route('wishlist.index')->with('toast_info', 'Data has been edited');
+            ->route('wishlist.index')->with('toast_success', 'Data has been edited');
 
     }
 
@@ -123,13 +123,13 @@ class WishlistController extends Controller
         $wishlists = Wishlist::findOrFail($id);
         $wishlists->delete();
         return redirect()
-            ->route('wishlist.index')->with('toast_error', 'Data has been deleted');
+            ->route('wishlist.index')->with('toast_success', 'Data has been deleted');
     }
 
     public function destroyAll()
     {
         DB::table('wishlists')->delete();
         return redirect()
-            ->route('wishlist.index')->with('toast_error', 'All Data has been deleted');
+            ->route('wishlist.index')->with('toast_success', 'All Data has been deleted');
     }
 }

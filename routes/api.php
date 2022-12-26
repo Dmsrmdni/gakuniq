@@ -132,13 +132,15 @@ Route::middleware(['auth:api'])->group(function () {
 
     // user
     Route::get('user', [UserController::class, 'index']);
-    Route::put('user/{id}/edit', [UserController::class, 'update']);
+    Route::post('user/{id}/edit', [UserController::class, 'update']);
     Route::put('user/{id}/editstatus', [UserController::class, 'updateStatus']);
+    Route::put('user/{id}/editImage', [UserController::class, 'updateImage']);
     // Route::delete('review_produk/{id}', [UserController::class, 'destroy']);
     // enduser
 
     Route::get('chat', [ChatController::class, 'index']);
     Route::post('chat/create', [ChatController::class, 'store']);
+    Route::post('chat/create2', [ChatController::class, 'store2']);
 
 });
 

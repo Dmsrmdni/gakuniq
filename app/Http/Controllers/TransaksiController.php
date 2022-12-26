@@ -237,7 +237,7 @@ class TransaksiController extends Controller
         $transaksis->delete();
         return redirect()
             ->route('transaksi.index')
-            ->with('toast_error', 'Data has been deleted');
+            ->with('toast_success', 'Data has been deleted');
     }
 
     public function pdf($id)

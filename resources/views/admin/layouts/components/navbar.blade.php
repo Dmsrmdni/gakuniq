@@ -38,11 +38,13 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">{{ Auth::user()->username }}</span>
+                                    <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
                                     <small class="text-muted">{{ Auth::user()->email }}</small>
                                 </div>
                             </div>
                         </a>
+                    </li>
+                    <li><a class="dropdown-item" href="/chatify" target="_blank"><i class='bx bxs-chat'></i> Chat</a>
                     </li>
                     <li>
                         <div class="dropdown-divider"></div>

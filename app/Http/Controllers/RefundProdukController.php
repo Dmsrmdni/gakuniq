@@ -125,7 +125,7 @@ class RefundProdukController extends Controller
 
         $refund_produks->save();
         return redirect()
-            ->route('refund_produk.index')->with('toast_info', 'Data has been edited');
+            ->route('refund_produk.index')->with('toast_success', 'Data has been edited');
 
     }
 
@@ -140,7 +140,7 @@ class RefundProdukController extends Controller
         $refund_produks = Refund_Produk::findOrFail($id);
         $refund_produks->delete();
         return redirect()
-            ->route('refund_produk.index')->with('toast_error', 'Data has been deleted');
+            ->route('refund_produk.index')->with('toast_success', 'Data has been deleted');
 
     }
 }

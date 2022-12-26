@@ -119,7 +119,7 @@ class VoucherUserController extends Controller
         $voucher_users = Voucher_user::findOrFail($id);
         $voucher_users->delete();
         return redirect()
-            ->route('voucher_user.index')->with('toast_error', 'Data has been deleted');
+            ->route('voucher_user.index')->with('toast_success', 'Data has been deleted');
 
     }
 }

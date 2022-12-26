@@ -123,7 +123,7 @@ class VoucherController extends Controller
         $vouchers->status = $request->status;
         $vouchers->save();
         return redirect()
-            ->route('voucher.index')->with('toast_info', 'Data has been edited');
+            ->route('voucher.index')->with('toast_success', 'Data has been edited');
 
     }
 
@@ -138,7 +138,7 @@ class VoucherController extends Controller
         $vouchers = Voucher::findOrFail($id);
         $vouchers->delete();
         return redirect()
-            ->route('voucher.index')->with('toast_error', 'Data has been deleted');
+            ->route('voucher.index')->with('toast_success', 'Data has been deleted');
     }
 
     public function changeStatusVoucher(Request $request)

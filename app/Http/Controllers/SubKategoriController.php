@@ -99,7 +99,7 @@ class SubKategoriController extends Controller
         $sub_kategoris->sub_kategori = $request->sub_kategori;
         $sub_kategoris->save();
         return redirect()
-            ->route('sub_kategori.index')->with('toast_info', 'Data has been edited');
+            ->route('sub_kategori.index')->with('toast_success', 'Data has been edited');
 
     }
 
@@ -114,7 +114,7 @@ class SubKategoriController extends Controller
         $sub_kategoris = Sub_kategori::findOrFail($id);
         $sub_kategoris->delete();
         return redirect()
-            ->route('sub_kategori.index')->with('toast_error', 'Data has been deleted');
+            ->route('sub_kategori.index')->with('toast_success', 'Data has been deleted');
 
     }
 }

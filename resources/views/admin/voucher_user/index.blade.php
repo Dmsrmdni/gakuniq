@@ -50,7 +50,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            {{ $voucher_user->user->username }}
+                                            {{ $voucher_user->user->name }}
                                         </div>
                                     </td>
                                     <td>

@@ -118,7 +118,7 @@ class KeranjangController extends Controller
         $keranjangs->total_harga = ($keranjangs->produk->harga * $request->jumlah) - $diskon;
         $keranjangs->save();
         return redirect()
-            ->route('keranjang.index')->with('toast_info', 'Data has been edited');
+            ->route('keranjang.index')->with('toast_success', 'Data has been edited');
     }
 
     /**
@@ -132,7 +132,7 @@ class KeranjangController extends Controller
         $keranjangs = Keranjang::findOrFail($id);
         $keranjangs->delete();
         return redirect()
-            ->route('keranjang.index')->with('toast_error', 'Data has been deleted');
+            ->route('keranjang.index')->with('toast_success', 'Data has been deleted');
 
     }
 
@@ -140,6 +140,6 @@ class KeranjangController extends Controller
     {
         DB::table('keranjangs')->where('status', 'keranjang')->delete();
         return redirect()
-            ->route('keranjang.index')->with('toast_error', 'All Data has been deleted');
+            ->route('keranjang.index')->with('toast_success', 'All Data has been deleted');
     }
 }

@@ -5,7 +5,7 @@
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES</span> </a>
+                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">Gakuniq</span> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#"><i class="fas fa-cog settings-btn"></i></a>
@@ -18,8 +18,8 @@
             <div class="messenger-listView-tabs">
                 <a href="#" @if ($type == 'user') class="active-tab" @endif data-view="users">
                     <span class="far fa-user"></span> People</a>
-                <a href="#" @if ($type == 'group') class="active-tab" @endif data-view="groups">
-                    <span class="fas fa-users"></span> Groups</a>
+                {{-- <a href="#" @if ($type == 'group') class="active-tab" @endif data-view="groups">
+                    <span class="fas fa-users"></span> Groups</a> --}}
             </div>
         </div>
         {{-- tabs and lists --}}
@@ -79,9 +79,9 @@
                 </div>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
-                    <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-                    <a href="/"><i class="fas fa-home"></i></a>
-                    <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
+                    {{-- <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a> --}}
+                    <a href="/admin/dashboard"><i class="fas fa-home"></i></a>
+                    {{-- <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a> --}}
                 </nav>
             </nav>
         </div>
@@ -97,15 +97,17 @@
                 <p class="message-hint center-el"><span>Please select a chat to start messaging</span></p>
             </div>
             {{-- Typing indicator --}}
-            <div class="typing-indicator">
-                <div class="message-card typing">
-                    <p>
-                        <span class="typing-dots">
-                            <span class="dot dot-1"></span>
-                            <span class="dot dot-2"></span>
-                            <span class="dot dot-3"></span>
-                        </span>
-                    </p>
+            <div style="margin: 25px">
+                <div class="typing-indicator">
+                    <div class="message-card typing">
+                        <p>
+                            <span class="typing-dots">
+                                <span class="dot dot-1"></span>
+                                <span class="dot dot-2"></span>
+                                <span class="dot dot-3"></span>
+                            </span>
+                        </p>
+                    </div>
                 </div>
             </div>
             {{-- Send Message Form --}}
@@ -113,13 +115,13 @@
         </div>
     </div>
     {{-- ---------------------- Info side ---------------------- --}}
-    <div class="messenger-infoView app-scroll">
-        {{-- nav actions --}}
+    {{-- <div class="messenger-infoView app-scroll">
+        nav actions
         <nav>
             <a href="#"><i class="fas fa-times"></i></a>
         </nav>
         {!! view('Chatify::layouts.info')->render() !!}
-    </div>
+    </div> --}}
 </div>
 
 @include('Chatify::layouts.modals')

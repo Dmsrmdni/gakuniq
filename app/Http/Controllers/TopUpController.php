@@ -107,6 +107,6 @@ class TopUpController extends Controller
         $top_ups->delete();
         return redirect()
             ->route('top_up.index')
-            ->with('toast_error', 'Data has been deleted');
+            ->with('toast_success', 'Data has been deleted');
     }
 }

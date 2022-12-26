@@ -1,22 +1,8 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-    {{-- <div class="row">
-    <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <div class="d-flex w-100 justify-content-between">
-                    <div class="me-2">
-                        <h6 class="mb-0">Total user : </h6>
-                    </div>
-                    <h5 class="fw-semibold mb-0">{{ $total_users }}</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 
-    <div class="card shadow-lg rounded card p-2 pb-3">
+    <div class="card shadow-lg rounded card p-2">
         <div class="card-header" id="#atas">
         </div>
         <div class="table-responsive text-nowrap">
@@ -25,10 +11,10 @@
                     <thead>
                         <tr>
                             <th>NO</th>
+                            <th>Users</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>No Telepon</th>
-                            {{-- <th>Jenis Kelamin</th> --}}
                             <th>Saldo</th>
                             <th>Score</th>
                             <th>Status</th>
@@ -42,6 +28,12 @@
                                     <td>
                                         <div class="d-flex">
                                             {{ $loop->iteration }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <img src="{{ asset($user->profile) }}" alt="profile"
+                                                class="rounded-circle w-100" />
                                         </div>
                                     </td>
                                     <td>

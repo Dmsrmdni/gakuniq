@@ -83,8 +83,8 @@ class UserController extends Controller
     {
         $users = User::findOrFail($id);
         $users->delete();
+        $users->deleteImage();
         return redirect()
-            ->route('user.index')->with('toast_error', 'Data has been deleted');
-
+            ->route('user.index')->with('toast_success', 'Data has been deleted');
     }
 }

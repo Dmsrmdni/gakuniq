@@ -37,18 +37,39 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //validasi
+        // // //validasi
         $validated = $request->validate([
             'name' => 'required|unique:kategoris',
         ]);
 
         $kategoris = new Kategori();
         $kategoris->name = $request->name;
-        // $kategoris->link = $request->link;
-        // $kategoris->hover = $request->hover;
         $kategoris->save();
         return redirect()
             ->route('kategori.index')->with('toast_success', 'Data has been added');
+
+//         //define validation rules
+//         $validator = Validator::make($request->all(), [
+//             'name' => 'required',
+//         ]);
+
+//         //check if validation fails
+//         if ($validator->fails()) {
+//             return response()->json($validator->errors(), 422);
+//         }
+
+//         //create post
+//         $kategoris = Kategori::create([
+//             'name' => $request->name,
+//         ]);
+
+// //return response
+//         return response()->json([
+//             'success' => true,
+//             'message' => 'Data Berhasil Disimpan!',
+//             'data' => $kategoris,
+//         ]);
+
     }
 
     /**
@@ -97,7 +118,7 @@ class KategoriController extends Controller
         // $kategoris->hover = $request->hover;
         $kategoris->save();
         return redirect()
-            ->route('kategori.index')->with('toast_info', 'Data has been edited');
+            ->route('kategori.index')->with('toast_success', 'Data has been edited');
 
     }
 
@@ -112,7 +133,7 @@ class KategoriController extends Controller
         $kategoris = Kategori::findOrFail($id);
         $kategoris->delete();
         return redirect()
-            ->route('kategori.index')->with('toast_error', 'Data has been deleted');
+            ->route('kategori.index')->with('toast_success', 'Data has been deleted');
 
     }
 }

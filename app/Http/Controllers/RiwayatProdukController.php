@@ -119,7 +119,7 @@ class RiwayatProdukController extends Controller
         $riwayat_produks = Produk::findOrFail($id);
         $riwayat_produks->delete();
         return redirect()
-            ->route('riwayat_produk.index')->with('toast_error', 'Data has been deleted');
+            ->route('riwayat_produk.index')->with('toast_success', 'Data has been deleted');
 
     }
 }

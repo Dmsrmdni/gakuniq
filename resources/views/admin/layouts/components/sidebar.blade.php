@@ -88,7 +88,7 @@
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('admin/kategori*') ? 'active' : '' }}">
                     <a href="/admin/kategori" class="menu-link">
-                        <div>kategori</div>
+                        <div>Kategori</div>
                     </a>
                 </li>
                 <li class="menu-item {{ Request::is('admin/sub_kategori*') ? 'active' : '' }}">
@@ -152,15 +152,6 @@
         </li>
         {{-- EndTransaksi --}}
 
-        {{-- History --}}
-        {{-- <li class="menu-item {{ Request::is('admin/history*') ? 'active' : '' }}">
-            <a href="/admin/history" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-timer"></i>
-                <div>History</div>
-            </a>
-        </li> --}}
-        {{-- EndHistory --}}
-
         {{-- ReviewProduk --}}
         <li class="menu-item {{ Request::is('admin/review_produk*') ? 'active' : '' }}">
             <a href="/admin/review_produk" class="menu-link">
@@ -180,21 +171,21 @@
         {{-- EndRefundProduk --}}
 
         {{-- keranjang --}}
-        <li class="menu-item {{ Request::is('admin/keranjang*') ? 'active' : '' }}">
+        {{-- <li class="menu-item {{ Request::is('admin/keranjang*') ? 'active' : '' }}">
             <a href="/admin/keranjang" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cart"></i>
                 <div>Keranjang</div>
             </a>
-        </li>
+        </li> --}}
         {{-- Endkeranjang --}}
 
         {{-- Wishlist --}}
-        <li class="menu-item {{ Request::is('admin/wishlist*') ? 'active' : '' }}">
+        {{-- <li class="menu-item {{ Request::is('admin/wishlist*') ? 'active' : '' }}">
             <a href="/admin/wishlist" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-heart"></i>
                 <div>Wishlist</div>
             </a>
-        </li>
+        </li> --}}
         {{-- EndWishlist --}}
 
         {{-- Voucher --}}

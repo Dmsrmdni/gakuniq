@@ -19,12 +19,29 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function image()
+    {
+        if ($this->profile && file_exists(public_path('images/users/' . $this->profile))) {
+            return asset('images/users/' . $this->profile);
+        } else {
+            return asset('images/profile.jpeg');
+        }
+    }
+
+    public function deleteImage()
+    {
+        if ($this->profile && file_exists(public_path('images/users/' . $this->profile))) {
+            return unlink(public_path('images/users/' . $this->profile));
+        }
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'profile',
         'nama_depan',
         'nama_belakang',
         'no_telepon',

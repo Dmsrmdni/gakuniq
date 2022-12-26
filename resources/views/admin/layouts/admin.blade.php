@@ -52,7 +52,8 @@
 
     <title>gakuniq</title>
 
-    <meta name="description" content="" />
+    {{-- <meta name="description" content="" /> --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     {{-- <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" /> --}}
 
@@ -89,10 +90,13 @@
 
     {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script> --}}
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         #loader {
-            background: #fff url('https://cdn.dribbble.com/users/2973561/screenshots/5757826/loading__.gif') no-repeat center center;
-            background-size: 30%;
+            background: #fff url('https://flevix.com/wp-content/uploads/2020/01/Lazy-Loader-1.gif') no-repeat center center;
+            background-size: 50%;
             height: 100%;
             width: 100%;
             position: fixed;

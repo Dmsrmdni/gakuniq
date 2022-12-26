@@ -172,7 +172,7 @@ class ProdukController extends Controller
         }
         $produks->save();
         return redirect()
-            ->route('produk.index')->with('toast_info', 'Data has been edited');
+            ->route('produk.index')->with('toast_success', 'Data has been edited');
     }
 
     /**
@@ -189,7 +189,7 @@ class ProdukController extends Controller
         $produks->deleteImage2();
         $produks->deleteImage3();
         return redirect()
-            ->route('produk.index')->with('toast_error', 'Data has been deleted');
+            ->route('produk.index')->with('toast_success', 'Data has been deleted');
 
     }
 }

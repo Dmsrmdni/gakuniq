@@ -1,23 +1,10 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-    {{-- @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Please check the form below for errors</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif --}}
-
-    {{-- @if ($errors->any())
-        @php
-            toast('Isi semua data', 'error');
-        @endphp
-    @endif --}}
-
     <div class="container-fluid">
         <form action="{{ route('kategori.store') }}" method="POST">
             @csrf
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="card mb-4 shadow-lg rounded card" style="margin: 2%; padding:1% ">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="mb-0">Data Kategori</h4>
@@ -34,28 +21,6 @@
                                 </span>
                             @enderror
                         </div>
-                        {{-- <div class="mb-3">
-                            <label class="form-label">Link Kategori</label>
-                            <input type="text" name="link"
-                                class="form-control mb-2  @error('link') is-invalid @enderror" placeholder="Link Kategori"
-                                value="{{ old('link') }}">
-                            @error('link')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">hover Kategori</label>
-                            <input type="text" name="hover"
-                                class="form-control mb-2  @error('hover') is-invalid @enderror" placeholder="hover Kategori"
-                                value="{{ old('hover') }}">
-                            @error('hover')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div> --}}
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">

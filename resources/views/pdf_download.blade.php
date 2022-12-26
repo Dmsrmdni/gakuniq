@@ -12,7 +12,7 @@
                                 <strong>Nama Pembeli</strong>
                             </td>
                             <td> : </td>
-                            <td>{{ $transaksis->user->username }}</td>
+                            <td>{{ $transaksis->user->name }}</td>
                         </tr>
                         <tr>
                             <td>

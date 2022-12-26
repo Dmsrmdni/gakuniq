@@ -407,6 +407,7 @@ class MessagesController extends Controller
                 'image' => Chatify::getAttachmentUrl($shared[$i]),
             ])->render();
         }
+
         // send the response
         return Response::json([
             'shared' => count($shared) > 0 ? $sharedPhotos : '<p class="message-hint"><span>Nothing shared yet</span></p>',

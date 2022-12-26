@@ -122,8 +122,7 @@
                             <label class="form-label">gambar produk</label>
                             <p>
                                 @if (isset($produks) && $produks->gambar_produk1)
-                                    <img src="{{ asset('images/gambar_produk1/' . $produks->gambar_produk1) }}"
-                                        class="img-rounded img-responsive"
+                                    <img src="{{ asset($produks->gambar_produk1) }}" class="img-rounded img-responsive"
                                         style="width:150px; height:150px; border-radius:10px border-radius:10px"
                                         alt="">
                                 @endif
@@ -137,8 +136,7 @@
                             @enderror
                             <p>
                                 @if (isset($produks) && $produks->gambar_produk2)
-                                    <img src="{{ asset('images/gambar_produk2/' . $produks->gambar_produk2) }}"
-                                        class="img-rounded img-responsive"
+                                    <img src="{{ asset($produks->gambar_produk2) }}" class="img-rounded img-responsive"
                                         style="width:150px; height:150px; border-radius:10px" alt="">
                                 @endif
                             </p>
@@ -151,8 +149,7 @@
                             @enderror
                             <p>
                                 @if (isset($produks) && $produks->gambar_produk3)
-                                    <img src="{{ asset('images/gambar_produk3/' . $produks->gambar_produk3) }}"
-                                        class="img-rounded img-responsive"
+                                    <img src="{{ asset($produks->gambar_produk3) }}" class="img-rounded img-responsive"
                                         style="width:150px; height:150px; border-radius:10px" alt="">
                                 @endif
                             </p>
